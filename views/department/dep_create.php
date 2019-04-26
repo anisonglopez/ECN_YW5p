@@ -11,7 +11,7 @@ require '../layout/header.php';
 <div class="card mb-4">
   <div class="card-header">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 m-0 font-weight-bold text-primary">
           สร้างข้อมูลแผนก
       </div>
       <div class="col-md-6 text-right">
