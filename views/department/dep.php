@@ -31,8 +31,8 @@ catch (PDOException $e) {
 <!-- end card header -->
   <div class="card-body">
     <div class="col-md-12">
-      <table class="table table-hover " id="dataTable">
-        <thead>
+      <table class="table table-hover table-sm " id="dataTable">
+        <thead class="bg-info text-white">
           <tr>
             <th>Dept. Code</th>
             <th>ชื่อแผนก</th>
