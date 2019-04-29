@@ -14,7 +14,7 @@ require '../layout/header.php';
           จัดการข้อมูล Module
       </div>
       <div class="col-md-6 text-right">
-        <button class="btn btn-success"onclick="location.href='user_create.php';">Create new</button>
+        <button class="btn btn-success"onclick="location.href='module_create.php';">Create new</button>
       </div>
     </div>        
   </div>

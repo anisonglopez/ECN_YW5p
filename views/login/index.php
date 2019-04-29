@@ -50,12 +50,12 @@
                     <p class="small">ยินดีต้อนรับเข้าสู่ระบบ ECN Management</p>
 
                   </div>
-                  <form class="user">
+                  <form method="post" action="chklogin.php" class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" style="font-size:1rem;">
+                      <input type="text" autofocus="autofocus" name="user_name" class="form-control form-control-user"  placeholder="Username" style="font-size:1rem;">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user " id="exampleInputPassword" placeholder="Password" style="font-size:1rem;">
+                      <input type="password" name="user_password" class="form-control form-control-user " placeholder="Password" style="font-size:1rem;">
                       <div class="mt-3">
                       <p class="small">กรุณาระบุชื่อผู้ใช้งานและรหัสผ่านเพื่อเข้าสู่ระบบ</p>
                       </div>
@@ -67,9 +67,9 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div> -->
-                    <a href="../base/newpage.php" class="btn btn-primary btn-user btn-block">
+                    <button type='submit' class="btn btn-primary btn-user btn-block">
                       Login
-                    </a>
+                    </button>
 
                   </form>
                   <hr>

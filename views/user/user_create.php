@@ -29,7 +29,7 @@ $TABLE_DEP = '00_department';
                       <label for="imge" class="col-sm-2 col-form-label">Image  : </label>
                       <div class="col-sm-8">
                       
-                    <img src=".."   id="blah"  class="img-fluid img-thumbnail rounded-circle w-25"  title="user_pic" />        
+                    <img src="https://www.jquery-az.com/html/images/banana.jpg"   id="blah"  class="img-fluid img-thumbnail rounded-circle w-25"  title="user_pic" />        
                                 <div class="col-md-5 mt-2">
                             <div class="custom-file">
                                 <input type="file" name="fileToUpload" id="fileToUpload" class="custom-file-input" onchange="readURL(this);">
