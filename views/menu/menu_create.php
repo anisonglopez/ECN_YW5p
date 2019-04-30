@@ -1,11 +1,11 @@
 <?php   
-$title = "Create Module";
+$title = "Create Menu";
 require '../layout/header.php';
 $TABLE_Module = '00_module';
 require '../00_config/connect.php';//db connect
 ?>
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Create Module</h1>
+          <h1 class="h3 mb-4 text-gray-800">Create Menu</h1>
           <!-- Page Content -->
           <hr>
 <form method="post">
@@ -14,7 +14,7 @@ require '../00_config/connect.php';//db connect
   <div class="card-header">
     <div class="row">
       <div class="col-md-6 m-0 font-weight-bold text-primary">
-          สร้างข้อมูลโมดูล
+          สร้างข้อมูลเมนู
       </div>
       <div class="col-md-6 text-right">
       <button  type="reset" class="btn btn-facebook" onclick="location.href='menu.php';">Back</button>

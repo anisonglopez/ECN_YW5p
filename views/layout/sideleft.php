@@ -61,8 +61,8 @@
       <h6 class="collapse-header">Login Screens:</h6>
       <a class="collapse-item <?=$ap == 'module'? 'active':'';?>" href="../module/module.php">Module</a>
       <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu</a>
-      <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
-      <a class="collapse-item <?=$ap == 'newpage'? 'active':'';?>" href="../base/newpage.php">Blank</a>
+      <!-- <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
+      <a class="collapse-item <?=$ap == 'newpage'? 'active':'';?>" href="../base/newpage.php">Blank</a> -->
       <div class="collapse-divider"></div>
     </div>
   </div>
@@ -78,8 +78,6 @@
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">ข้อมูลตั้งต้นระบบ:</h6>
       <a class="collapse-item <?=$ap == 'dep' || ($ap == 'dep_create')? 'active':'';?>" href="../department/dep.php">Department</a>
-      <a class="collapse-item" href="register.html">Menu</a>
-      <a class="collapse-item" href="forgot-password.html">Effective Date</a>
       <div class="collapse-divider"></div>
     </div>
   </div>
