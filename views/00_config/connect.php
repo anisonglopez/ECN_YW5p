@@ -35,7 +35,6 @@ try {
  $pdo->exec("set names utf8mb4");
     //echo "Connected!: ". "<br/>";
 //insert
-    
 } catch (PDOException $e) {
     print "Error!: Cannot connection to database " . $e->getMessage() . "<br/>";
     die();

@@ -1,6 +1,8 @@
 <?php   
 $title = "Create Module";
 require '../layout/header.php';
+$TABLE_Module = '00_module';
+require '../00_config/connect.php';//db connect
 ?>
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Create Module</h1>
@@ -15,7 +17,7 @@ require '../layout/header.php';
           สร้างข้อมูลโมดูล
       </div>
       <div class="col-md-6 text-right">
-      <button  type="reset" class="btn btn-facebook" onclick="location.href='module.php';">Back</button>
+      <button  type="reset" class="btn btn-facebook" onclick="location.href='menu.php';">Back</button>
         <button type="submit" class="btn btn-success" >Save</button>
       </div>
     </div>        
@@ -25,16 +27,33 @@ require '../layout/header.php';
     <div class="col-md-12">
                 
                 <div class="form-group row">
-                      <label for="m_id" class="col-sm-2 col-form-label">รหัสโมดูล  : <span class="text-danger">*</span></label>
+                      <label for="module_id" class="col-sm-2 col-form-label">รหัสโมดูล  : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="text" name="m_id" id="m_id" value="" class="form-control" required maxlength="10">
+                      <select class="form-control" name="module_id" id="module_id" required >
+                              <option value="">Select</option>
+                              <?php
+                                  $stmt = $pdo->prepare("SELECT * FROM $TABLE_Module WHERE module_trash = 0");
+                                  $stmt->execute();
+                                  $result_dep = $stmt->fetchAll();
+                              ?>
+                                <?php foreach ($result_dep as $row) : ?>
+                                        <option value="<?php echo $row["module_id"]; ?>"><?php echo $row['module_id'] .' - ' . $row["module_name"]; ?></option>
+                                <?php endforeach; ?> 
+                              </select>
                     </div>
                     </div>
 
                        <div class="form-group row">
-                      <label for="m_name" class="col-sm-2 col-form-label">ชื่อโมดูล : <span class="text-danger">*</span></label>
+                      <label for="menu_id" class="col-sm-2 col-form-label">รหัสเมนู : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="text" name="m_name" id="m_name" value="" class="form-control" required autocomplete="off">
+                        <input type="text" name="menu_id" id="menu_id" value="" class="form-control" required autocomplete="off" maxlength="10">
+                    </div>
+                    </div>
+
+                        <div class="form-group row">
+                      <label for="menu_name" class="col-sm-2 col-form-label">ชื่อเมนู : <span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="text" name="menu_name" id="menu_name" value="" class="form-control" required autocomplete="off">
                     </div>
                     </div>
 
@@ -58,14 +77,14 @@ require '../layout/header.php';
 //   console.log( $( this ).serialize() );
   $.ajax({
            type: "POST",
-           url: "ajax/module_create.php",
+           url: "ajax/menu_create.php",
            data: form.serialize(), // serializes the form's elements.
            success: function(data)
            {
                 if(data == 'error'){
                     alert_box.className = 'alert alert-danger alert-dismissible fade show';
                     msg_head.innerHTML= 'Error !!';
-                    msg_txt.innerHTML= 'พบปัญหา ไม่สามารถบันทึกข้อมูลได้ เนื่องจากรหัสโมดูลซ้ำกับข้อมูลที่มีอยู่แล้วในระบบ';
+                    msg_txt.innerHTML= 'พบปัญหา ไม่สามารถบันทึกข้อมูลได้ เนื่องจากรหัสเมนูซ้ำกับข้อมูลที่มีอยู่แล้วในระบบ';
                 }else if (data == 'success'){
                     alert_box.className = 'alert alert-success alert-dismissible fade show';
                     msg_head.innerHTML= 'Success !!';

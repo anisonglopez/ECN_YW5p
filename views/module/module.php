@@ -19,8 +19,8 @@ catch (PDOException $e) {
 <div class="card mb-4">
   <div class="card-header">
     <div class="row">
-      <div class="col-md-6">
-          จัดการข้อมูล Module
+      <div class="col-md-6 text-primary">
+          จัดการข้อมูลโมดูล
       </div>
       <div class="col-md-6 text-right">
         <button class="btn btn-success"onclick="location.href='module_create.php';">Create new</button>
