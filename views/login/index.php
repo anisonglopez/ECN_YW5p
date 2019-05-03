@@ -52,10 +52,10 @@
                   </div>
                   <form method="post" action="chklogin.php" class="user">
                     <div class="form-group">
-                      <input type="text" autofocus="autofocus" name="user_name" class="form-control form-control-user"  placeholder="Username" style="font-size:1rem;">
+                      <input type="text" autofocus="autofocus" name="user_name" class="form-control form-control-user"  placeholder="Username" style="font-size:1rem;" required>
                     </div>
                     <div class="form-group">
-                      <input type="password" name="user_password" class="form-control form-control-user " placeholder="Password" style="font-size:1rem;">
+                      <input type="password" name="user_password" class="form-control form-control-user " placeholder="Password" style="font-size:1rem;" required>
                       <div class="mt-3">
                       <p class="small">กรุณาระบุชื่อผู้ใช้งานและรหัสผ่านเพื่อเข้าสู่ระบบ</p>
                       </div>

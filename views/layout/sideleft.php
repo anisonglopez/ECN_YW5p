@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center " href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center " href="../home/">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-laugh-wink"></i>
   </div>
@@ -14,7 +14,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-  <a class="nav-link" href="index.html">
+  <a class="nav-link" href="../home/index.php">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>ECN Overview</span></a>
 </li>
@@ -58,7 +58,7 @@
   </a>
   <div id="collapseMaster" class="collapse <?=($ap == 'module') || ($ap == 'menu') || ($ap == 'eff')  ? 'show':'';?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Login Screens:</h6>
+      <h6 class="collapse-header">Configuration:</h6>
       <a class="collapse-item <?=$ap == 'module'? 'active':'';?>" href="../module/module.php">Module</a>
       <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu</a>
       <!-- <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
@@ -102,7 +102,7 @@
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header ">User Manage:</h6>
       <a class="collapse-item <?=$ap == 'user_profile'? 'active':'';?>" href="../user/user_profile.php">User</a>
-      <a class="collapse-item" href="register.html">Permission</a>
+      <a class="collapse-item <?=$ap == 'permission'? 'active':'';?>" href="../user_role/permission.php">Permission</a>
       <div class="collapse-divider"></div>
     </div>
   </div>
