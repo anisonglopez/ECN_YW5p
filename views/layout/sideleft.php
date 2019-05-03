@@ -15,7 +15,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-  <a class="nav-link" href="../home/index.php">
+  <a class="nav-link" href="../ecn/ecn.php">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>ECN Overview</span></a>
 </li>
