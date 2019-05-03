@@ -5,8 +5,9 @@
 <a class="sidebar-brand d-flex align-items-center justify-content-center " href="../home/">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-laugh-wink"></i>
+    <!-- <img src="../../img/ecn_logo_icon.ico"/> -->
   </div>
-  <div class="sidebar-brand-text mx-3"><?= $app['name']?> <sup>2</sup></div>
+  <div class="sidebar-brand-text mx-3"><?= $app['name']?> </div>
 </a>
 
 <!-- Divider -->
