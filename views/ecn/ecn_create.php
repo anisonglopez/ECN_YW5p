@@ -85,31 +85,128 @@ require '../layout/header.php';
                         </div>
                     </div>
 
-                       <div class="form-group row">
-                      <label for="dep_name" class="col-sm-2 col-form-label">ชื่อแผนก : <span class="text-danger">*</span></label>
-                      <div class="col-sm-8">
-                        <input type="text" name="dep_name" id="dep_name" value="" class="form-control" required autocomplete="off">
-                    </div>
-                    </div>
-
-                     <div class="form-group row">
-                      <label for="dep_note" class="col-sm-2 col-form-label">Note : </label>
-                      <div class="col-sm-8">
-                        <textarea name="dep_note" rows="4" cols="50" class="form-control"></textarea>
-                    </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Reason</label>
+                        <textarea name="reason" class="form-control"  placeholder="Reason" rows="5"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>WH Management</label>
+                        <textarea name="wh_m" class="form-control"  placeholder="WH Management" rows="5"></textarea>
+                        </div>
                     </div>
 
-                     <div class="form-group row">
-                      <label for="dep_active" class="col-sm-2 col-form-label">Status : <span class="text-danger">*</span></label>
-                      <div class="col-sm-8">
-                      <select class="form-control" name="dep_active" id="dep_active" required>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>S/N Break ?</label> <span class="text-danger">*</span>
+                        <select class="form-control" name="sn_break_condit"  required>
                               <option value="">Select</option>
-                                        <option value="1" selected>Active</option>
-                                        <option value="0">Unactive</option>
+                                        <option value="Y">Yes</option>
+                                        <option value="N">No</option>
                               </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>S/N Break</label>
+                        <input type="text" name="sn_break" class="form-control"  placeholder="S/N Break">
+                        </div>
                     </div>
+
+                       <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Effective </label> <span class="text-danger">*</span>
+                        <select class="form-control" name="effective"  required>
+                              <option value="">Select</option>
+                                        <option value="Effective">Effective</option>
+                                        <option value="No-Effective">No-Effective</option>
+                              </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Effective Date</label>
+                        <input type="text"  name="effective_date" value="<?=date("d/m/Y")?>" class="form-control"  placeholder="Create Date">
+                        <script>
+                          $('input[name="effective_date"]').daterangepicker({
+                            singleDatePicker: true,
+                            locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                        </script>
+                        </div>
                     </div>
-                    
+
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>ECN Status</label> <span class="text-danger">*</span>
+                        <select class="form-control" name="sn_break_condit"  required>
+                              <option value="">Select</option>
+                                        <option value="Closed">Closed</option>
+                                        <option value="Follow up">Follow up</option>
+                              </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>DWG</label>
+                        <input type="text" name="dwg" class="form-control"  placeholder="DWG">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Stock Supplier</label> <span class="text-danger">*</span>
+                        <input type="text" name="stock_sup" class="form-control"  placeholder="Stock Supplier">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Cost Supplier</label>
+                        <input type="text" name="cost_sup" class="form-control"  placeholder="Cost Supplier">
+                        </div>
+                    </div>
+
+                       <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>QA Audit</label>
+                        <input type="text" name="qa_audit" class="form-control"  placeholder="QA Audit">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Speacial Request</label>
+                        <input type="text" name="sp_req" class="form-control"  placeholder="Speacial Request">
+                        </div>
+                    </div>
+
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Buyer</label>
+                        <input type="text" name="buyer" class="form-control"  placeholder="Buyer">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Supplier</label>
+                        <input type="text" name="sup" class="form-control"  placeholder="Speacial Request">
+                        </div>
+                    </div>
+
+                       <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>First PO</label>
+                        <input type="text" name="first_po" class="form-control"  placeholder="First PO">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>First Deliver</label>
+                        <input type="text"  name="first_deliver" value="<?=date("d/m/Y")?>" class="form-control"  >
+                        <script>
+                          $('input[name="first_deliver"]').daterangepicker({
+                            singleDatePicker: true,
+                            locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                        </script>
+                        </div>
+                    </div>
+
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Remark / Action</label>
+                        <textarea name="remark" class="form-control"  placeholder="Remark / Action" rows="5"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                      
+                        </div>
+                    </div>
+                                     
     </div>
   </div>
 </div>
