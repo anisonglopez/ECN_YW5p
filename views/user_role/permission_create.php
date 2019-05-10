@@ -85,7 +85,7 @@ catch (PDOException $e) {
                             <tbody>
                             <?php foreach ($result as $row) : ?>
                                     <tr id="<?php echo ($row["menu_id"]); ?>">
-                                        <td><input type="checkbox" name="chkb" value="<?= $row['menu_id']?>"/></td>
+                                        <td><input type="checkbox" name="chkb[]" value="<?= $row['menu_id']?>"/></td>
                                         <td><?php echo ($row["module_id"]); ?></td>
                                         <td><?php echo ($row["module_name"]); ?></td>
                                         <td><?php echo ($row["menu_id"]); ?></td>
@@ -116,13 +116,14 @@ catch (PDOException $e) {
     var msg_txt = document.getElementById("msg_txt");
     event.preventDefault();
     var form = $(this);
-//   console.log( $( this ).serialize() );
+  console.log( $( this ).serialize() );
   $.ajax({
            type: "POST",
-           url: "ajax/menu_create.php",
+           url: "ajax/permission_create.php",
            data: form.serialize(), // serializes the form's elements.
            success: function(data)
            {
+             alert(data);
                 if(data == 'error'){
                     alert_box.className = 'alert alert-danger alert-dismissible fade show';
                     msg_head.innerHTML= 'Error !!';

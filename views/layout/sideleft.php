@@ -62,8 +62,8 @@
       <h6 class="collapse-header">Configuration:</h6>
       <a class="collapse-item <?=$ap == 'module'? 'active':'';?>" href="../module/module.php">Module</a>
       <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu</a>
-      <!-- <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
-      <a class="collapse-item <?=$ap == 'newpage'? 'active':'';?>" href="../base/newpage.php">Blank</a> -->
+      <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
+      <!-- <a class="collapse-item <?=$ap == 'newpage'? 'active':'';?>" href="../base/newpage.php">Blank</a> -->
       <div class="collapse-divider"></div>
     </div>
   </div>

@@ -15,7 +15,7 @@ if (isset($_POST['user_id'])) {
  $role_id = $_POST['role_id'];
  $user_lock = $_POST['user_lock'];
  //$user_update = $_SESSION['user_name'];
- $user_update = 'Admin';
+
  try {
     $datalist =[
         "user_id"        =>   $user_id,
