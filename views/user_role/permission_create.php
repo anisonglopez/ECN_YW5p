@@ -20,6 +20,12 @@ catch (PDOException $e) {
           <h1 class="h3 mb-4 text-gray-800">Create Permission</h1>
           <!-- Page Content -->
           <hr>
+          
+   <div id="alert_box" class="alert alert-success  fade " style="display: none;">
+  <strong id="msg_head"></strong><p id="msg_txt"></p>
+  <button type="button" class="close" data-hide="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+
 <form method="post">
   <!-- Default Card Example -->
 <div class="card mb-4">
@@ -30,7 +36,7 @@ catch (PDOException $e) {
       </div>
       <div class="col-md-6 text-right">
       <button  type="reset" class="btn btn-facebook" onclick="location.href='permission.php';">Back</button>
-      <button  id='save' type="submit" class="btn btn-success">Save</button>
+          <button  id='save' type="submit" class="btn btn-success">Save</button>
       </div>
     </div>        
   </div>
@@ -41,7 +47,7 @@ catch (PDOException $e) {
                 <div class="form-group row">
                       <label for="role_id" class="col-sm-2 col-form-label">Group Code  : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                      <input type="text" name="role_id" id="role_id" value="" class="form-control" required autocomplete="off" maxlength="10">
+                      <input type="text" name="role_id" id="role_id"  value="" class="form-control" required autocomplete="off" maxlength="10">
                     </div>
                     </div>
 

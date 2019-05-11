@@ -1,12 +1,10 @@
 <?php   
 $title = "Permission";
 require '../layout/header.php';
-$tbl_module = '00_module';
-$tbl_menu = '00_menu';
+$tbl_role = '01_role';
 try{
-  $statement = $pdo->prepare("SELECT $tbl_module.* , $tbl_menu.*  FROM $tbl_module
-   JOIN $tbl_menu ON $tbl_module.module_id = $tbl_menu.module_id
-   WHERE module_trash = 0 AND menu_trash = 0");
+  $statement = $pdo->prepare("SELECT *  FROM $tbl_role
+   WHERE role_trash = 0 ");
   $statement->execute();
   $result = $statement->fetchAll();
 } //try
@@ -36,21 +34,21 @@ catch (PDOException $e) {
       <table class="table table-hover table-sm " id="dataTable">
         <thead class="bg-info text-white">
           <tr>
-            <th>Module Id</th>
-            <th>Module Name</th>
-            <th>Menu Id</th>
-            <th>Menu Name</th>
+            <th>Role Id</th>
+            <th>Role Name</th>
+            <th>Note</th>
+            <th>Active</th>
             <th class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
         <?php foreach ($result as $row) : ?>
-                  <tr id="<?php echo ($row["menu_id"]); ?>">
-                    <td><?php echo ($row["module_id"]); ?></td>
-                    <td><?php echo ($row["module_name"]); ?></td>
-                    <td><?php echo ($row["menu_id"]); ?></td>
-                    <td><?php echo ($row["menu_name"]); ?></td>
-                    <td class="text-center"><a href="menu_change.php?id=<?php echo base64_encode($row["menu_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
+                  <tr id="<?php echo ($row["role_id"]); ?>">
+                  <td><?php echo ($row["role_id"]); ?></td>
+                    <td><?php echo ($row["role_name"]); ?></td>
+                    <td><?php echo ($row["role_note"]); ?></td>
+                    <td><?php echo ($row["role_active"]); ?></td>
+                    <td class="text-center"><a href="permission_change.php?id=<?php echo base64_encode($row["role_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
                     <button id="<?php echo ($row["menu_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>
                   </td>
                   </tr>

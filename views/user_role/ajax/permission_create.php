@@ -6,12 +6,15 @@
     $user_update = $_SESSION['user_name'];
     $tbl_role = '01_role';
     $tbl_role_menu = '01_role_menu';
+    $msg_status = '';
+    $msg_txt = '';
 if (isset($_POST['role_id'])) {
     $stmt = $pdo->prepare("SELECT *  FROM $tbl_role WHERE role_id=:role_id"); 
     $stmt->bindParam("role_id", $_POST['role_id'], PDO::PARAM_STR) ;
     $stmt->execute();
     $count=$stmt->rowCount();
     if($count){
+        try{
         $datalist =[
              "role_id"        => htmlspecialchars($_POST['role_id']),
             "role_name"        => htmlspecialchars($_POST['role_name']),
@@ -31,6 +34,12 @@ if (isset($_POST['role_id'])) {
             WHERE role_id = '$role_id' ";
               $stmt = $pdo->prepare($sql);
               $stmt->execute($datalist);
+              $msg_status= 'success';
+              $msg_txt= 'บันทึกข้อมูลสำเร็จ';
+        }catch (PDOException $e) {
+            $msg_status= 'error';
+            $msg_txt=  "Error!: " . $e->getMessage();
+        } // enc catch
     }else{
         try{
             $datalist =[
@@ -58,18 +67,18 @@ if (isset($_POST['role_id'])) {
             $msg_txt=  "Error!: " . $e->getMessage();
         } // enc catch
     }
+    $stmt = $pdo->prepare("SELECT *  FROM $tbl_role_menu WHERE role_id=:role_id"); 
+    $stmt->bindParam("role_id", $_POST['role_id'], PDO::PARAM_STR) ;
+    $stmt->execute();
+    $count=$stmt->rowCount();
+    if($count){
+        $stmt = $pdo->prepare("DELETE   FROM $tbl_role_menu WHERE role_id=:role_id"); 
+        $stmt->bindParam("role_id", $_POST['role_id'], PDO::PARAM_STR) ;
+        $stmt->execute();
+    }
 }
 if(!empty($_POST['chkb'])) {
-        $stmt = $pdo->prepare("SELECT *  FROM $tbl_role_menu WHERE role_id=:role_id"); 
-		$stmt->bindParam("role_id", $_POST['role_id'], PDO::PARAM_STR) ;
-		$stmt->execute();
-		$count=$stmt->rowCount();
-		if($count){
-            $stmt = $pdo->prepare("DELETE   FROM $tbl_role_menu WHERE role_id=:role_id"); 
-            $stmt->bindParam("role_id", $_POST['role_id'], PDO::PARAM_STR) ;
-            $stmt->execute();
-        }
-$checked_count = count($_POST['chkb']);
+
 foreach($_POST['chkb'] as $selected):
     try{
         $datalist =[
@@ -90,7 +99,10 @@ foreach($_POST['chkb'] as $selected):
         $msg_status= 'error';
         $msg_txt=  "Error!: " . $e->getMessage();
     } // enc catch
-    echo $selected;
+
 endforeach;
 }
+$data = [ "msg_status"=> $msg_status,
+"msg_txt" => $msg_txt ];
+echo json_encode($data);
 ?>
