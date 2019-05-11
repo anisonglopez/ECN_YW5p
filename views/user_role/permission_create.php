@@ -1,8 +1,6 @@
 <?php   
 $title = "Create Permission";
 require '../layout/header.php';
-$TABLE_Module = '00_module';
-require '../00_config/connect.php';//db connect
 $tbl_module = '00_module';
 $tbl_menu = '00_menu';
 try{
@@ -110,9 +108,6 @@ catch (PDOException $e) {
   </div>
 </div>
 </form>
-<div id="alert_box" class="alert alert-success alert-dismissible fade "   role="alert">
-  <strong id="msg_head"></strong><p id="msg_txt"></p>
-</div>
               <!-- end card -->
 <?php   require '../layout/footer.php';?>
 <script src='js/permission_create.js'> </script>
