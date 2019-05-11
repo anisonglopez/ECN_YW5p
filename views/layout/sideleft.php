@@ -37,7 +37,7 @@
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Custom Components:</h6>
-      <a class="collapse-item" href="buttons.html">Buttons</a>
+      <a class="collapse-item" href="buttons.html">ECN  Effective Date</a>
       <a class="collapse-item" href="cards.html">Cards</a>
     </div>
   </div>
@@ -50,8 +50,11 @@
 <div class="sidebar-heading">
   System
 </div>
-
+<?php
+    $menu_permission = 'con';
+?>
 <!-- Nav Item - Pages Collapse Menu -->
+<?php if('cons' == $menu_permission) : ?>
 <li class="nav-item <?=$ap == ($ap == 'module') || ($ap == 'menu') || ($ap == 'eff') ? 'active':'';?>">
   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="true" aria-controls="collapseMaster">
     <i class="fas fa-fw fa-folder"></i>
@@ -68,6 +71,7 @@
     </div>
   </div>
 </li>
+<?php endif; ?>
 
 <!-- Nav Item - Master -->
 <li class="nav-item <?=$ap == 'dep' || ($ap == 'dep_create') ? 'active':'';?>">
@@ -104,6 +108,29 @@
       <h6 class="collapse-header ">User Manage:</h6>
       <a class="collapse-item <?=$ap == 'user_profile'? 'active':'';?>" href="../user/user_profile.php">User</a>
       <a class="collapse-item <?=$ap == 'permission'? 'active':'';?>" href="../user_role/permission.php">Permission</a>
+      <div class="collapse-divider"></div>
+    </div>
+  </div>
+</li>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+  Logs
+</div>
+<!-- Nav Item - Pages Configuration -->
+<li class="nav-item ">
+  <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseLogs" aria-expanded="true" aria-controls="collapseLogs">
+    <i class="fas fa-fw fa-folder"></i>
+    <span>Logs</span>
+  </a>
+  <div id="collapseLogs" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <h6 class="collapse-header ">ประวัติการใช้งาน:</h6>
+      <a class="collapse-item <?=$ap == 'user_prsofile'? 'active':'';?>" href="../user/user_profile.php">Mail Logs</a>
+      <a class="collapse-item <?=$ap == 'permisssion'? 'active':'';?>" href="../user_role/permission.php">User Logs</a>
+      <a class="collapse-item <?=$ap == 'permisssion'? 'active':'';?>" href="../user_role/permission.php">Login Logs</a>
       <div class="collapse-divider"></div>
     </div>
   </div>
