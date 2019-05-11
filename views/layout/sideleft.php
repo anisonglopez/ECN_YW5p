@@ -1,3 +1,18 @@
+<?php
+    $role_id = $_SESSION['role_id'];
+    $statement = $pdo->prepare("SELECT 01_role_menu.*, 00_menu.module_id  FROM 01_role_menu 
+    LEFT JOIN 00_menu ON 00_menu.menu_id = 01_role_menu.menu_id 
+    WHERE role_id = '$role_id' ");
+    $statement->execute();
+    $result_role_chk = $statement->fetchAll();
+    $role_menu_chk = array();
+    $role_module_chk = array();
+    foreach ($result_role_chk as $row) :
+      $role_menu_chk[] = $row['menu_id'];
+      $role_module_chk[] = $row['module_id'];
+    endforeach;
+?>
+
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -10,6 +25,7 @@
   <div class="sidebar-brand-text mx-3"><?= $app['name']?> </div>
 </a>
 
+<?php if( in_array('ECN', $role_module_chk)) : ?>
 <!-- Divider -->
 <hr class="sidebar-divider my-0">
 
@@ -22,10 +38,12 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider">
+<?php endif; //end Ecn role?> 
 
+<?php if( in_array('NTI', $role_module_chk)) : ?>
 <!-- Heading -->
 <div class="sidebar-heading">
-  Interface
+Notification
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
@@ -45,7 +63,9 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider">
+<?php endif; //end Ecn role?> 
 
+<?php if( in_array('CON', $role_module_chk)) : ?>
 <!-- Heading -->
 <div class="sidebar-heading">
   System
@@ -54,7 +74,6 @@
     $menu_permission = 'con';
 ?>
 <!-- Nav Item - Pages Collapse Menu -->
-<?php if('con' == $menu_permission) : ?>
 <li class="nav-item <?=$ap == ($ap == 'module') || ($ap == 'menu') || ($ap == 'eff') ? 'active':'';?>">
   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="true" aria-controls="collapseMaster">
     <i class="fas fa-fw fa-folder"></i>
@@ -63,16 +82,23 @@
   <div id="collapseMaster" class="collapse <?=($ap == 'module') || ($ap == 'menu') || ($ap == 'eff')  ? 'show':'';?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Configuration:</h6>
-      <a class="collapse-item <?=$ap == 'module'? 'active':'';?>" href="../module/module.php">Module</a>
-      <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu</a>
-      <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
+      <?php if( in_array('MOD', $role_menu_chk)) : ?>
+          <a class="collapse-item <?=$ap == 'module'? 'active':'';?>" href="../module/module.php">Module</a>
+      <?php endif; //end System role?> 
+      <?php if( in_array('MENU', $role_menu_chk)) : ?>
+          <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu</a>
+          <?php endif; //end System role?> 
+          <?php if( in_array('EFFDATE', $role_menu_chk)) : ?>
+          <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
+          <?php endif; //end System role?> 
       <!-- <a class="collapse-item <?=$ap == 'newpage'? 'active':'';?>" href="../base/newpage.php">Blank</a> -->
       <div class="collapse-divider"></div>
     </div>
   </div>
 </li>
-<?php endif; ?>
 
+<?php endif; //end System role?> 
+<?php if( in_array('MAS', $role_module_chk)) : ?>
 <!-- Nav Item - Master -->
 <li class="nav-item <?=$ap == 'dep' || ($ap == 'dep_create') ? 'active':'';?>">
   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -88,10 +114,11 @@
   </div>
 </li>
 
-
-
 <!-- Divider -->
 <hr class="sidebar-divider">
+<?php endif; //end System role?> 
+
+<?php if( in_array('ADM', $role_module_chk)) : ?>
 <!-- Heading -->
 <div class="sidebar-heading">
   Authentication
@@ -106,14 +133,19 @@
   <div id="collapseUser" class="collapse <?=$ap == ($ap == 'user_profile') || ($ap == 'permission')  ? 'show':'';?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header ">User Manage:</h6>
+      <?php if( in_array('USR', $role_menu_chk)) : ?>
       <a class="collapse-item <?=$ap == 'user_profile'? 'active':'';?>" href="../user/user_profile.php">User</a>
+      <?php endif; //end System role?> 
+      <?php if( in_array('PER', $role_menu_chk)) : ?>
       <a class="collapse-item <?=$ap == 'permission'? 'active':'';?>" href="../user_role/permission.php">Permission</a>
+      <?php endif; //end System role?> 
       <div class="collapse-divider"></div>
     </div>
   </div>
 </li>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
+<?php endif; //end System role?> 
 
 <!-- Heading -->
 <div class="sidebar-heading">

@@ -5,6 +5,8 @@
       header("location: ../login/index.php");
       exit();
   }
+  define('included',TRUE);
+
   ?>
 <!DOCTYPE html>
 <html lang="en">

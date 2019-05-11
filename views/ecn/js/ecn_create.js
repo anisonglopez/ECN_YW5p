@@ -4,6 +4,7 @@ $( "form" ).on( "submit", function( event ) {
     var msg_head = document.getElementById("msg_head");
     var msg_txt = document.getElementById("msg_txt");
     event.preventDefault();
+    var form = $(this);
   $.ajax({
            type: "POST",
            url: "ajax/ecn_create.php",

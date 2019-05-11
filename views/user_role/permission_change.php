@@ -27,7 +27,8 @@ if (isset($_GET['id'])) {
        $statement->execute();
        $result = $statement->fetchAll();
 
-       $statement = $pdo->prepare("SELECT *  FROM $tbl_role_menu 
+       $statement = $pdo->prepare("SELECT 01_role_menu.*, 00_menu.module_id  FROM 01_role_menu 
+       LEFT JOIN 00_menu ON 00_menu.menu_id = 01_role_menu.menu_id 
        WHERE role_id = '$role_id' ");
       $statement->execute();
       $result_role_chk = $statement->fetchAll();
