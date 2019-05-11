@@ -88,7 +88,6 @@ catch (PDOException $e) {
             }
           } );
         $('#dataTable tbody').on( 'click', '.btndelete', function () {
-    
           var _id = this.id;
           var result = confirm("Want to delete?");
             if (result) {
@@ -115,7 +114,6 @@ catch (PDOException $e) {
                }
              });
             }
-          
-    } );
+    });
     });
 </script>

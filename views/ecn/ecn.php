@@ -12,6 +12,10 @@ require '../layout/header.php';
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">ECN Management</h1>
           <!-- Default Card Example -->
+          <div id="alert_box" class="alert alert-success  fade " style="display: none;">
+  <strong id="msg_head"></strong><p id="msg_txt"></p>
+  <button type="button" class="close" data-hide="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
 <div class="card mb-4">
   <div class="card-header">
     <div class="row">

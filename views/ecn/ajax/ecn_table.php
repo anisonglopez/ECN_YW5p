@@ -70,7 +70,7 @@ if (isset($_POST['cre_date_start'])) {
         <?php foreach ($result as $row) : ?>
             <tr class="small">
                 <td><a href="ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
-                    <button id="<?php echo ($row["menu_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button></td>
+                    <button id="<?php echo ($row["ecn_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button></td>
                 <td><?=$row['ecn_created_by']?></td>
                 <td width="40"><?=date('d/m/Y' , strtotime($row['created_date']))?></td>
                 <td><?=$row['ecn_no']?></td>
@@ -105,11 +105,55 @@ if (isset($_POST['cre_date_start'])) {
         </tbody>
 
 
-            <script>
+            <script>     
             $(document).ready(function() {
-    $('#dataTable').DataTable({
-      "pageLength": 25,
-      "order": [ 2, "desc" ]
+                var table = $('#dataTable').DataTable({
+                    "pageLength": 25,
+                    "order": [ 2, "desc" ]
+                    });
+                $('#dataTable tbody').on( 'click', 'tr', function () {
+                        if ( $(this).hasClass('selected') ) {
+                            $(this).removeClass('selected');
+                        }
+                        else {
+                            table.$('tr.selected').removeClass('selected');
+                            $(this).addClass('selected');
+                        }
+                    });
+        $('#dataTable tbody').on( 'click', '.btndelete', function () {
+          var _id = this.id;
+          var result = confirm("Want to delete?");
+            if (result) {
+              table
+            .row( $(this).parents('tr') )
+            .remove()
+            .draw();
+              $.ajax({
+               type: "POST",
+               url: "ajax/ecn_delete.php",
+               data:{_id:_id},
+               success: function(data)
+               {
+                $('#alert_box').show();
+                 console.log(data);
+                    if(data == 'error'){
+                        alert_box.className = 'alert alert-danger alert-dismissible fade show';
+                        msg_head.innerHTML= 'Error !!';
+                        msg_txt.innerHTML= 'พบปัญหา ไม่สามารถลบข้อมูลได้ กรูราติดต่อเจ้าหน้าที่ ที่เกี่ยวข้อง';
+                    }else{
+                        alert_box.className = 'alert alert-success alert-dismissible fade show';
+                        msg_head.innerHTML= 'Success !!';
+                        msg_txt.innerHTML= 'ลบข้อมูลสำเร็จ';
+                    }
+               }
+             });
+            }
     });
-  });
+    $(function(){
+        $("[data-hide]").on("click", function(){
+            $(this).closest("." + $(this).attr("data-hide")).hide();
+        });
+    });
+ });
+            
             </script>
