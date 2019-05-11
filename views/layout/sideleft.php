@@ -18,11 +18,11 @@
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center " href="../home/">
-  <div class="sidebar-brand-icon rotate-n-15">
-    <i class="fas fa-laugh-wink"></i>
-    <!-- <img src="../../img/ecn_logo_icon.ico"/> -->
+  <div class="sidebar-brand-icon">
+    <!-- <i class="fas fa-apple"></i> -->
+    <img src="../../img/kubota-logo.png" class="round" style="max-width: 80%"/>
   </div>
-  <div class="sidebar-brand-text mx-3"><?= $app['name']?> </div>
+  <!-- <div class="sidebar-brand-text mx-3"><?= $app['name']?> Management </div> -->
 </a>
 
 <?php if( in_array('ECN', $role_module_chk)) : ?>
@@ -30,7 +30,7 @@
 <hr class="sidebar-divider my-0">
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item">
+<li class="nav-item  <?=$ap == ($ap == 'ecn') ? 'active':'';?>" >
   <a class="nav-link" href="../ecn/ecn.php">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>ECN Overview</span></a>
@@ -70,9 +70,7 @@ Notification
 <div class="sidebar-heading">
   System
 </div>
-<?php
-    $menu_permission = 'con';
-?>
+
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item <?=$ap == ($ap == 'module') || ($ap == 'menu') || ($ap == 'eff') ? 'active':'';?>">
   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="true" aria-controls="collapseMaster">

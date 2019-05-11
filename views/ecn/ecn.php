@@ -12,9 +12,7 @@ endif;
 <link href="css/ecn.css" rel="stylesheet"/> 
 <!-- Custom css -->
 
-<div class="col-md-12">
-<div id="loading-progress" class="loading-progress"></div>
-</div>
+
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">ECN Management</h1>
           <!-- Default Card Example -->
@@ -29,7 +27,9 @@ endif;
       <p>ค้นหา จากวันที่ ECN Date
       <input type="text" name="daterange" value="<?=date("d/m/Y", strtotime('-30 days')) . ' - ' . date("d/m/Y");?>" class="form-control" />
       </p>
-
+      <div class="col-md-10">
+<div id="loading-progress" class="loading-progress"></div>
+</div>
       </div>
       <div class="col-md-3">
       

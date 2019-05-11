@@ -16,3 +16,70 @@
       </div>
     </div>
   </div>
+
+    <!-- UserProfile Modal-->
+    <div class="modal fade" id="UserProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนรหัสผ่าน</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form method="post" id="changepassword" class="changepassword" >
+             <div class="modal-body">           
+                  <div class="form-group row">
+                      <label for="old_password" class="col-sm-4 col-form-label">รหัสผ่านเดิม : <span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="password" name="old_password" id="old_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านเดิม">
+                    </div>
+                    </div>
+
+                <div class="form-group row">
+                      <label for="user_password" class="col-sm-4 col-form-label">รหัสผ่าน : <span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="password" name="user_password" id="user_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านอย่างน้อย 6 ตัวอักษร">
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="user_repassword" class="col-sm-4 col-form-label">ระบุรหัสผ่านอีกครั้ง : <span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="password" name="user_repassword" id="user_repassword" value="" class="form-control"    required  minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านอีกครั้ง">
+                    </div>
+                    </div>
+                   
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success" >Update</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- UserProfile msgbox Modal-->
+    <div class="modal fade" id="UserProfileMsgboxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ผลการเปลี่ยนรหัสผ่าน</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form method="post"  >
+             <div class="modal-body">           
+          <p id="changePass_txt"></p>                   
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

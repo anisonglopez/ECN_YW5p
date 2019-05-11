@@ -45,8 +45,8 @@ if (isset($_POST['user_id'])) {
               user_email = :user_email,
               role_id = :role_id,
               user_lock = :user_lock,
-              user_updated_by = :user_lock,
-              user_updated_date = :user_lock
+              user_updated_by = :user_updated_by,
+              user_updated_date = :user_updated_date
               WHERE user_id = :user_id";
     $statement = $pdo->prepare($sql);
     $statement->execute($datalist);
