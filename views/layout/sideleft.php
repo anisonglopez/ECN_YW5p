@@ -54,7 +54,7 @@
     $menu_permission = 'con';
 ?>
 <!-- Nav Item - Pages Collapse Menu -->
-<?php if('cons' == $menu_permission) : ?>
+<?php if('con' == $menu_permission) : ?>
 <li class="nav-item <?=$ap == ($ap == 'module') || ($ap == 'menu') || ($ap == 'eff') ? 'active':'';?>">
   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="true" aria-controls="collapseMaster">
     <i class="fas fa-fw fa-folder"></i>

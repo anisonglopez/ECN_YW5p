@@ -2,6 +2,7 @@
 if (isset($_POST['user_name'])) {
     //echo $pdo;
     require '../../00_config/connect.php';//db connect
+    session_start();
  $TABLE_NAME = "01_user_profile";
  $user_name = htmlspecialchars($_POST['user_name']);
   $st = $pdo->prepare("SELECT user_id FROM  $TABLE_NAME WHERE user_name=:user_name");
@@ -17,14 +18,17 @@ if (isset($_POST['user_name'])) {
   $user_email = htmlspecialchars($_POST['user_email']);
   $role_id = $_POST['role_id'];
   $user_lock = $_POST['user_lock'];
-  //$user_update = $_SESSION['user_name'];
-  $user_update = 'Admin';
+  $user_update = $_SESSION['user_name'];
+  $emp_name = $_POST['emp_name'];
+  $emp_tel = $_POST['emp_tel'];
     try {
       date_default_timezone_set("Asia/Bangkok");
       $date_today = date('Y-m-d H:i:s');
       $datalist =[
         "user_name"        => $user_name,
         "user_password"        => $hash_password,
+        "emp_name"        => $emp_name,
+        "emp_tel"        => $emp_tel,
         "dep_id"        => $dep_id,
         "role_id"        => $role_id,
         "user_email"        => $user_email,

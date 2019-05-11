@@ -1,6 +1,7 @@
 <?php   
 $title = "Edit User";
 $TABLE_DEP = "00_department";
+$tbl_role = "01_role";
 require '../layout/header.php';
 if (isset($_GET['id'])) {
     $id =  base64_decode($_GET['id']);
@@ -15,6 +16,8 @@ if (isset($_GET['id'])) {
             $user_id = $row["user_id"];
             $user_name = $row["user_name"];
             $user_password = $row["user_password"];
+            $emp_name = $row["emp_name"];
+            $emp_tel = $row["emp_tel"];
             $role_id = $row["role_id"];
             $dep_id = $row["dep_id"];
             $user_email = $row["user_email"];
@@ -57,7 +60,7 @@ if (isset($_GET['id'])) {
     <div class="col-md-12">
                                       <!--id-->
                                       <input type="hidden" name="user_id" value="<?=$user_id?>"/>
-    <div class="form-group row">
+                     <div class="form-group row">
                       <label for="user_name" class="col-sm-2 col-form-label">ชื่อผู้ใช้งาน : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                         <input type="text" name="user_name" id="user_name" value="<?=$user_name?>" class="form-control"    required placeholder="ระบุชื่อผู้ใช้งาน" disabled>
@@ -79,7 +82,22 @@ if (isset($_GET['id'])) {
                     </div>
 
                      <div class="form-group row">
-                      <label for="dep_id" class="col-sm-2 col-form-label">แผนก : </label>
+                      <label for="emp_name" class="col-sm-2 col-form-label">ชื่อ - นามสกุล :</label>
+                      <div class="col-sm-8">
+                        <input type="text" name="emp_name" id="emp_name" value="<?=$emp_name?>" class="form-control"    placeholder="ชื่อ - นามสกุล" >
+                    </div>
+                    </div>
+
+                  <div class="form-group row">
+                      <label for="emp_tel" class="col-sm-2 col-form-label">เบอร์ติดต่อ : </label>
+                      <div class="col-sm-8">
+                        <input type="text" name="emp_tel" id="emp_tel" value="<?=$emp_tel?>" class="form-control"    placeholder="เบอร์โทรศัพท์" >
+                    </div>
+                    </div>
+
+
+                     <div class="form-group row">
+                      <label for="dep_id" class="col-sm-2 col-form-label">แผนก : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                       <select class="form-control" name="dep_id" id="dep_id" required >
                               <option value="">Select</option>
@@ -98,19 +116,29 @@ if (isset($_GET['id'])) {
                     <div class="form-group row">
                       <label for="role_id" class="col-sm-2 col-form-label">กลุ่มผู้ใช้งาน : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="text" name="role_id" id="role_id" value="<?=$role_id?>" class="form-control" required autocomplete="off">
+                      <select class="form-control" name="role_id" id="role_id" required >
+                              <option value="">Select</option>
+                              <?php
+                                  $stmt = $pdo->prepare("SELECT * FROM $tbl_role WHERE role_active = 1 ");
+                                  $stmt->execute();
+                                  $result = $stmt->fetchAll();
+                              ?>
+                                <?php foreach ($result as $row) : ?>
+                                <option value="<?= $row["role_id"]; ?>" <?php echo ($role_id ===$row["role_id"] ? 'selected' : null); ?> ><?= $row["role_id"] .' - '.$row["role_name"]; ?></option>
+                                <?php endforeach; ?> 
+                              </select>
                     </div>
                     </div>
 
                      <div class="form-group row">
-                      <label for="user_email" class="col-sm-2 col-form-label">email : <span class="text-danger">*</span></label>
+                      <label for="user_email" class="col-sm-2 col-form-label">email : </label>
                       <div class="col-sm-8">
-                        <input type="email" name="user_email" id="user_email" value="<?=$user_email?>" class="form-control" required autocomplete="off">
+                        <input type="email" name="user_email" id="user_email" value="<?=$user_email?>" class="form-control"  autocomplete="off">
                     </div>
                     </div>
 
                     <div class="form-group row">
-                      <label for="user_lock" class="col-sm-2 col-form-label">lock : </label>
+                      <label for="user_lock" class="col-sm-2 col-form-label">lock : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                         <select class="form-control" name="user_lock" id="user_lock" required>
                               <option value="">Select</option>
@@ -140,4 +168,4 @@ if (isset($_GET['id'])) {
 </div>
               <!-- end card -->
 <?php   require '../layout/footer.php';?>
-<script src="user_change.js"></script>
+<script src="js/user_change.js"></script>

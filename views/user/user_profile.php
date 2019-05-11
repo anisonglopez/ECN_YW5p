@@ -2,8 +2,9 @@
 $title = "new page";
 require '../layout/header.php';
 try{
-  $statement = $pdo->prepare("SELECT * FROM 01_user_profile
-   WHERE user_trash = 0");
+  $statement = $pdo->prepare("SELECT 01_user_profile.* , 00_department.dep_name FROM 01_user_profile 
+  LEFT JOIN 00_department ON 01_user_profile.dep_id = 00_department.dep_id
+  WHERE user_trash = 0");
   $statement->execute();
   $result = $statement->fetchAll();
 } //try
@@ -46,7 +47,7 @@ catch (PDOException $e) {
         <?php foreach ($result as $row) : ?>
                   <tr id="<?php echo ($row["user_id"]); ?>">
                     <td><?php echo ($row["user_name"]); ?></td>
-                    <td><?php echo ($row["dep_id"]); ?></td>
+                    <td><?php echo ($row["dep_name"]); ?></td>
                     <td><?php echo ($row["role_id"]); ?></td>
                     <td><?php echo ($row["user_email"]); ?></td>
                     <td><?php echo ($row["user_active"]); ?></td>

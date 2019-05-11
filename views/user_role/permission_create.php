@@ -45,7 +45,7 @@ catch (PDOException $e) {
                 <div class="form-group row">
                       <label for="role_id" class="col-sm-2 col-form-label">Group Code  : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                      <input type="text" name="role_id" id="role_id"  value="" class="form-control" required autocomplete="off" maxlength="10">
+                      <input type="text" name="role_id" id="role_id"  value="" class="form-control" required maxlength="10" autocomplete="off" maxlength="10">
                     </div>
                     </div>
 

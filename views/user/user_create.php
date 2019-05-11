@@ -2,6 +2,7 @@
 $title = "Create User";
 require '../layout/header.php';
 $TABLE_DEP = '00_department';
+$tbl_role = '01_role';
 ?>
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Create User</h1>
@@ -61,8 +62,22 @@ $TABLE_DEP = '00_department';
                     </div>
                     </div>
 
+                <div class="form-group row">
+                      <label for="emp_name" class="col-sm-2 col-form-label">ชื่อ - นามสกุล :</label>
+                      <div class="col-sm-8">
+                        <input type="text" name="emp_name" id="emp_name" value="" class="form-control"    placeholder="ชื่อ - นามสกุล" >
+                    </div>
+                    </div>
+
+                  <div class="form-group row">
+                      <label for="emp_tel" class="col-sm-2 col-form-label">เบอร์ติดต่อ : </label>
+                      <div class="col-sm-8">
+                        <input type="text" name="emp_tel" id="emp_tel" value="" class="form-control"    placeholder="เบอร์โทรศัพท์" >
+                    </div>
+                    </div>
+
                      <div class="form-group row">
-                      <label for="dep_id" class="col-sm-2 col-form-label">แผนก : </label>
+                      <label for="dep_id" class="col-sm-2 col-form-label">แผนก : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                       <select class="form-control" name="dep_id" id="dep_id" required >
                               <option value="">Select</option>
@@ -81,19 +96,29 @@ $TABLE_DEP = '00_department';
                     <div class="form-group row">
                       <label for="role_id" class="col-sm-2 col-form-label">กลุ่มผู้ใช้งาน : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="text" name="role_id" id="role_id" value="" class="form-control" required autocomplete="off">
+                      <select class="form-control" name="role_id" id="role_id" required >
+                              <option value="">Select</option>
+                              <?php
+                                  $stmt = $pdo->prepare("SELECT * FROM $tbl_role WHERE role_active = 1 ");
+                                  $stmt->execute();
+                                  $result = $stmt->fetchAll();
+                              ?>
+                                <?php foreach ($result as $row) : ?>
+                                <option value="<?= $row["role_id"]; ?>"  ><?= $row["role_id"] .' - '.$row["role_name"]; ?></option>
+                                <?php endforeach; ?> 
+                              </select>
                     </div>
                     </div>
 
                      <div class="form-group row">
-                      <label for="user_email" class="col-sm-2 col-form-label">email : <span class="text-danger">*</span></label>
+                      <label for="user_email" class="col-sm-2 col-form-label">email : </label>
                       <div class="col-sm-8">
-                        <input type="email" name="user_email" id="user_email" value="" class="form-control" required autocomplete="off">
+                        <input type="email" name="user_email" id="user_email" value="" class="form-control"  autocomplete="off">
                     </div>
                     </div>
 
                     <div class="form-group row">
-                      <label for="user_lock" class="col-sm-2 col-form-label">lock : </label>
+                      <label for="user_lock" class="col-sm-2 col-form-label">lock : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                         <select class="form-control" name="user_lock" id="user_lock" required>
                               <option value="">Select</option>
@@ -123,5 +148,5 @@ $TABLE_DEP = '00_department';
 </div>
               <!-- end card -->
 <?php   require '../layout/footer.php';?>
-<script src="user_create.js"></script>
+<script src="js/user_create.js"></script>
 
