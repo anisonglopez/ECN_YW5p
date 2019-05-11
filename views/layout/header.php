@@ -33,6 +33,8 @@
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <!-- date rang picker -->
   <script src="../../vendor/jquery/jquery.min.js"></script>
+  <!-- <link href="../../vendor/datatable_fixed_header/css/fixedHeader.bootstrap4.scss" rel="stylesheet"> -->
+
 <script type="text/javascript" src="../../vendor/daterangepicker/moment.min.js"></script>
 <script type="text/javascript" src="../../vendor/daterangepicker/daterangepicker.js"></script>
 <link rel="stylesheet" type="text/css" href="../../vendor/daterangepicker/daterangepicker.css" />

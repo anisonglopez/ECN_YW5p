@@ -45,7 +45,7 @@ endif;
         </p>
         <p>
         <button class="btn btn-success"onclick="location.href='ecn_create.php';">Load file</button>
-        <button class="btn btn-success"onclick="location.href='ecn_create.php';">Import .csv</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#import_excel_modal">Import .csv</button>
       <button class="btn btn-success"onclick="location.href='ecn_create.php';">Export .csv</button>
         </p>
       </div>
@@ -66,4 +66,5 @@ endif;
 <!-- end card -->
 
 <?php   require '../layout/footer.php';?>
+<?php   require 'modal/import_excel_modal.php';?>
 <script src='js/ecn_table.js'></script>

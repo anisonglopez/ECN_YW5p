@@ -22,7 +22,7 @@ if (isset($_POST['cre_date_start'])) {
         <thead class="bg-info text-white small">
           <tr class="text-center">
           <th rowspan="2"><p>Action</p></th>
-          <th rowspan="2"><p>Create By</p></th>
+          <th rowspan="2"><p>Last Updated By</p></th>
           <th rowspan="2" ><p>Create Date</p></th>
             <th rowspan="2" ><p>ECN No.</p></th>
             <th rowspan="2"><p>Buddle Code</p></th>
@@ -71,7 +71,7 @@ if (isset($_POST['cre_date_start'])) {
             <tr class="small">
                 <td><a href="ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
                     <button id="<?php echo ($row["ecn_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button></td>
-                <td><?=$row['ecn_created_by']?></td>
+                <td><?=$row['ecn_updated_by']?></td>
                 <td width="40"><?=date('d/m/Y' , strtotime($row['created_date']))?></td>
                 <td><?=$row['ecn_no']?></td>
                 <td><?=$row['buddle_code']?></td>
