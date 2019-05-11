@@ -38,6 +38,8 @@
         <!-- Page level plugins -->
   <script src="../../vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <!-- <script src="../../vendor/progress-bar/js/static.min.js"></script> -->
+<script src="../../vendor/progress-bar/js/jquery.progresstimer.js"></script>
 <?php $pdo = null ;//close Connection?>
 </body>
 
