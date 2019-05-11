@@ -49,7 +49,7 @@ catch (PDOException $e) {
                     <td><?php echo ($row["role_note"]); ?></td>
                     <td><?php echo ($row["role_active"]); ?></td>
                     <td class="text-center"><a href="permission_change.php?id=<?php echo base64_encode($row["role_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
-                    <button id="<?php echo ($row["menu_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>
+                    <button id="<?php echo ($row["role_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>
                   </td>
                   </tr>
                   <?php endforeach; ?>
@@ -91,7 +91,7 @@ catch (PDOException $e) {
             .draw();
               $.ajax({
                type: "POST",
-               url: "ajax/menu_delete.php",
+               url: "ajax/permission_delete.php",
                data:{_id:_id},
                success: function(data)
                {
