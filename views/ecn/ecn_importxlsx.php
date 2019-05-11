@@ -1,8 +1,12 @@
+<?ob_start();?>
 <?php   
 $title = "Import ECN Data";
 require '../layout/header.php';
 ?>
 <?php
+try{
+
+
 set_time_limit(0); 
 // header('Content-Type: text/html; charset=utf-8');
  
@@ -44,7 +48,7 @@ for ($row = 2; $row <= $highestRow; ++$row) {
 }
  //var_dump( $namedDataArray);
 
-foreach ($namedDataArray as $resx) {
+// foreach ($namedDataArray as $resx) {
  //Insert
 //   $query = " INSERT INTO tbl_name (field1,field2,field3,field4,field5,field6) VALUES
 //       (
@@ -57,7 +61,7 @@ foreach ($namedDataArray as $resx) {
 //       )";
 //   $res_i = $mysqli->query($query);
  //
-}
+// }
 // $mysqli->close();
 ?>
   <!-- Page Heading -->
@@ -115,12 +119,110 @@ foreach ($namedDataArray as $resx) {
           </tr>
         </thead>
         <tbody>
-        <?php foreach ($namedDataArray as $row) : ?>
-        <?php
-                    $created_date = DateTime::createFromFormat("d/m/Y" , $row['created_date']);
+            <?php 
+         $i = 2;
+        foreach ($namedDataArray as $row) : 
+                    try{
+                        $created_date = $row['created_date'];
+                        $created_date = str_replace('/', '-', $created_date);
+   
+                    if (($timestamp = strtotime($created_date)) === false) {
+                        echo '<p class="small text-danger">Row ที่ '.$i.' Column Created Date มีค่าข้อมูล ('.$created_date.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = dd/mm/yyyy
+                        </p>
+                        ';
+                        $created_date = '';
+                       // header("location: ../base/404.php");
+                       // exit();
+                    } else {
+                        //echo "$created_date == " . date('l dS \o\f F Y h:i:s A', $timestamp);
+                    }
+
+                       
+
+                    }              
+                    catch (PDOException $e) {
+                        echo 'sd';
+                        print $e->getMessage();
+                        }
+                    //insert
+                    // try{
+                    //     $datalist =[
+                    //         "ecn_no"        => htmlspecialchars($_POST['ecn_no']),
+                    //           "created_date"        => $created_date->format('Y-m-d'),
+                    //           "buddle_code"        => htmlspecialchars($_POST['buddle_code']),
+                    //           "minor"        => htmlspecialchars($_POST['minor']),
+                    //           "part_no_old"        => htmlspecialchars($_POST['part_no_old']),
+                    //           "part_name_old"        => htmlspecialchars($_POST['part_name_old']),
+                    //           "part_no_new"        => htmlspecialchars($_POST['part_no_new']),
+                    //           "part_name_new"        => htmlspecialchars($_POST['part_name_new']),
+                    //           "ac"        => htmlspecialchars($_POST['ac']),
+                    //           "model_concern"        => htmlspecialchars($_POST['model_concern']),
+                    //           "reason"        => htmlspecialchars($_POST['reason']),
+                    //           "wh_m"        => htmlspecialchars($_POST['wh_m']),
+                    //           "sn_break_condit"        => htmlspecialchars($_POST['sn_break_condit']),
+                    //           "sn_break"        => htmlspecialchars($_POST['sn_break']),
+                    //           "eff"        => htmlspecialchars($_POST['eff']),
+                    //           "eff_date"        => $eff_date->format('Y-m-d'),
+                    //           "ecn_status"        => htmlspecialchars($_POST['ecn_status']),
+                    //           "dwg"        => htmlspecialchars($_POST['dwg']),
+                    //           "stock_sup"        => htmlspecialchars($_POST['stock_sup']),
+                    //           "cost_sup"        => htmlspecialchars($_POST['cost_sup']),
+                    //           "qa_audit"        => htmlspecialchars($_POST['qa_audit']),
+                    //           "sp_req"        => htmlspecialchars($_POST['sp_req']),
+                    //           "buyer"        => htmlspecialchars($_POST['buyer']),
+                    //           "sup"        => htmlspecialchars($_POST['sup']),
+                    //           "first_po"        => htmlspecialchars($_POST['first_po']),
+                    //           "first_deliver"        => $first_deliver->format('Y-m-d'),
+                    //           "remark"        => htmlspecialchars($_POST['remark']),
+                    //           //"ecn_created_by"        => $user_update,
+                    //           //"ecn_created_date"        => $date_today,
+                    //           "ecn_updated_by"        => $user_update,
+                    //           "ecn_updated_date"        => $date_today
+                    //       ];
+                    //         $ecn_id  =  htmlspecialchars($_POST['ecn_id']);
+                    //       $sql = "UPDATE $TABLE_NAME 
+                    //               SET ecn_no = :ecn_no,
+                    //               created_date = :created_date,
+                    //               buddle_code = :buddle_code,
+                    //               minor = :minor,
+                    //               part_no_old = :part_no_old,
+                    //               part_name_old = :part_name_old,
+                    //               part_no_new = :part_no_new,
+                    //               part_name_new = :part_name_new,
+                    //               ac = :ac,
+                    //               model_concern = :model_concern,
+                    //               reason = :reason,
+                    //               wh_m = :wh_m,
+                    //               sn_break_condit = :sn_break_condit,
+                    //               sn_break = :sn_break,
+                    //               eff = :eff,
+                    //               eff_date = :eff_date,
+                    //               ecn_status = :ecn_status,
+                    //               dwg = :dwg,
+                    //               stock_sup = :stock_sup,
+                    //               cost_sup = :cost_sup,
+                    //               qa_audit = :qa_audit,
+                    //               sp_req = :sp_req,            
+                    //               buyer = :buyer,
+                    //               sup = :sup,
+                    //               first_po = :first_po,
+                    //               first_deliver = :first_deliver,
+                    //               remark = :remark,
+                    //               wh_m = :wh_m,
+                    //               ecn_updated_by = :ecn_updated_by,
+                    //               ecn_updated_date = :ecn_updated_date
+                    //               WHERE ecn_id = $ecn_id";
+                    //                 $stmt = $pdo->prepare($sql);
+                    //                 $stmt->execute($datalist);
+                    //                 $msg_status= 'success';
+                    //                 $msg_txt= 'อัปเดตข้อมูลสำเร็จ';
+                    // }catch (PDOException $e) {
+                    //     $msg_status= 'error';
+                    //     $msg_txt=  "Error!: " . $e->getMessage();
+                    // }
         ?>
         <tr class="small">
-                <td><?=$created_date->format('d/m/Y')?></td>
+                <td><?=date('d/m/Y',strtotime($created_date))?></td>
                 <td><?=$row['ecn_no']?></td>
                 <td><?=$row['buddle_code']?></td>
                 <td><?=$row['minor']?></td>
@@ -135,7 +237,7 @@ foreach ($namedDataArray as $resx) {
                 <td><?=$row['sn_break_condit']?></td>
                 <td><?=$row['sn_break']?></td>
                 <td><?=$row['eff']?></td>
-                <td><?=date('d/m/Y' , strtotime($row['eff_date']))?></td>
+                <td><?=$created_date?></td>
                 <td><?=$row['ecn_status']?></td>
                 <td><?=$row['dwg']?></td>
                 <td><?=$row['stock_sup']?></td>
@@ -145,14 +247,19 @@ foreach ($namedDataArray as $resx) {
                 <td><?=$row['buyer']?></td>
                 <td><?=$row['sup']?></td>
                 <td><?=$row['first_po']?></td>
-                <td><?=date('d/m/Y' , strtotime($row['first_deliver']))?></td>
+                <td><?=$created_date?></td>
                 <td><?=$row['remark']?></td>
             </tr>
-                  <?php endforeach; ?>
+                  <?php $i++; endforeach; ?>
         </tbody>
       </table>
 </div>
-
+                    <?php } //end try
+                    catch (PDOException $e) {
+                        echo 'sd';
+                        print $e->getMessage();
+                         }
+                    ?>
 
 <?php   require '../layout/footer.php';?>
 <?php

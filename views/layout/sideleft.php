@@ -24,10 +24,11 @@
   </div>
   <!-- <div class="sidebar-brand-text mx-3"><?= $app['name']?> Management </div> -->
 </a>
-
-<?php if( in_array('ECN', $role_module_chk)) : ?>
 <!-- Divider -->
 <hr class="sidebar-divider my-0">
+
+
+<?php if( in_array('ECN', $role_module_chk)) : ?>
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item  <?=$ap == ($ap == 'ecn') ? 'active':'';?>" >

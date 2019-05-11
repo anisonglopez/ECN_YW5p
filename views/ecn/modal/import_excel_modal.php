@@ -11,7 +11,7 @@
         <form method="post"  enctype="multipart/form-data" action="ecn_importxlsx.php">
                 <div class="modal-body">           
                         <div class="modal-body" >
-                                    <p>กรุณาเลือกไฟล์ นามสกุล .Csv</p>   
+                                    <p>กรุณาเลือกไฟล์ นามสกุล .xlsx</p>   
                                     <p> 
                                        
                                                 <input type="hidden" name="import"/>
