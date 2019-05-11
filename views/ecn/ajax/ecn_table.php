@@ -2,9 +2,11 @@
 require '../../00_config/connect.php';
 if (isset($_POST['cre_date_start'])) {
     $tbl_name = '30_ecn';
+    $search_date_start = $_POST['cre_date_start'];
+    $search_date_end = $_POST['cre_date_end'];
     try{
     $statement = $pdo->prepare("SELECT *  FROM $tbl_name
-    WHERE ecn_trash = 0
+    WHERE ecn_trash = 0 AND created_date  BETWEEN '$search_date_start' and '$search_date_end'
     ");
     $statement->execute();
     $result = $statement->fetchAll();
@@ -26,14 +28,13 @@ if (isset($_POST['cre_date_start'])) {
             <th rowspan="2"><p>Buddle Code</p></th>
             <th rowspan="2"><p>MINOR</p></th>
             <th rowspan="2"><p>Part No Old.</p></th>
-            <th rowspan="2"><p>Part Name</p></th>
+            <th rowspan="2"><p>Part  Name Old</p></th>
             <th rowspan="2"><p>Part No. New</p></th>
             <th rowspan="2"><p>Part Name New</p></th>
             <th rowspan="2"><p>AC</p></th>
-            <th rowspan="2"><p>Part Name</p></th>
             <th rowspan="2"><p>Model Concern</p></th>
             <th rowspan="2"><p>Reason</p></th>
-            <th rowspan="2" ><p>New part/Full compatible/Non</p></th>
+            <!-- <th rowspan="2" ><p>New part/Full compatible/Non</p></th> -->
             <th rowspan="2"><p>WH Management</p></th>
             <th rowspan="1" colspan="2" class="bg-warning"><p>Production</p></th>
             <th rowspan="2"><p>Effective</p></th>
@@ -67,38 +68,37 @@ if (isset($_POST['cre_date_start'])) {
         </thead>
         <tbody>
         <?php foreach ($result as $row) : ?>
-            <tr>
-                <td>testasdsssdsd</td>
+            <tr class="small">
+                <td><a href="menu_change.php?id=<?php echo base64_encode($row["menu_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
+                    <button id="<?php echo ($row["menu_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button></td>
                 <td><?=$row['ecn_created_by']?></td>
-                <td width="40"><?=$row['created_date']?></td>
-                <td>test</td>
-                <td>test</td>
-                <td>testsdsdsdsssd</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
+                <td width="40"><?=date('d/m/Y' , strtotime($row['created_date']))?></td>
+                <td><?=$row['ecn_no']?></td>
+                <td><?=$row['buddle_code']?></td>
+                <td><?=$row['minor']?></td>
+                <td><?=$row['part_no_old']?></td>
+                <td><?=$row['part_name_old']?></td>
+                <td><?=$row['part_no_new']?></td>
+                <td><?=$row['part_name_new']?></td>
+                <td><?=$row['ac']?></td>
+                <td><?=$row['model_concern']?></td>
+                <td><?=$row['reason']?></td>
+                <td><?=$row['wh_m']?></td>
+                <td><?=$row['sn_break_condit']?></td>
+                <td><?=$row['sn_break']?></td>
+                <td><?=$row['eff']?></td>
+                <td><?=date('d/m/Y' , strtotime($row['eff_date']))?></td>
+                <td><?=$row['ecn_status']?></td>
+                <td><?=$row['dwg']?></td>
+                <td><?=$row['stock_sup']?></td>
+                <td><?=$row['cost_sup']?></td>
+                <td><?=$row['qa_audit']?></td>
+                <td><?=$row['sp_req']?></td>
+                <td><?=$row['buyer']?></td>
+                <td><?=$row['sup']?></td>
+                <td><?=$row['first_po']?></td>
+                <td><?=date('d/m/Y' , strtotime($row['first_deliver']))?></td>
+                <td><?=$row['remark']?></td>
 
             </tr>
             <?php endforeach; ?>
@@ -108,7 +108,7 @@ if (isset($_POST['cre_date_start'])) {
             <script>
             $(document).ready(function() {
     $('#dataTable').DataTable({
-      "pageLength": 10,
+      "pageLength": 25,
       "order": [ 2, "desc" ]
     });
   });
