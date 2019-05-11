@@ -108,7 +108,7 @@ require '../layout/header.php';
                      <div class="form-row">
                         <div class="form-group col-md-6">
                         <label>S/N Break ?</label> <span class="text-danger">*</span>
-                        <select class="form-control" name="sn_break_condit"  >
+                        <select class="form-control" name="sn_break_condit"  required>
                               <option value="">Select</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
@@ -123,7 +123,7 @@ require '../layout/header.php';
                        <div class="form-row">
                         <div class="form-group col-md-6">
                         <label>Effective </label> <span class="text-danger">*</span>
-                        <select class="form-control" name="eff"  >
+                        <select class="form-control" name="eff"  required>
                               <option value="">Select</option>
                                         <option value="Effective">Effective</option>
                                         <option value="No-Effective">No-Effective</option>
@@ -144,7 +144,7 @@ require '../layout/header.php';
                       <div class="form-row">
                         <div class="form-group col-md-6">
                         <label>ECN Status</label> <span class="text-danger">*</span>
-                        <select class="form-control" name="ecn_status"  >
+                        <select class="form-control" name="ecn_status"  required>
                               <option value="">Select</option>
                                         <option value="Closed">Closed</option>
                                         <option value="Follow_up">Follow up</option>
@@ -158,7 +158,7 @@ require '../layout/header.php';
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label>Stock Supplier</label> <span class="text-danger">*</span>
+                        <label>Stock Supplier</label> 
                         <input type="text" name="stock_sup" class="form-control"  placeholder="Stock Supplier">
                         </div>
                         <div class="form-group col-md-6">

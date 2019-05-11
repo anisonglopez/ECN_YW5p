@@ -155,7 +155,7 @@ if (isset($_GET['id'])) {
                      <div class="form-row">
                         <div class="form-group col-md-6">
                         <label>S/N Break ?</label> <span class="text-danger">*</span>
-                        <select  class="form-control" name="sn_break_condit"  >
+                        <select  class="form-control" name="sn_break_condit"  required>
                               <option value="">Select</option>
                                         <option value="Y" <?= $sn_break_condit === "Y" ? 'selected' : null; ?>>Yes</option>
                                         <option value="N" <?= $sn_break_condit === "N" ? 'selected' : null; ?>>No</option>
@@ -170,7 +170,7 @@ if (isset($_GET['id'])) {
                        <div class="form-row">
                         <div class="form-group col-md-6">
                         <label>Effective </label> <span class="text-danger">*</span>
-                        <select value="<?=$created_date?>" class="form-control" name="eff"  >
+                        <select value="<?=$created_date?>" class="form-control" name="eff"  required>
                               <option value="">Select</option>
                                         <option value="Effective" <?= $eff === "Effective" ? 'selected' : null; ?>>Effective</option>
                                         <option value="No-Effective" <?= $eff === "No-Effective" ? 'selected' : null; ?>>No-Effective</option>
@@ -191,7 +191,7 @@ if (isset($_GET['id'])) {
                       <div class="form-row">
                         <div class="form-group col-md-6">
                         <label>ECN Status</label> <span class="text-danger">*</span>
-                        <select class="form-control" name="ecn_status"  >
+                        <select class="form-control" name="ecn_status"  required>
                               <option value="">Select</option>
                                         <option value="Closed" <?= $ecn_status === "Closed" ? 'selected' : null; ?>>Closed</option>
                                         <option value="Follow_up" <?= $ecn_status === "Follow_up" ? 'selected' : null; ?>>Follow up</option>
@@ -205,7 +205,7 @@ if (isset($_GET['id'])) {
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label>Stock Supplier</label> <span class="text-danger">*</span>
+                        <label>Stock Supplier</label> 
                         <input type="text" name="stock_sup" value="<?=$stock_sup?>" class="form-control"  placeholder="Stock Supplier">
                         </div>
                         <div class="form-group col-md-6">
