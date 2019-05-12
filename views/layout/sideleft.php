@@ -36,10 +36,10 @@
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>ECN Overview</span></a>
 </li>
-
+<?php endif; //end Ecn role?> 
 <!-- Divider -->
 <hr class="sidebar-divider">
-<?php endif; //end Ecn role?> 
+
 
 <?php if( in_array('NTI', $role_module_chk)) : ?>
 <!-- Heading -->
