@@ -6,7 +6,7 @@ if($ServerName == 'localhost:82'){
     $userName_1 = "root";
     $userPassword_1 = "";
     $dbName_1 = "enc";
-}else if ($ServerName == 'ecn.cheetahsolution'){
+}else if ($ServerName == 'ecn.cheetahsolution.com'){
        //Enviroment PRD
     $serverName_1 = "localhost";
     $userName_1 = "cheetahs_ecnuser";

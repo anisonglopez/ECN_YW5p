@@ -22,21 +22,22 @@ endif;
 <div class="card mb-4">
   <div class="card-header">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-6">
       <p>ECN ที่ใกล้ Effective Date อีก <?=$eff_exp_date_int ?> วันข้างหน้า </p>
       <div class="col-md-10">
 <div id="loading-progress" class="loading-progress"></div>
 </div>
       </div>
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
       
-      </div>
+      </div> -->
 
  <div class="col-md-2">
           
       </div>
 
       <div class="col-md-4 text-right">
+      <button class="btn btn-success">Send Mail</button>
       </div>
     </div>        
   </div>
