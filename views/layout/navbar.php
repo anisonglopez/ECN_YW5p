@@ -1,4 +1,11 @@
-
+<?php
+    $statement = $pdo->prepare("SELECT eff_exp_date_int FROM 00_eff_exp_date ");
+    $statement->execute();
+    $result_eff_exp_date = $statement->fetchAll();
+    foreach ($result_eff_exp_date as $row) :
+        $eff_exp_date = $row['eff_exp_date_int'];
+    endforeach;
+?>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -61,7 +68,7 @@
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                 All  ECN Follow up list เรียงตามวันที่ใกล้หมด
+                 All  ECN Follow up  เรียงตามวันที่ใกล้หมดในอีก <?=$eff_exp_date ?> วัน
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
@@ -70,8 +77,8 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                    <div class="small text-gray-500">หมดอายุในวันที่ December 12, 2019</div>
+                    <span class="font-weight-bold">Inprogress</span>
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -81,8 +88,8 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
+                    <div class="small text-gray-500">หมดอายุในวันที่ December 7, 2019</div>
+                    Inprogress
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -92,8 +99,8 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
+                    <div class="small text-gray-500">หมดอายุในวันที่ December 2, 2019</div>
+                    Inprogress
                   </div>
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
@@ -170,14 +177,14 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   เปลี่ยนรหัสผ่าน
                 </a>
-                <a class="dropdown-item" href="#">
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
