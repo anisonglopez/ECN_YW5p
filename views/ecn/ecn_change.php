@@ -143,7 +143,7 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="form-group col-md-6">
                         <label>Model Concern</label>
-                        <input type="text" name="model_concern" value="<?=$model_concern?>" class="form-control"  placeholder="Model Concern">
+                        <textarea  name="model_concern" class="form-control" placeholder="Model Concern" rows="5"><?=$model_concern?></textarea>
                         </div>
                     </div>
 

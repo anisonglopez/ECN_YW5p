@@ -81,9 +81,9 @@ if (isset($_POST['cre_date_start'])) {
                 <td><?=$row['part_no_new']?></td>
                 <td><?=$row['part_name_new']?></td>
                 <td><?=$row['ac']?></td>
-                <td><?=$row['model_concern']?></td>
-                <td><?=$row['reason']?></td>
-                <td><?=$row['wh_m']?></td>
+                <td><?=nl2br($row['model_concern'])?></td>
+                <td><?=nl2br($row['reason'])?></td>
+                <td><?=nl2br($row['wh_m'])?></td>
                 <td class="text-center"><?=$row['sn_break_condit']?></td>
                 <td><?=$row['sn_break']?></td>
                 <td><?=$row['eff']?></td>
@@ -98,7 +98,7 @@ if (isset($_POST['cre_date_start'])) {
                 <td><?=$row['sup']?></td>
                 <td><?=$row['first_po']?></td>
                 <td><?=date('d/m/Y' , strtotime($row['first_deliver']))?></td>
-                <td><?=$row['remark']?></td>
+                <td><?=nl2br($row['remark'])?></td>
 
             </tr>
             <?php endforeach; ?>

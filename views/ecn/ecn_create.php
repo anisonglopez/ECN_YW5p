@@ -90,7 +90,7 @@ require '../layout/header.php';
                         </div>
                         <div class="form-group col-md-6">
                         <label>Model Concern</label>
-                        <input type="text" name="model_concern" class="form-control"  placeholder="Model Concern">
+                        <textarea  name="model_concern" class="form-control" placeholder="Model Concern" rows="5"></textarea>
                         </div>
                     </div>
 
