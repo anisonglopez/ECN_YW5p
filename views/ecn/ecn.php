@@ -24,7 +24,7 @@ endif;
   <div class="card-header">
     <div class="row">
       <div class="col-md-3">
-      <p>ค้นหา จากวันที่ ECN Date
+      <p>ค้นหา จากวันที่ ECN Created Date
       <input type="text" name="daterange" value="<?=date("d/m/Y", strtotime('-30 days')) . ' - ' . date("d/m/Y");?>" class="form-control" />
       </p>
       <div class="col-md-10">
@@ -46,7 +46,7 @@ endif;
         <p>
         <button class="btn btn-success"onclick="location.href='../../file_import/ecn/ecn_import_template_updated_12052019.xlsx';">Load file xlsx</button>
         <button class="btn btn-success" data-toggle="modal" data-target="#import_excel_modal">Import .xlsx</button>
-      <button class="btn btn-success"onclick="location.href='ecn_create.php';">Export .xlsx</button>
+      <button class="btn btn-success" >Export .xlsx</button>
         </p>
       </div>
     </div>        
