@@ -13,7 +13,9 @@
     $statement = $pdo->prepare("SELECT *  FROM $tbl_name
     WHERE ecn_trash = 0 
     AND eff_date  BETWEEN '$search_date_start' and '$search_date_end'
-    AND eff = 'Effective' AND ecn_status = 'Follow_up' 
+    AND eff = 'Effective' 
+    AND ecn_status = 'Follow_up' 
+    ORDER BY eff_date ASC
     ");
     $statement->execute();
     $result_noti = $statement->fetchAll();
