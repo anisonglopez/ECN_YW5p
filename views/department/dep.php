@@ -47,7 +47,7 @@ catch (PDOException $e) {
                     <td><?php echo ($row["dep_id"]); ?></td>
                     <td><?php echo ($row["dep_name"]); ?></td>
                     <td><?php echo ($row["dep_note"]); ?></td>
-                    <td class="text-center"></td>
+                    <td class="text-center"><?php echo  ($row["dep_active"] == 1? '<span class="fas fa-check-circle fa-fw" style="color: green;"></span>' : '<span class="fas fa-minus-circle fa-fw" style="color: red;"></span>'); ?></td>
                     <td class="text-center"><a href="dep_change.php?id=<?php echo base64_encode($row["dep_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
                     <!-- <a id="button"  href="JavaScript:if(confirm('Confirm Delete?')==true){window.location='dep_delete.php?id=<?php echo base64_encode($row["dep_id"]);?>';}"  class="btn btn-outline-danger btn-sm"><span class="fas fa-trash fa-fw"></span></a> -->
                     <button id="<?php echo ($row["dep_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>

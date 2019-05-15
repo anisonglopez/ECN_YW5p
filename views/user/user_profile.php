@@ -50,8 +50,8 @@ catch (PDOException $e) {
                     <td><?php echo ($row["dep_name"]); ?></td>
                     <td><?php echo ($row["role_id"]); ?></td>
                     <td><?php echo ($row["user_email"]); ?></td>
-                    <td><?php echo ($row["user_active"]); ?></td>
-                    <td><?php echo ($row["user_lock"]); ?></td>
+                    <td><?php echo  ($row["user_active"] == 1? '<span class="fas fa-check-circle fa-fw" style="color: green;"></span>' : '<span class="fas fa-minus-circle fa-fw" style="color: red;"></span>'); ?></td>
+                    <td><?php echo  ($row["user_lock"] == 0? '<span class="fas fa-unlock" style="color: green;"></span>' : '<span class="fas fa-lock fa-fw" style="color: red;"></span>'); ?></td>
                     <td class="text-center"><a href="user_change.php?id=<?php echo base64_encode($row["user_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
                     <!-- <a id="button"  href="JavaScript:if(confirm('Confirm Delete?')==true){window.location='dep_delete.php?id=<?php echo base64_encode($row["dep_id"]);?>';}"  class="btn btn-outline-danger btn-sm"><span class="fas fa-trash fa-fw"></span></a> -->
                     <button id="<?php echo ($row["user_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>

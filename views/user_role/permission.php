@@ -47,7 +47,7 @@ catch (PDOException $e) {
                   <td><?php echo ($row["role_id"]); ?></td>
                     <td><?php echo ($row["role_name"]); ?></td>
                     <td><?php echo ($row["role_note"]); ?></td>
-                    <td><?php echo ($row["role_active"]); ?></td>
+                    <td><?php echo  ($row["role_active"] == 1? '<span class="fas fa-check-circle fa-fw" style="color: green;"></span>' : '<span class="fas fa-minus-circle fa-fw" style="color: red;"></span>'); ?></td>
                     <td class="text-center"><a href="permission_change.php?id=<?php echo base64_encode($row["role_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
                     <button id="<?php echo ($row["role_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>
                   </td>

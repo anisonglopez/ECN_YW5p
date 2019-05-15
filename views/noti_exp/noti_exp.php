@@ -119,8 +119,14 @@ endif;
         <tbody>
         <?php foreach ($result as $row) : ?>
             <tr class="small">
-              <td><?=$row['ecn_status']?></td>
-               <td><?=$row['eff']?></td>
+            <td class="text-center"><?=$row['ecn_status'] == 'Closed' ? 
+                '<span class="badge badge-pill badge-success">'.$row['ecn_status'].'</span>' 
+                : 
+                '<span class="badge badge-pill badge-danger">'.$row['ecn_status'].'</span>' ?></td>
+              <td class="text-center"><?=$row['eff'] == 'Effective' ? 
+                '<span class="badge badge-pill badge-dark">'.$row['eff'].'</span>' 
+                : 
+                '<span class="badge badge-pill badge-light">'.$row['eff'].'</span>' ?></td>
                 <td><?=date('d/m/Y' , strtotime($row['eff_date']))?></td>
                 <td><?=$row['ecn_updated_by']?></td>
                 <td width="40"><?=date('d/m/Y' , strtotime($row['created_date']))?></td>
@@ -132,9 +138,9 @@ endif;
                 <td><?=$row['part_no_new']?></td>
                 <td><?=$row['part_name_new']?></td>
                 <td><?=$row['ac']?></td>
-                <td><?=$row['model_concern']?></td>
-                <td><?=$row['reason']?></td>
-                <td><?=$row['wh_m']?></td>
+                <td><?=nl2br($row['model_concern'])?></td>
+                <td><?=nl2br($row['reason'])?></td>
+                <td><?=nl2br($row['wh_m'])?></td>
                 <td class="text-center"><?=$row['sn_break_condit']?></td>
                 <td><?=$row['sn_break']?></td>
                 <td><?=$row['dwg']?></td>
@@ -146,7 +152,7 @@ endif;
                 <td><?=$row['sup']?></td>
                 <td><?=$row['first_po']?></td>
                 <td><?=date('d/m/Y' , strtotime($row['first_deliver']))?></td>
-                <td><?=$row['remark']?></td>
+                <td><?=nl2br($row['remark'])?></td>
 
             </tr>
             <?php endforeach; ?>

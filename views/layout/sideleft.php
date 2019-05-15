@@ -48,15 +48,15 @@ Notification
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
+<li class="nav-item <?=$ap == ($ap == 'noti_exp') ? 'active':'';?>">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
     <i class="fas fa-fw fa-bell"></i>
     <span>Notification</span>
   </a>
-  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+  <div id="collapseTwo" class="collapse <?=$ap == ($ap == 'noti_exp') ? 'show':'';?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">การแจ้งเตือน :</h6>
-      <a class="collapse-item"  href="../noti_exp/noti_exp.php">ECN  Effective Date</a>
+      <a class="collapse-item <?=$ap == ($ap == 'noti_exp') ? 'active':'';?>"  href="../noti_exp/noti_exp.php">ECN  Effective Date</a>
     </div>
   </div>
 </li>
@@ -167,7 +167,7 @@ Notification
 </li> -->
 
 <!-- Divider -->
-<hr class="sidebar-divider d-none d-md-block">
+<!-- <hr class="sidebar-divider d-none d-md-block"> -->
 
 <!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">
