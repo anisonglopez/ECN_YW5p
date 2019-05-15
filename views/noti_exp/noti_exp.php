@@ -2,7 +2,7 @@
 <?php   
 $title = "ECN";
 require '../layout/header.php';
- if(in_array('ECN', $role_module_chk) == FALSE) : 
+if(in_array('NTI', $role_module_chk) == FALSE) : 
   header("Location: ../base/404.php"); /* Redirect browser */
   // exit(0);
 endif;

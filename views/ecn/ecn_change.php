@@ -1,6 +1,12 @@
+<?ob_start();?>
 <?php   
 $title = "Change ECN";
 require '../layout/header.php';
+if(in_array('ECN', $role_module_chk) == FALSE) : 
+  header("Location: ../base/404.php"); /* Redirect browser */
+  // exit(0);
+endif;
+
 if (isset($_GET['id'])) {
     $ecn_id =  base64_decode($_GET['id']);
     try{

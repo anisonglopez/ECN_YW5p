@@ -1,10 +1,27 @@
 <?php
-    $statement = $pdo->prepare("SELECT eff_exp_date_int FROM 00_eff_exp_date ");
+    try{
+      $statement = $pdo->prepare("SELECT eff_exp_date_int FROM 00_eff_exp_date ");
+      $statement->execute();
+      $result_eff_exp_date = $statement->fetchAll();
+      foreach ($result_eff_exp_date as $row) :
+          $eff_exp_date_int = $row['eff_exp_date_int'];
+      endforeach;
+    
+    $tbl_name = '30_ecn';
+    $search_date_start = date("Y/m/d");
+    $search_date_end = date("Y/m/d", strtotime('+'.$eff_exp_date_int.' days'));
+    $statement = $pdo->prepare("SELECT *  FROM $tbl_name
+    WHERE ecn_trash = 0 
+    AND eff_date  BETWEEN '$search_date_start' and '$search_date_end'
+    AND eff = 'Effective' AND ecn_status = 'Follow_up' 
+    ");
     $statement->execute();
-    $result_eff_exp_date = $statement->fetchAll();
-    foreach ($result_eff_exp_date as $row) :
-        $eff_exp_date_int = $row['eff_exp_date_int'];
-    endforeach;
+    $result_noti = $statement->fetchAll();
+    $tbl_name = '';
+    } //try
+    catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    }
 ?>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -63,25 +80,67 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <?php
+                if(count($result_noti) > 0 ){
+                 echo '<span class="badge badge-danger badge-counter">
+                 '.count($result_noti).'
+                 +</span>';
+                }else{
+                  echo '<span class="badge badge-success badge-counter">
+                  '.count($result_noti).'
+                  </span>';
+                }
+                ?>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                  All  ECN Follow up  เรียงตามวันที่ใกล้หมดในอีก <?=$eff_exp_date_int ?> วัน
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <?php
+                if ($result_noti == null){
+                  echo '<a class="dropdown-item d-flex align-items-center href="#">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
+                      <i class="fas fa-emptytext-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500"></div>
+                    <span class="font-weight-bold"> ไม่มีรายการแจ้งเตือน
+                    </span>
+                  </div>
+                </a>';
+                }
+                $i = 0;
+                  foreach ($result_noti as $row) :
+                    if($i == 5){
+                        break;
+                    }
+                    $eff_noti_date = $row['eff_date'];
+                    $ecn_noti_no = $row['ecn_no'];
+                    $ecn_noti_remark = $row['remark'];
+                    $ecn_noti_id = $row['ecn_id'];
+                    $i++;
+                  ?>
+                <a class="dropdown-item d-flex align-items-center" href="../ecn/ecn_change.php?id=<?php echo base64_encode($ecn_noti_id); ?>">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
                       <i class="fas fa-file-alt text-white"></i>
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">หมดอายุในวันที่ December 12, 2019</div>
-                    <span class="font-weight-bold">Inprogress</span>
+                    <div class="small text-gray-500">หมดอายุในวันที่ <?=date('d/m/Y' , strtotime($eff_noti_date))?></div>
+                    <span class="font-weight-bold">ECN No : <?=$ecn_noti_no?> 
+                    <p>Remark / Action : <?=$ecn_noti_remark?></p>
+                    </span>
                   </div>
                 </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+
+                  <?php
+                  endforeach;
+                  ?>
+                <!-- <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
                     <div class="icon-circle bg-success">
                       <i class="fas fa-donate text-white"></i>
@@ -102,8 +161,8 @@
                     <div class="small text-gray-500">หมดอายุในวันที่ December 2, 2019</div>
                     Inprogress
                   </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                </a> -->
+                <a class="dropdown-item text-center small text-gray-500" href="../noti_exp/noti_exp.php">Show All Alerts</a>
               </div>
             </li>
 
