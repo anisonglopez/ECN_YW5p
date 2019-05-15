@@ -159,9 +159,9 @@ Notification
   <div id="collapseLogs" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header ">ประวัติการใช้งาน:</h6>
-      <a class="collapse-item <?=$ap == 'user_prsofile'? 'active':'';?>" href="../user/user_profile.php">Mail Logs</a>
-      <a class="collapse-item <?=$ap == 'permisssion'? 'active':'';?>" href="../user_role/permission.php">User Logs</a>
-      <a class="collapse-item <?=$ap == 'permisssion'? 'active':'';?>" href="../user_role/permission.php">Login Logs</a>
+      <a class="collapse-item <?=$ap == 'user_prsofile'? 'active':'';?>" href="#">Mail Logs</a>
+      <a class="collapse-item <?=$ap == 'permisssion'? 'active':'';?>" href="#">User Logs</a>
+      <a class="collapse-item <?=$ap == 'permisssion'? 'active':'';?>" href="#">Login Logs</a>
       <div class="collapse-divider"></div>
     </div>
   </div>

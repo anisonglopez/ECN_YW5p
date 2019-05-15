@@ -1,29 +1,20 @@
 <?php
-if( empty(getenv("ENVIRONMENT_SET"))) {
-    // Default
-    // Database
+$ServerName =  $_SERVER['HTTP_HOST'];
+if($ServerName == 'localhost:82'){
+    //Enviroment Dev
     $serverName_1 = "localhost";
     $userName_1 = "root";
     $userPassword_1 = "";
     $dbName_1 = "enc";
-    //echo 'Ok';
-
-} else if(getenv("ENVIRONMENT_SET") == 'PRD') {
-    // On production SHOULD NOT CHANGE
-    $serverName_1 = "mysql_m";
-    $userName_1 = "pm_dev";
-    $userPassword_1 = "itbc-development";
-    $dbName_1 = "election_2019";
-
-
-} else {
-    // Dev or other
-    $serverName_1 = "mysql_m";
-    $userName_1 = "pm_dev";
-    $userPassword_1 = "itbc-development";
-    $dbName_1 = "election_2019";
-
-
+}else if ($ServerName == 'ecn.cheetahsolution'){
+       //Enviroment PRD
+    $serverName_1 = "localhost";
+    $userName_1 = "cheetahs_ecnuser";
+    $userPassword_1 = "P@ssw0rdEcn@";
+    $dbName_1 = "cheetahs_ecn";
+}else{
+    echo 'Error ..! Please Contact Support';
+    die();
 }
 
 $charSet_1 = "charset=utf8mb4";
