@@ -24,7 +24,7 @@ if (isset($_POST['cre_date_start'])) {
           <th rowspan="2"><p>Action</p></th>
           <th rowspan="2"><p>Last Updated By</p></th>
           <th rowspan="2" ><p>Create Date</p></th>
-            <th rowspan="2" ><p>ECN No.</p></th>
+            <th rowspan="2"><p>ECN No.</p></th>
             <th rowspan="2"><p>Buddle Code</p></th>
             <th rowspan="2"><p>MINOR</p></th>
             <th rowspan="2"><p>Part No Old.</p></th>
@@ -32,7 +32,7 @@ if (isset($_POST['cre_date_start'])) {
             <th rowspan="2"><p>Part No. New</p></th>
             <th rowspan="2"><p>Part Name New</p></th>
             <th rowspan="2"><p>AC</p></th>
-            <th rowspan="2"><p>Model Concern</p></th>
+            <th rowspan="2" class="model_concern"><p>Model Concern</p></th>
             <th rowspan="2"><p>Reason</p></th>
             <!-- <th rowspan="2" ><p>New part/Full compatible/Non</p></th> -->
             <th rowspan="2"><p>WH Management</p></th>
@@ -84,7 +84,7 @@ if (isset($_POST['cre_date_start'])) {
                 <td><?=$row['model_concern']?></td>
                 <td><?=$row['reason']?></td>
                 <td><?=$row['wh_m']?></td>
-                <td><?=$row['sn_break_condit']?></td>
+                <td class="text-center"><?=$row['sn_break_condit']?></td>
                 <td><?=$row['sn_break']?></td>
                 <td><?=$row['eff']?></td>
                 <td><?=date('d/m/Y' , strtotime($row['eff_date']))?></td>
