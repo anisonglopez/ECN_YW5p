@@ -70,7 +70,18 @@ $.ajax({
         }
     });
     });
- 
-  
+
   });
-  //date picker
+  function export_excel() {
+    var cre_date_start = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
+    var cre_date_end = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
+  $.ajax({              
+      url: "ajax/ecn_export.php",
+      type: 'POST',
+      data: {cre_date_start:cre_date_start, cre_date_end:cre_date_end },
+      success: function(data) {
+            window.location = 'ajax/ecn_export.php';
+            //console.log(data);
+      }
+  });
+}

@@ -24,7 +24,7 @@ endif;
     <div class="row">
       <div class="col-md-3">
       <p>ค้นหา จากวันที่ ECN Created Date
-      <input type="text" name="daterange" value="<?=date("d/m/Y", strtotime('-30 days')) . ' - ' . date("d/m/Y");?>" class="form-control" />
+      <input type="text" name="daterange"  value="<?=date("d/m/Y", strtotime('-30 days')) . ' - ' . date("d/m/Y");?>" class="form-control" />
       </p>
       <div class="col-md-10">
 <div id="loading-progress" class="loading-progress"></div>
@@ -43,9 +43,10 @@ endif;
         <button class="btn btn-success"onclick="location.href='ecn_create.php';">Create new</button>
         </p>
         <p>
-        <button class="btn btn-success"onclick="location.href='../../file_import/ecn/ecn_import_template_updated_12052019.xlsx';">Load file xlsx</button>
-        <button class="btn btn-success" data-toggle="modal" data-target="#import_excel_modal">Import .xlsx</button>
-      <button class="btn btn-success" >Export .xlsx</button>
+        <button class="btn btn-primary"onclick="location.href='../../file_import/ecn/ecn_import_template_updated_12052019.xlsx';">Load Excel file</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#import_excel_modal">Import Excel</button>
+      <button class="btn btn-primary"  onclick="export_excel()" >Export Excel</button>
+      <!-- <a href="ajax/ecn_export.php"  class="btn btn-info" download>Download!</a> -->
         </p>
       </div>
     </div>        
@@ -66,4 +67,5 @@ endif;
 
 <?php   require '../layout/footer.php';?>
 <?php   require 'modal/import_excel_modal.php';?>
+<?php   require 'modal/export_excel_modal.php';?>
 <script src='js/ecn_table.js'></script>
