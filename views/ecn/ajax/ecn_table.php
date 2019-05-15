@@ -103,7 +103,7 @@ if (isset($_POST['cre_date_start'])) {
             </tr>
             <?php endforeach; ?>
         </tbody>
-
+</table>
 
             <script>     
             $(document).ready(function() {

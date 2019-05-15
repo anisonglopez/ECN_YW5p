@@ -3,7 +3,7 @@
     $statement->execute();
     $result_eff_exp_date = $statement->fetchAll();
     foreach ($result_eff_exp_date as $row) :
-        $eff_exp_date = $row['eff_exp_date_int'];
+        $eff_exp_date_int = $row['eff_exp_date_int'];
     endforeach;
 ?>
     <!-- Content Wrapper -->
@@ -68,7 +68,7 @@
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                 All  ECN Follow up  เรียงตามวันที่ใกล้หมดในอีก <?=$eff_exp_date ?> วัน
+                 All  ECN Follow up  เรียงตามวันที่ใกล้หมดในอีก <?=$eff_exp_date_int ?> วัน
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
