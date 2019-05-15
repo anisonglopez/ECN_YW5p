@@ -18,7 +18,6 @@ if($ServerName == 'localhost:82'){
 }
 
 $charSet_1 = "charset=utf8mb4";
-$app_version = "1.0.0.2 updated at 28/03/2019";
 try {
 
  $pdo = new PDO("mysql:host=$serverName_1;dbname=$dbName_1;$charSet_1", $userName_1, $userPassword_1);
