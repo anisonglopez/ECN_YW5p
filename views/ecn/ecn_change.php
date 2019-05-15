@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
       <div class="col-md-6 text-right">
 
       <!-- <button   type="reset" class="btn btn-info" onclick="location.reload();" >Create New</button> -->
-      <button  type="reset" class="btn btn-facebook" onclick="location.href='ecn.php';">Back</button>
+      <button  type="reset" class="btn btn-facebook" onclick="window.history.go(-1); return false;">Back</button>
         <button  id='save' type="submit" class="btn btn-success">Update</button>
       </div>
     </div>        

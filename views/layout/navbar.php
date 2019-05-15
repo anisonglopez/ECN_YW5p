@@ -12,9 +12,9 @@
     $search_date_end = date("Y/m/d", strtotime('+'.$eff_exp_date_int.' days'));
     $statement = $pdo->prepare("SELECT *  FROM $tbl_name
     WHERE ecn_trash = 0 
-    AND eff_date  BETWEEN '$search_date_start' and '$search_date_end'
-    AND eff = 'Effective' 
-    AND ecn_status = 'Follow_up' 
+    AND (eff_date  BETWEEN '$search_date_start' and '$search_date_end' 
+    AND eff = 'Effective'  AND ecn_status = 'Follow_up')
+    OR (ecn_status = 'Follow_up' AND eff = 'Effective')
     ORDER BY eff_date ASC
     ");
     $statement->execute();
@@ -141,6 +141,7 @@
 
                   <?php
                   endforeach;
+                  $result_noti  = null;
                   ?>
                 <!-- <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">

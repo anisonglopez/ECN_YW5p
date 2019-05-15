@@ -22,19 +22,12 @@ endif;
 <div class="card mb-4">
   <div class="card-header">
     <div class="row">
-      <div class="col-md-6">
-      <p>ECN ที่ใกล้ Effective Date อีก <?=$eff_exp_date_int ?> วันข้างหน้า </p>
-      <div class="col-md-10">
-<div id="loading-progress" class="loading-progress"></div>
-</div>
+      <div class="col-md-8">
+      <p>ECN ที่ใกล้ Effective Date อีก <?=$eff_exp_date_int ?> วันข้างหน้า  และรายการ ECN Status Follow Up ทั้งหมด</p>
       </div>
       <!-- <div class="col-md-3">
       
       </div> -->
-
- <div class="col-md-2">
-          
-      </div>
 
       <div class="col-md-4 text-right">
       <button class="btn btn-success">Send Mail</button>
@@ -55,8 +48,9 @@ endif;
     try{
     $statement = $pdo->prepare("SELECT *  FROM $tbl_name
     WHERE ecn_trash = 0 
-    AND eff_date  BETWEEN '$search_date_start' and '$search_date_end'
-    AND eff = 'Effective' AND ecn_status = 'Follow_up'
+    AND (eff_date  BETWEEN '$search_date_start' and '$search_date_end' 
+    AND eff = 'Effective'  AND ecn_status = 'Follow_up')
+    OR (ecn_status = 'Follow_up' AND eff = 'Effective')
     ");
     $statement->execute();
     $result = $statement->fetchAll();
@@ -70,6 +64,7 @@ endif;
       <table class="table table-hover table-sm table-bordered" id="dataTable">
         <thead class="bg-info text-white small">
           <tr class="text-center">
+          <th rowspan="2"><p>Action</p></th>
           <th rowspan="2"><p>Status ECN</p></th>
           <th rowspan="2"><p>Effective</p></th>
             <th rowspan="2"><p>Eff Date</p></th>
@@ -119,6 +114,7 @@ endif;
         <tbody>
         <?php foreach ($result as $row) : ?>
             <tr class="small">
+            <td class="text-center"><a href="../ecn/ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a></td>
             <td class="text-center"><?=$row['ecn_status'] == 'Closed' ? 
                 '<span class="badge badge-pill badge-success">'.$row['ecn_status'].'</span>' 
                 : 
