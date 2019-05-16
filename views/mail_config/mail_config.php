@@ -53,27 +53,30 @@ endforeach;
                    <div class="form-group row">
                       <label  class="col-sm-2 col-form-label">Subject : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="text" name="mail_cc" value="<?=$subject?>" class="form-control" required  autocomplete="off">
+                        <input type="text" name="subject" value="<?=$subject?>" class="form-control" required  autocomplete="off">
                     </div>
                     </div>
 
                    <div class="form-group row">
                       <label  class="col-sm-2 col-form-label">Description (เพิ่มเติม) : </label>
                       <div class="col-sm-8">
-                      <textarea name="mail_cc" rows="5"  class="form-control"><?=$description?></textarea>
+                      <textarea name="description" rows="5"  class="form-control"><?=$description?></textarea>
                     </div>
                     </div>
 
                    <div class="form-group row">
                       <label  class="col-sm-2 col-form-label">Footer : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="text" name="mail_cc" value="<?=$footer?>" class="form-control" required  autocomplete="off">
+                        <input type="text" name="footer" value="<?=$footer?>" class="form-control" required  autocomplete="off">
                     </div>
                     </div>
         </div>
     </div>
     </div>
     </form>
+    <div id="alert_box" class="alert alert-success alert-dismissible fade "   role="alert">
+  <strong id="msg_head"></strong><p id="msg_txt"></p>
+</div>
 
 <?php   require '../layout/footer.php';?>
 <script src="js/mail_config.js"></script>

@@ -27,7 +27,7 @@ endif;
       <input type="text" name="daterange"  value="<?=date("d/m/Y", strtotime('-30 days')) . ' - ' . date("d/m/Y");?>" class="form-control" />
       </p>
       <div class="col-md-10">
-<div id="loading-progress" class="loading-progress"></div>
+<div id="loading-progress" class="loading-progress" style="display: none;"></div>
 </div>
       </div>
       <div class="col-md-3">
