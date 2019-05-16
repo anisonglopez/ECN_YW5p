@@ -33,7 +33,7 @@
                     print "Error!: " . $e->getMessage() . "<br/>";
                 }
         ?>
-        <form method="post"  enctype="multipart/form-data" action="ecn_importxlsx.php">
+        <form >
                 <div class="modal-body">           
                         <div class="modal-body small" >
 
