@@ -58,7 +58,8 @@ else {
       //   $('.sidebar .collapse').collapse('hide');
       // };
       $("#sidebarToggleTop").on('click',function(e) {
-        $(".sidebar").toggleClass("toggled");
+        $(".sidebar").toggleClass("toggled ");
+
        });
     };
   });
