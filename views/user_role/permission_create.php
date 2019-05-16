@@ -74,9 +74,9 @@ catch (PDOException $e) {
                     </div>
                     </div>
 
-
+<div class="table-responsive">
                       <div class="form-group row">
-                            <table class="table">
+                            <table class="table small">
                             <thead class="bg-info text-white">
                                 <tr>
                                     <th>Select</th>
@@ -100,7 +100,7 @@ catch (PDOException $e) {
                             </tbody>
                             </table>
                     </div>
-
+</div>
 
 
                     

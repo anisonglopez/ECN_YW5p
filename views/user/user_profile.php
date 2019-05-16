@@ -31,7 +31,8 @@ catch (PDOException $e) {
 <!-- end card header -->
   <div class="card-body">
     <div class="col-md-12">
-      <table class="table table-hover table-sm " id="dataTable">
+    <div class="table-responsive">
+      <table class="table table-hover table-sm small" id="dataTable">
         <thead class="bg-info text-white">
           <tr>
             <th>ชื่อผู้ใช้งาน</th>
@@ -60,6 +61,7 @@ catch (PDOException $e) {
                   <?php endforeach; ?>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </div>

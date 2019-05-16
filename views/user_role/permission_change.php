@@ -106,9 +106,9 @@ if (isset($_GET['id'])) {
                     </div>
                     </div>
 
-
+<div class="table-responsive">
                       <div class="form-group row">
-                            <table class="table">
+                            <table class="table small">
                             <thead class="bg-info text-white">
                                 <tr>
                                     <th>Select</th>
@@ -131,7 +131,8 @@ if (isset($_GET['id'])) {
                   <?php endforeach; ?>
                             </tbody>
                             </table>
-                    </div>               
+                    </div>           
+                  </div>    
     </div>
   </div>
 </div>
