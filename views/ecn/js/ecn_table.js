@@ -72,15 +72,17 @@ $.ajax({
     });
 
   });
-  function export_excel() {
+  function export_excel(url) {
     var cre_date_start = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
     var cre_date_end = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
+    alert(cre_date_end);
   $.ajax({              
       url: "ajax/ecn_export.php",
-      type: 'POST',
-      data: {cre_date_start:cre_date_start, cre_date_end:cre_date_end },
-      success: function(data) {
-            window.location = 'ajax/ecn_export.php';
+      type: 'GET',
+      success: function(e) {
+            window.location = 'ajax/ecn_export.php?cre_date_start=' + cre_date_start + '&cre_date_end=' + cre_date_end;
+          //sconsole.log(data);
+
             //console.log(data);
       }
   });
