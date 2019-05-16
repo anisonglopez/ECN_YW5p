@@ -75,7 +75,6 @@ $.ajax({
   function export_excel(url) {
     var cre_date_start = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
     var cre_date_end = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
-    alert(cre_date_end);
   $.ajax({              
       url: "ajax/ecn_export.php",
       type: 'GET',

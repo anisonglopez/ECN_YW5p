@@ -1,0 +1,79 @@
+<?php   
+$title = "E-mail Configuration";
+require '../layout/header.php';
+try{
+  $statement = $pdo->prepare("SELECT * From 00_mail_config WHERE mail_id = 'mail_cf_pk' ");
+  $statement->execute();
+  $result = $statement->fetchAll();
+} //try
+catch (PDOException $e) {
+  print "Error!: " . $e->getMessage() . "<br/>";
+}
+foreach ($result as $row) :
+    $mail_to = $row['mail_to'];
+    $mail_cc = $row['mail_cc'];
+    $subject = $row['subject'];
+    $description = $row['description'];
+    $footer = $row['footer'];
+endforeach;
+?>
+
+          <!-- Page Content -->
+          <h2>E-mail Configuration</h2>
+          <hr>
+          <form method="post" id="dep_form">
+          <div class="card mb-4">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-6 m-0 font-weight-bold text-primary">
+
+      </div>
+      <div class="col-md-6 text-right">
+      <button type="submit" class="btn btn-success" >Update</button>
+      </div>
+    </div>        
+  </div>
+<!-- end card header -->
+<div class="card-body">
+    <div class="col-md-12">
+                <div class="form-group row">
+                      <label  class="col-sm-2 col-form-label">To : <span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="text" name="mail_to" value="<?=$mail_to?>" class="form-control" required autocomplete="off">
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label  class="col-sm-2 col-form-label">Cc : </label>
+                      <div class="col-sm-8">
+                        <input type="text" name="mail_cc" value="<?=$mail_cc?>" class="form-control"  autocomplete="off">
+                    </div>
+                    </div>
+
+                   <div class="form-group row">
+                      <label  class="col-sm-2 col-form-label">Subject : <span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="text" name="mail_cc" value="<?=$subject?>" class="form-control" required  autocomplete="off">
+                    </div>
+                    </div>
+
+                   <div class="form-group row">
+                      <label  class="col-sm-2 col-form-label">Description (เพิ่มเติม) : </label>
+                      <div class="col-sm-8">
+                      <textarea name="mail_cc" rows="5"  class="form-control"><?=$description?></textarea>
+                    </div>
+                    </div>
+
+                   <div class="form-group row">
+                      <label  class="col-sm-2 col-form-label">Footer : <span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="text" name="mail_cc" value="<?=$footer?>" class="form-control" required  autocomplete="off">
+                    </div>
+                    </div>
+        </div>
+    </div>
+    </div>
+    </form>
+
+<?php   require '../layout/footer.php';?>
+<script src="js/mail_config.js"></script>

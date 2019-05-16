@@ -52,16 +52,38 @@ else {
   // Close any open menu accordions when window is resized below 768px
   $(window).resize(function() {
     if ($(window).width() < 768) {
+      document.cookie = 'flag=1; path=/';
       $('.sidebar .collapse').collapse('hide');
       // if ($(".sidebar").hasClass("toggled")) {
       //   $('.sidebar .collapse').collapse('hide');
       // };
       $("#sidebarToggleTop").on('click',function(e) {
         $(".sidebar").toggleClass("toggled");
-        console.log('asasds');
        });
     };
   });
+
+  if ($(window).width() < 768) {
+    document.cookie = 'flag=1; path=/';
+    $('.sidebar .collapse').collapse('hide');
+    // if ($(".sidebar").hasClass("toggled")) {
+    //   $('.sidebar .collapse').collapse('hide');
+    // };
+    // $("#sidebarToggleTop").on('click',function(e) {
+    //   $(".sidebar").toggleClass("toggled");
+    //  });
+  }
+
+//   if ($(window).width() < 400) {
+//     document.cookie = 'flag=2; path=/';
+//    $('.sidebar .collapse').collapse('hide');
+//   //  if ($(".sidebar").hasClass("toggled")) {
+//   //    $('.sidebar .collapse').collapse('hide');
+//   //  };
+//    $("#sidebarToggleTop").on('click',function(e) {
+//      $(".sidebar").toggleClass("toggled");
+//     });
+//  };
 
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {

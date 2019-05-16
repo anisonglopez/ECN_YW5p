@@ -7,9 +7,7 @@ if(in_array('NTI', $role_module_chk) == FALSE) :
   // exit(0);
 endif;
 ?>
-<!-- Custom css -->
-<link href="css/ecn.css" rel="stylesheet"/> 
-<!-- Custom css -->
+
 
 
           <!-- Page Heading -->

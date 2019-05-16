@@ -89,6 +89,7 @@ Notification
           <?php if( in_array('EFFDATE', $role_menu_chk)) : ?>
           <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
           <?php endif; //end System role?> 
+          <a class="collapse-item <?=$ap == 'mail_config'? 'active':'';?>" href="../mail_config/mail_config.php">E-mail</a>
       <!-- <a class="collapse-item <?=$ap == 'newpage'? 'active':'';?>" href="../base/newpage.php">Blank</a> -->
       <div class="collapse-divider"></div>
     </div>
