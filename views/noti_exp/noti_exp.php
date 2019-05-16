@@ -7,9 +7,6 @@ if(in_array('NTI', $role_module_chk) == FALSE) :
   // exit(0);
 endif;
 ?>
-
-
-
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">ECN Management</h1>
           <!-- Default Card Example -->
@@ -26,9 +23,8 @@ endif;
       <!-- <div class="col-md-3">
       
       </div> -->
-
       <div class="col-md-4 text-right">
-      <button class="btn btn-success">Send Mail</button>
+      <button class="btn btn-success" data-toggle="modal" data-target="#send_mail_modal">Send Mail</button>
       </div>
     </div>        
   </div>
@@ -51,7 +47,7 @@ endif;
     OR (ecn_status = 'Follow_up' AND eff = 'Effective')
     ");
     $statement->execute();
-    $result = $statement->fetchAll();
+    $result_noti = $statement->fetchAll();
     } //try
     catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
@@ -110,7 +106,7 @@ endif;
           </tr>
         </thead>
         <tbody>
-        <?php foreach ($result as $row) : ?>
+        <?php foreach ($result_noti as $row) : ?>
             <tr class="small">
             <td class="text-center"><a href="../ecn/ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a></td>
             <td class="text-center"><?=$row['ecn_status'] == 'Closed' ? 
@@ -153,6 +149,7 @@ endif;
         </tbody>
         </table>
 <!-- end card -->
+<?php   require 'modal/send_mail_modal.php';?>
 <?php   require '../layout/footer.php';?>
 <script>
  var table = $('#dataTable').DataTable();

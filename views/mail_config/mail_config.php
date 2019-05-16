@@ -5,17 +5,18 @@ try{
   $statement = $pdo->prepare("SELECT * From 00_mail_config WHERE mail_id = 'mail_cf_pk' ");
   $statement->execute();
   $result = $statement->fetchAll();
-} //try
-catch (PDOException $e) {
-  print "Error!: " . $e->getMessage() . "<br/>";
-}
-foreach ($result as $row) :
+  foreach ($result as $row) :
     $mail_to = $row['mail_to'];
     $mail_cc = $row['mail_cc'];
     $subject = $row['subject'];
     $description = $row['description'];
     $footer = $row['footer'];
 endforeach;
+} //try
+catch (PDOException $e) {
+  print "Error!: " . $e->getMessage() . "<br/>";
+}
+
 ?>
 
           <!-- Page Content -->
@@ -67,7 +68,8 @@ endforeach;
                    <div class="form-group row">
                       <label  class="col-sm-2 col-form-label">Footer : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="text" name="footer" value="<?=$footer?>" class="form-control" required  autocomplete="off">
+                      <textarea name="footer" rows="5"  class="form-control"><?=$footer?></textarea>
+                        
                     </div>
                     </div>
         </div>
