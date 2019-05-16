@@ -5,6 +5,9 @@
         margin: 1.75rem auto;
     }
 }
+label.col-form-label{
+    text-align: right;
+}
 </style>
 <!-- UserProfile msgbox Modal-->
 <div class="modal fade" id="send_mail_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -33,7 +36,7 @@
                     print "Error!: " . $e->getMessage() . "<br/>";
                 }
         ?>
-        <form >
+        <form method="post">
                 <div class="modal-body">           
                         <div class="modal-body small" >
 
@@ -130,6 +133,59 @@
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
           <button class="btn btn-success" type="submit" >ส่งอีเมล</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+$( "form" ).on( "submit", function( event ) {
+    event.preventDefault();
+    var form = $(this);
+    console.log( $( this ).serialize() );
+    $('#send_mail_modal').modal('hide');
+    $('#mail_respond').modal('show');
+  $.ajax({
+           type: "POST",
+           url: "../mail_send/mail_send.php",
+        //    dataType: 'json',
+           data: form.serialize(), // serializes the form's elements.
+        beforeSend: function(jqXHR, settings) {
+        $('#mail_respond_txt').html("กำลังส่งเมล ...");  
+        },
+           success: function(data)
+           {
+            document.getElementById("mail_respond_txt").innerHTML = data;
+            // console.log(data);
+           }
+        //    ,
+        //    error: function (jqXHR, exception) {
+        //     document.write(exception);
+        //     console.log(exception);}
+         });
+});
+
+  </script>
+
+      <!-- mail respond Modal-->
+      <div class="modal fade" id="mail_respond" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ผลการส่งเมล</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form method="post"  >
+             <div class="modal-body">        
+            <div class="text-center">  
+            <p id="mail_respond_txt"></p>                   
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
         </div>
         </form>
       </div>
