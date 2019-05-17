@@ -4,7 +4,7 @@ if (isset($_POST['mail_to'])) {
     session_start();
  $TABLE_NAME = "00_mail_config";
   $mail_to = htmlspecialchars($_POST['mail_to']);
-  $mail_cc = htmlspecialchars($_POST['mail_cc']);
+  $mail_from = htmlspecialchars($_POST['mail_from']);
   $subject = htmlspecialchars($_POST['subject']);
   $description = htmlspecialchars($_POST['description']);
   $footer = htmlspecialchars($_POST['footer']);
@@ -14,7 +14,7 @@ if (isset($_POST['mail_to'])) {
     try {
       $datalist =[
         "mail_to"        => $mail_to,
-        "mail_cc"        => $mail_cc,
+        "mail_from"        => $mail_from,
         "subject"        => $subject,
         "description"        => $description,
         "footer"        => $footer,
@@ -23,7 +23,7 @@ if (isset($_POST['mail_to'])) {
       ];
       $sql = "UPDATE $TABLE_NAME 
               SET mail_to = :mail_to,
-              mail_cc = :mail_cc,
+              mail_from = :mail_from,
               subject = :subject,
               description = :description,
               footer = :footer,

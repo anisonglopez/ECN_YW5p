@@ -8,11 +8,11 @@ if($ServerName == 'localhost:82'){
     $userPassword_1 = "";
     $dbName_1 = "enc";
     // MAIL CONFIGURATION
-define("MAIL_USR", "phoomwattanaklang@gmail.com");
-define("MAIL_PWD", "Anisong1234");
-define("MAIL_SENDER_ADDRESS", "phoomwattanaklang@gmail.com");
-define("MAIL_SENDER_NAME", "Test");
-define("MAIL_SUBJECT", "[Phonebook] ข้อความจากระบบ phonebook");
+define("MAIL_USR", "anisongduck@gmail.com");
+define("MAIL_PWD", "Anisong12");
+define("MAIL_SENDER_ADDRESS", "anisongduck@gmail.com");
+//define("MAIL_SENDER_NAME", "Test");
+//define("MAIL_SUBJECT", "[Phonebook] ข้อความจากระบบ phonebook");
 define("MAIL_CHARSET", "utf-8");
 define("MAIL_HOST", "smtp.gmail.com");
 define("MAIL_PORT", 587);
@@ -45,6 +45,7 @@ try {
  $pdo = new PDO("mysql:host=$serverName_1;dbname=$dbName_1;$charSet_1", $userName_1, $userPassword_1);
  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  $pdo->exec("set names utf8mb4");
+ date_default_timezone_set("Asia/Bangkok");
     //echo "Connected!: ". "<br/>";
 //insert
 } catch (PDOException $e) {

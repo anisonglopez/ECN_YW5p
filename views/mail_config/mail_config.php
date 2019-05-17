@@ -7,7 +7,7 @@ try{
   $result = $statement->fetchAll();
   foreach ($result as $row) :
     $mail_to = $row['mail_to'];
-    $mail_cc = $row['mail_cc'];
+    $mail_from = $row['mail_from'];
     $subject = $row['subject'];
     $description = $row['description'];
     $footer = $row['footer'];
@@ -45,9 +45,9 @@ catch (PDOException $e) {
                     </div>
 
                     <div class="form-group row">
-                      <label  class="col-sm-2 col-form-label">Cc : </label>
+                      <label  class="col-sm-2 col-form-label">From : </label>
                       <div class="col-sm-8">
-                        <input type="text" name="mail_cc" value="<?=$mail_cc?>" class="form-control"  autocomplete="off">
+                        <input type="text" name="mail_from" value="<?=$mail_from?>" class="form-control"  autocomplete="off">
                     </div>
                     </div>
 

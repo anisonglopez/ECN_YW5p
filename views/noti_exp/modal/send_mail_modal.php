@@ -26,7 +26,7 @@ label.col-form-label{
                     $result = $statement->fetchAll();
                     foreach ($result as $row) :
                     $mail_to = $row['mail_to'];
-                    $mail_cc = $row['mail_cc'];
+                    $mail_from = $row['mail_from'];
                     $subject = $row['subject'];
                     $description = $row['description'];
                     $footer = $row['footer'];
@@ -48,9 +48,9 @@ label.col-form-label{
                             </div>
 
                             <div class="form-group row">
-                      <label  class="col-sm-3 col-form-label">Cc : </label>
+                      <label  class="col-sm-3 col-form-label">From : </label>
                       <div class="col-sm-9">
-                        <input type="text" name="mail_cc" value="<?=$mail_cc?>" class="form-control form-control-sm"  autocomplete="off">
+                        <input type="text" name="mail_from" value="<?=$mail_from?>" class="form-control form-control-sm"  autocomplete="off">
                     </div>
                     </div>
 
