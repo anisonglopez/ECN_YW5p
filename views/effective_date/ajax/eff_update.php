@@ -7,7 +7,7 @@ if (isset($_POST['eff_exp_id'])) {
   $eff_exp_date_int = htmlspecialchars($_POST['eff_exp_date_int']);
   $eff_exp_remark = htmlspecialchars($_POST['eff_exp_remark']);
   $user_update = $_SESSION['user_name'];
-  date_default_timezone_set("Asia/Bangkok");
+ 
   $date_today = date('Y-m-d H:i:s');
     try {
         $sql = "UPDATE $TABLE_NAME 

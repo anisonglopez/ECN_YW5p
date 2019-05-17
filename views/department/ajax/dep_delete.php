@@ -4,7 +4,7 @@ if (isset($_POST['_id'])) {
     require '../../00_config/connect.php';//db connect
  $TABLE_NAME = "00_department";
  $user_update = $_SESSION['user_name'];
- date_default_timezone_set("Asia/Bangkok");
+
  $date_today = date('Y-m-d H:i:s');
  try {
     $dep_id = $_POST['_id'];

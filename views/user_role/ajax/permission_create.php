@@ -1,7 +1,7 @@
 <?php 
     require '../../00_config/connect.php';
     session_start();
-    date_default_timezone_set("Asia/Bangkok");
+   
     $date_today = date('Y-m-d H:i:s');
     $user_update = $_SESSION['user_name'];
     $tbl_role = '01_role';

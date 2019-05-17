@@ -8,7 +8,7 @@ if (isset($_POST['menu_id'])) {
   $menu_name = htmlspecialchars($_POST['menu_name']);
   $module_id = htmlspecialchars($_POST['module_id']);
   $user_update = $_SESSION['user_name'];
-  date_default_timezone_set("Asia/Bangkok");
+ 
   $date_today = date('Y-m-d H:i:s');
     try {
 

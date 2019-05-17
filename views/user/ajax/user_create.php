@@ -22,7 +22,7 @@ if (isset($_POST['user_name'])) {
   $emp_name = $_POST['emp_name'];
   $emp_tel = $_POST['emp_tel'];
     try {
-      date_default_timezone_set("Asia/Bangkok");
+     
       $date_today = date('Y-m-d H:i:s');
       $datalist =[
         "user_name"        => $user_name,

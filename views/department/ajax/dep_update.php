@@ -9,7 +9,7 @@ if (isset($_POST['dep_id'])) {
  $dep_note = $_POST['dep_note'];
  $dep_active = $_POST['dep_active'];
  $user_update = $_SESSION['user_name'];
- date_default_timezone_set("Asia/Bangkok");
+
  $date_today = date('Y-m-d H:i:s');
  try {
     $datalist =[

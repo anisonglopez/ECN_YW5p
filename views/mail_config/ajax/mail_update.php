@@ -9,7 +9,7 @@ if (isset($_POST['mail_to'])) {
   $description = htmlspecialchars($_POST['description']);
   $footer = htmlspecialchars($_POST['footer']);
   $user_update = $_SESSION['user_name'];
-  date_default_timezone_set("Asia/Bangkok");
+ 
   $date_today = date('Y-m-d H:i:s');
     try {
       $datalist =[

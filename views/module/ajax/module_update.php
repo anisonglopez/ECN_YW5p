@@ -7,7 +7,7 @@ if (isset($_POST['m_id'])) {
   $module_id = htmlspecialchars($_POST['m_id']);
   $module_name = htmlspecialchars($_POST['m_name']);
   $user_update = $_SESSION['user_name'];
-  date_default_timezone_set("Asia/Bangkok");
+ 
   $date_today = date('Y-m-d H:i:s');
     try {
       $datalist =[

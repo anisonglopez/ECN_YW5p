@@ -6,7 +6,7 @@ if (isset($_POST['user_id'])) {
     }
 
     session_start();
-    date_default_timezone_set("Asia/Bangkok");
+   
     $date_today = date('Y-m-d H:i:s');
     $user_update = $_SESSION['user_name'];
     //echo $pdo;

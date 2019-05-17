@@ -3,7 +3,7 @@ if (isset($_POST['old_password'])) {
             try{
                      require '../../00_config/connect.php';//db connect
                     session_start();
-                    date_default_timezone_set("Asia/Bangkok");
+                   
                     $date_today = date('Y-m-d H:i:s');
                     $user_name = $_SESSION['user_name'];
                     $user_id = $_SESSION['user_id'];
