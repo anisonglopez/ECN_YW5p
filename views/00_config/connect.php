@@ -52,5 +52,9 @@ try {
     print "Error!: Cannot connection to database " . $e->getMessage() . "<br/>";
     die();
 }
-
+// $command = escapeshellcmd('open . ');
+// $command = escapeshellcmd('gnome-terminal ');
+// $output = shell_exec($command);
+// echo "<pre>".$output."</pre>";
+// echo "<pre>$output</pre>";
 ?>
