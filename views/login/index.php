@@ -1,3 +1,4 @@
+<?php include '../layout/config.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +76,7 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <p class="small">App Version 1.0.0</p>
+                    <p class="small"> Copyright &copy; ECN Management <?= date('Y')?> | v.<?=$app['version']?> | Last update <?=$app['updated']?></p>
                   </div>
                 </div>
               </div>
