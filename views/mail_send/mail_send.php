@@ -5,7 +5,6 @@ include "../layout/config.php";
 sleep(1);
 // Give security access
 set_time_limit(MAIL_TIMEOUT);
-
 if(isset($_POST['mail_to'])){
     $mail_to = $_POST["mail_to"];
     $mail_from = $_POST["mail_from"];
@@ -64,7 +63,6 @@ if(isset($_POST['mail_to'])){
         catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
         }
-// ดึงข้อมูล Email มาจากตาราง feedback_email โดย avtive = 0
 header('Content-Type: text/html; charset=utf-8');
 $mail = new PHPMailer;
 $mail->CharSet = MAIL_CHARSET;
@@ -81,8 +79,6 @@ $mail->SMTPSecure = false;
 $sender = $mail_from; // ชื่อผู้ส่ง
 $email_sender = MAIL_SENDER_ADDRESS; // เมล์ผู้ส่ง 
 $email_receiver = explode(',', $mail_to); // เมล์ผู้รับ ***
-//$email_receiver = $mail_to; 
-// $subject = "[Phonebook] ข้อความจากระบบ phonebook"; // หัวข้อเมล์
 $mail->Username = MAIL_USR;
 $mail->Password = MAIL_PWD;
 $mail->setFrom($email_sender, $sender);
@@ -92,40 +88,6 @@ foreach($email_receiver as $email)
    // เพิ่ม email Address
 }
 $mail->Subject = $subject . ' ประจำวันที่ ' .date('d/m/Y');;
-
-// ส่วนของ
-// header('Content-Type: text/html; charset=utf-8');
-// $mail = new PHPMailer;
-// $mail->CharSet = MAIL_CHARSET;
-// $mail->isSMTP();
-// $mail->Timeout = MAIL_TIMEOUT;
-// $mail->Host = MAIL_HOST;
-// $mail->Port = MAIL_PORT;
-// $mail->SMTPAuth = true;
-// $mail->SMTPSecure = 'tls';
-// //$mail->SMTPAuth = true;
-// $mail->SMTPSecure = false;
-// $mail->SMTPDebug = 2; //mailDebug 
-
-// ตั้งค่าอนุญาตการใช้งานได้ที่นี่ https://myaccount.google.com/lesssecureapps?pli=1
- 
-
-
-// $subject = "[Phonebook] ข้อความจากระบบ phonebook"; // หัวข้อเมล์
-// $mail->Username = MAIL_USR;
-// $mail->Password = MAIL_PWD;
-// $mail->setFrom(MAIL_SENDER_ADDRESS, MAIL_SENDER_NAME);
-// $recipients = ['dss'];
-
-// foreach($recipients as $email => $name)
-// {
-//    $mail->addAddress($email, $name);
-//    // เพิ่ม email Address
-// }
-
-
-
-//$mail->Subject = MAIL_SUBJECT;
  
 $email_content =' <!DOCTYPE html>
 <html>
@@ -187,7 +149,6 @@ $email_content =' <!DOCTYPE html>
     </body>
 </html>
 ';
-
 //  ถ้ามี email ผู้รับ
 if(!empty($email_receiver)){
     $mail->msgHTML($email_content);

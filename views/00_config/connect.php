@@ -25,15 +25,15 @@ define("MAIL_TIMEOUT", 5);
     $userPassword_1 = "P@ssw0rdEcn@";
     $dbName_1 = "cheetahs_ecn";
         // MAIL CONFIGURATION
-define("MAIL_USR", "phonebook@ch7.com");
-define("MAIL_PWD", "P@ssw0rd");
-define("MAIL_SENDER_ADDRESS", "phonebook@ch7.com");
-define("MAIL_SENDER_NAME", "Phonebook");
-define("MAIL_SUBJECT", "[Phonebook] ข้อความจากระบบ phonebook");
-define("MAIL_CHARSET", "utf-8");
-define("MAIL_HOST", "webmail.ch7.com");
-define("MAIL_PORT", 25);
-define("MAIL_TIMEOUT", 5);
+        define("MAIL_USR", "anisongduck@gmail.com");
+        define("MAIL_PWD", "Anisong12");
+        define("MAIL_SENDER_ADDRESS", "anisongduck@gmail.com");
+        //define("MAIL_SENDER_NAME", "Test");
+        //define("MAIL_SUBJECT", "[Phonebook] ข้อความจากระบบ phonebook");
+        define("MAIL_CHARSET", "utf-8");
+        define("MAIL_HOST", "smtp.gmail.com");
+        define("MAIL_PORT", 465);
+        define("MAIL_TIMEOUT", 20);
 }else{
     echo 'Error ..! Please Contact Support';
     die();
