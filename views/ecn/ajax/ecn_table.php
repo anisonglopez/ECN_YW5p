@@ -114,6 +114,7 @@ if (isset($_POST['cre_date_start'])) {
             <script>     
             $(document).ready(function() {
                 var table = $('#dataTable').DataTable({
+                    stateSave: true,
                     "pageLength": 25,
                     "order": [ 2, "desc" ]
                     });

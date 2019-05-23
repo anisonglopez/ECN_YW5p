@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 }
 ?>
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Edit Menu</h1>
+          <h1 class="h3 mb-4 text-gray-800">Edit Effective Date</h1>
           <!-- Page Content -->
           <hr>
           <form method="post">
@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
   <div class="card-header">
     <div class="row">
       <div class="col-md-6 m-0 font-weight-bold text-primary">
-          แก้ไขข้อมูลเมนู
+          แก้ไขข้อมูล Effective Date
       </div>
       <div class="col-md-6 text-right">
       <button  type="reset" class="btn btn-facebook" onclick="location.href='eff.php';">Back</button>
