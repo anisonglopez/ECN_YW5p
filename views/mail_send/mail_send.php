@@ -72,7 +72,7 @@ $mail->Port = MAIL_PORT;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = false;
-//$mail->SMTPDebug = 2; mailDebug 
+//$mail->SMTPDebug = 1; //mailDebug 
  
 // ตั้งค่าอนุญาตการใช้งานได้ที่นี่ https://myaccount.google.com/lesssecureapps?pli=1
  
@@ -89,16 +89,27 @@ foreach($email_receiver as $email)
 }
 $mail->Subject = $subject . ' ประจำวันที่ ' .date('d/m/Y');;
  
-$email_content =' <!DOCTYPE html>
+$email_content =' 
+<!DOCTYPE html>
+<style>
+font-family: "Prompt", sans-serif;
+</style>
+
+
 <html>
     <head>
+    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
         <meta charset=utf-8"/>
-        <title>ทดสอบการส่ง Email</title>
+        <title> ECN Management</title>
     </head>
     <body style="position: absolute;
     width: 700px;">
         
         <div style="padding:20px;">
+        <h1 style="background: #3b434c;padding: 10px 0 20px 10px;margin-bottom:10px;font-size:30px;color:white;" >
+        ECN Management
+        <hr>
+    </h1>
             <div>
           
                 <h2>  <strong style="color:#0e0e2f;">

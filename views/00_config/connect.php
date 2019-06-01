@@ -31,9 +31,9 @@ define("MAIL_TIMEOUT", 5);
         //define("MAIL_SENDER_NAME", "Test");
         //define("MAIL_SUBJECT", "[Phonebook] ข้อความจากระบบ phonebook");
         define("MAIL_CHARSET", "utf-8");
-        define("MAIL_HOST", "smtp.gmail.com");
-        define("MAIL_PORT", 465);
-        define("MAIL_TIMEOUT", 20);
+        define("MAIL_HOST", "74.125.68.109");
+        define("MAIL_PORT", 587);
+        define("MAIL_TIMEOUT", 20); 
 }else{
     echo 'Error ..! Please Contact Support';
     die();
@@ -53,8 +53,9 @@ try {
     die();
 }
 // $command = escapeshellcmd('open . ');
-// $command = escapeshellcmd('gnome-terminal ');
+// $command = escapeshellcmd('ping -t 2 smtp.gmail.com');
 // $output = shell_exec($command);
 // echo "<pre>".$output."</pre>";
+// exit();
 // echo "<pre>$output</pre>";
 ?>
