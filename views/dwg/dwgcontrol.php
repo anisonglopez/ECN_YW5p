@@ -3,10 +3,10 @@ $title = "DWG Control";
 require '../layout/header.php';
 $tbl_dwg = '31_dwg_control';
 try{
-  $statement = $pdo->prepare("SELECT *  FROM $tbl_dwg
-   WHERE dwg_trash = 0 ");
-  $statement->execute();
-  $result = $statement->fetchAll();
+  // $statement = $pdo->prepare("SELECT *  FROM $tbl_dwg
+  //  WHERE dwg_trash = 0 ");
+  // $statement->execute();
+  // $result = $statement->fetchAll();
 } //try
 catch (PDOException $e) {
   print "Error!: " . $e->getMessage() . "<br/>";
@@ -28,7 +28,7 @@ catch (PDOException $e) {
                 </div>
         </div>
         <br>
-        <div class="table-responsive">
+    <div class="table-responsive">
       <table class="table table-hover table-sm small" id="dataTable">
         <thead class="bg-info text-white">
           <tr>
@@ -47,28 +47,6 @@ catch (PDOException $e) {
             <th class="text-center">Action</th>
           </tr>
         </thead>
-        <tbody>
-        <?php foreach ($result as $row) : ?>
-                  <tr id="<?php echo ($row["dwg_id"]); ?>">
-                    <td><?php echo ($row["dwg_no"]); ?></td>
-                    <td><?php echo ($row["minor"]); ?></td>
-                    <td><?php echo ($row["part_name"]); ?></td>
-                    <td><?php echo ($row["memo_part_list"]); ?></td>
-                    <td><?php echo ($row["qa_chart"]); ?></td>
-                    <td><?php echo ($row["part_dwg"]); ?></td>
-                    <td><?php echo ($row["gen_dwg"]); ?></td>
-                    <td><?php echo ($row["mat_dwg"]); ?></td>
-                    <td><?php echo ($row["pages"]); ?></td>
-                    <td><?php echo ($row["remark"]); ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($row["pc_recive_date"])); ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($row["distribute_date"])); ?></td>
-                    <td class="text-center"><a href="dwg_change.php?id=<?php echo base64_encode($row["dwg_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
-                    <!-- <a id="button"  href="JavaScript:if(confirm('Confirm Delete?')==true){window.location='dep_delete.php?id=<?php echo base64_encode($row["dep_id"]);?>';}"  class="btn btn-outline-danger btn-sm"><span class="fas fa-trash fa-fw"></span></a> -->
-                    <button id="<?php echo ($row["dwg_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>
-                  </td>
-                  </tr>
-                  <?php endforeach; ?>
-        </tbody>
       </table>
       </div>
 
@@ -80,11 +58,51 @@ catch (PDOException $e) {
 <script src='js/dwg_table.js'></script>
 <script>
         $(document).ready(function() {
-        var table = $('#dataTable').DataTable({
-        stateSave: true,
+        // var table = $('#dataTable').DataTable({
+        // stateSave: true,
+        // "pageLength": 25,
+        // "order": [ 0, "asc" ]
+        // });
+        var table = $('#dataTable').DataTable( {
+          stateSave: true,
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            url: "dwg_serverside.php",
+            dataSrc: function ( data ) {
+          //  recordsTotal = data.recordsTotal;
+           return data.data;
+         } 
+        },
         "pageLength": 25,
-        "order": [ 0, "asc" ]
-        });
+        drawCallback: function( settings ) {
+        // var api = this.api();
+        // $( api.column( 1 ).footer() ).html(
+        //   'Total Records: '+recordsTotal
+        //     );
+        }
+//         ,
+//         'columnDefs': [
+//   {
+//       "targets": 0, // your case first column
+//       "className": "text-center",
+//       "width": "15%"
+//  },
+//      {
+//           "targets": 1,
+//           "className": "text-center",
+//      },
+//      {
+//           "targets": 4,
+//           "className": "text-center",
+//      },
+//      {
+//           "targets": 6,
+//           "className": "text-right",
+//      }
+// ]
+
+ } );
         $('#dataTable tbody').on( 'click', 'tr', function () {
                         if ( $(this).hasClass('selected') ) {
                             $(this).removeClass('selected');
