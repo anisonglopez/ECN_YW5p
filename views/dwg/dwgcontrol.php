@@ -13,7 +13,7 @@ catch (PDOException $e) {
 }
 ?>
           <!-- Page Content -->
-          <h1><?=$title ?></h1>
+          <h3><?=$title ?></h3>
           <hr>
           <div id="alert_box" class="alert alert-success  fade " style="display: none;">
   <strong id="msg_head"></strong><p id="msg_txt"></p>
@@ -23,7 +23,7 @@ catch (PDOException $e) {
                 <div class="col-md-12 text-right">
                     <button class="btn btn-success" onclick="location.href='dwg_create.php';">Create New</button>
                     <button class="btn btn-primary">Load Excel File</button>
-                    <button class="btn btn-primary">Import Data</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#import_excel_modal">Import Excel</button>
                     <button class="btn btn-primary">Export Data</button>
                 </div>
         </div>
@@ -71,6 +71,11 @@ catch (PDOException $e) {
         </tbody>
       </table>
       </div>
+
+
+
+
+<?php   require 'modal/import_excel_modal.php';?>
 <?php   require '../layout/footer.php';?>
 <script>
         $(document).ready(function() {

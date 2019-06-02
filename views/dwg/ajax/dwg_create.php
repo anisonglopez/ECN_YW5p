@@ -26,7 +26,6 @@ if (isset($_POST['dwg_no'])) {
           "remark"        => htmlspecialchars($_POST['remark']),
           "pc_recive_date"        => $pc_recive_date->format('Y-m-d'),
           "distribute_date"        => $distribute_date->format('Y-m-d'),
-          "remark"        => htmlspecialchars($_POST['remark']),
           "dwg_created_by"        => $user_update,
           "dwg_created_date"        => $date_today,
           "dwg_updated_by"        => $user_update,
