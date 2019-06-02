@@ -68,8 +68,14 @@ if (isset($_POST['cre_date_start'])) {
         </thead>
         <tbody>
         <?php foreach ($result as $row) : ?>
+        <?php
+                    $eff_date = date('d/m/Y' , strtotime($row['eff_date']));
+                    if(date('Y-m-d') == $row['eff_date']){
+                        $eff_date = '<span class="badge badge-pill badge-danger">'.$eff_date.'</span>';
+                    }
+        ?>
             <tr class="small">
-                <td><a href="ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>$flg=1" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
+                <td><a href="ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>&flg=1" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
                     <button id="<?php echo ($row["ecn_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button></td>
                 <td><?=$row['ecn_updated_by']?></td>
                 <td width="40"><?=date('d/m/Y' , strtotime($row['created_date']))?></td>
@@ -90,7 +96,7 @@ if (isset($_POST['cre_date_start'])) {
                 '<span class="badge badge-pill badge-dark">'.$row['eff'].'</span>' 
                 : 
                 '<span class="badge badge-pill badge-light">'.$row['eff'].'</span>' ?></td>
-                <td><?=date('d/m/Y' , strtotime($row['eff_date']))?></td>
+                <td><?=$eff_date?></td>
                 <td class="text-center"><?=$row['ecn_status'] == 'Closed' ? 
                 '<span class="badge badge-pill badge-success">'.$row['ecn_status'].'</span>' 
                 : 

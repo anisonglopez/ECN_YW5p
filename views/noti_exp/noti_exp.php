@@ -107,6 +107,12 @@ endif;
         </thead>
         <tbody>
         <?php foreach ($result_noti as $row) : ?>
+        <?php
+                    $eff_date = date('d/m/Y' , strtotime($row['eff_date']));
+                    if(date('Y-m-d') == $row['eff_date']){
+                        $eff_date = '<span class="badge badge-pill badge-danger">'.$eff_date.'</span>';
+                    }
+        ?>
             <tr class="small">
             <td class="text-center"><a href="../ecn/ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a></td>
             <td class="text-center"><?=$row['ecn_status'] == 'Closed' ? 
@@ -117,7 +123,7 @@ endif;
                 '<span class="badge badge-pill badge-dark">'.$row['eff'].'</span>' 
                 : 
                 '<span class="badge badge-pill badge-light">'.$row['eff'].'</span>' ?></td>
-                <td><?=date('d/m/Y' , strtotime($row['eff_date']))?></td>
+                <td><?=$eff_date?></td>
                 <td><?=$row['ecn_updated_by']?></td>
                 <td width="40"><?=date('d/m/Y' , strtotime($row['created_date']))?></td>
                 <td><?=$row['ecn_no']?></td>
