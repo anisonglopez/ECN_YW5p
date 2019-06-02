@@ -53,7 +53,8 @@ $columns = array(
         return '<label">'.date("d/m/Y", strtotime($d)).' </label>';},
     'field' => 'id' ),
         array( 'db' => 'dwg_id',  'dt' => 12 , 'formatter' => function( $d, $row ) {
-        return '<a href="dwg_change.php?id='.base64_encode($d).'" class="btn btn-outline-warning btn-sm"><span class="label label-inverse"><i class="fas fa-edit fa-fw"></i> </span></a>';},
+        return '<a href="dwg_change.php?id='.base64_encode($d).'" class="btn btn-outline-warning btn-sm"><span class="label label-inverse"><i class="fas fa-edit fa-fw"></i> </span></a>
+        <button id="'.$d.'"  class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>';},
     'field' => 'id' )
 );
 
