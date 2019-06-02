@@ -23,33 +23,39 @@ endif;
   <div class="card-header">
     <div class="row">
       <div class="col-md-3">
-      <p>ค้นหา จากวันที่ ECN Created Date
-      <input type="text" name="daterange"  value="<?=date("d/m/Y", strtotime('-30 days')) . ' - ' . date("d/m/Y");?>" class="form-control" />
+      <p>
+        <input type="radio" name="search_condit" id="search_date" onclick="search_con()"  value="1" checked/> ECN Create Date
+      <input type="text" name="daterange"  id="daterange"  value="<?=date("d/m/Y", strtotime('-30 days')) . ' - ' . date("d/m/Y");?>" class="form-control" />
       </p>
+      <p>
+        <input type="radio" name="search_condit" id="search_part_no" onclick="search_con()" value="2" /> Part No
+      <input type="text" name="part_no_search" id="part_no_search"  class="form-control"  />
+      </p>
+
       <div class="col-md-10">
 <div id="loading-progress" class="loading-progress" style="display: none;"></div>
 </div>
       </div>
       <div class="col-md-3">
-      
+      <p>
+            <input type="radio" name="search_condit" id="search_status" onclick="search_con()" value="3" /> ECN Status
+            <select class="form-control" name="ecn_status" id="ecn_status"  required>
+                  <?php include 'utility/ecn_status.php';?>
+            </select>
+      </p>
+      <p>
+          <button class="btn btn-info" onclick="search_submit()"> Search</button>
+      </p>
       </div>
 
- <div class="col-md-2">
-          
-      </div>
+      <div class="col-md-6 text-right">
 
-      <div class="col-md-4 text-right">
-        <p>
         <button class="btn btn-success"onclick="location.href='ecn_create.php';">Create new</button>
-        </p>
-        <p>
         <button class="btn btn-primary"onclick="location.href='../../file_import/ecn/ecn_import_template_updated_12052019.xlsx';">Load Excel file</button>
-        </p>
-        <p>
         <button class="btn btn-primary" data-toggle="modal" data-target="#import_excel_modal">Import Excel</button>
       <button class="btn btn-primary"  onclick="export_excel()" >Export Excel</button>
       <!-- <a href="ajax/ecn_export.php"  class="btn btn-info" download>Download!</a> -->
-        </p>
+
       </div>
     </div>        
   </div>
@@ -61,9 +67,7 @@ endif;
   </div> -->
 </div>
 
-
-      <div  id='detail'></div>
-    
+      <div id="detail"></div>
         
 <!-- end card -->
 

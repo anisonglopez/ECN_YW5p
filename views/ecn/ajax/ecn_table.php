@@ -1,12 +1,38 @@
 <?php
 require '../../00_config/connect.php';
+$tbl_name = '30_ecn';
 if (isset($_POST['cre_date_start'])) {
-    $tbl_name = '30_ecn';
     $search_date_start = $_POST['cre_date_start'];
     $search_date_end = $_POST['cre_date_end'];
     try{
     $statement = $pdo->prepare("SELECT *  FROM $tbl_name
     WHERE ecn_trash = 0 AND created_date  BETWEEN '$search_date_start' and '$search_date_end'
+    ");
+    $statement->execute();
+    $result = $statement->fetchAll();
+    } //try
+    catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    }
+}
+if (isset($_POST['part_no_search'])) {
+    $part_no_search = $_POST['part_no_search'];
+    try{
+    $statement = $pdo->prepare("SELECT *  FROM $tbl_name
+    WHERE ecn_trash = 0 AND part_no_new LIKE '%$part_no_search%' OR part_no_old LIKE '%$part_no_search%'
+    ");
+    $statement->execute();
+    $result = $statement->fetchAll();
+    } //try
+    catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    }
+}
+if (isset($_POST['ecn_status'])) {
+    $ecn_status = $_POST['ecn_status'];
+    try{
+    $statement = $pdo->prepare("SELECT *  FROM $tbl_name
+    WHERE ecn_trash = 0 AND ecn_status LIKE '%$ecn_status%'
     ");
     $statement->execute();
     $result = $statement->fetchAll();
@@ -115,10 +141,11 @@ if (isset($_POST['cre_date_start'])) {
             </tr>
             <?php endforeach; ?>
         </tbody>
-</table>
+        </table>
 
             <script>     
-            $(document).ready(function() {
+            $(document).ready(function(event) {
+            //event.preventDefault();
                 var table = $('#dataTable').DataTable({
                     stateSave: true,
                     "pageLength": 25,

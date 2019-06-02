@@ -208,8 +208,10 @@ if (isset($_GET['id'])) {
                         <label>ECN Status</label> <span class="text-danger">*</span>
                         <select class="form-control" name="ecn_status"  required>
                               <option value="">Select</option>
-                                        <option value="Closed" <?= $ecn_status === "Closed" ? 'selected' : null; ?>>Closed</option>
+                                        <option value="Set_Meeting" <?= $ecn_status === "Set_Meeting" ? 'selected' : null; ?>>Set Meeting</option>
+                                        <option value="Pending" <?= $ecn_status === "Pending" ? 'selected' : null; ?>>Pending</option>
                                         <option value="Follow_up" <?= $ecn_status === "Follow_up" ? 'selected' : null; ?>>Follow up</option>
+                                        <option value="Closed" <?= $ecn_status === "Closed" ? 'selected' : null; ?>>Closed</option>
                               </select>
                         </div>
                         <div class="form-group col-md-6">

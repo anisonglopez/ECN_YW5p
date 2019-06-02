@@ -145,9 +145,7 @@ require '../layout/header.php';
                         <div class="form-group col-md-6">
                         <label>ECN Status</label> <span class="text-danger">*</span>
                         <select class="form-control" name="ecn_status"  required>
-                              <option value="">Select</option>
-                                        <option value="Closed">Closed</option>
-                                        <option value="Follow_up">Follow up</option>
+                        <?php include 'utility/ecn_status.php';?>
                               </select>
                         </div>
                         <div class="form-group col-md-6">
