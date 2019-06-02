@@ -302,7 +302,7 @@ if (isset($_GET['id'])) {
           <th>Description</th>
           <th>File size</th>
           <th>Upload date</th>
-          <th>User update</th>
+          <th>Upload by</th>
           <th>Action</th>
           </tr>
         </thead>
