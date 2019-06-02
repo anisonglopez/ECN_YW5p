@@ -18,9 +18,10 @@ endif;
   <div class="card-header">
     <div class="row">
       <div class="col-md-8">
-      <p>ECN ที่ใกล้ Effective Date อีก <?=$eff_exp_date_int ?> วันข้างหน้า  และรายการ ECN Status Follow Up ทั้งหมด</p>
+      <p>ECN ที่ใกล้ Effective Date อีก <?=$eff_exp_date_int ?> วันข้างหน้า  </p>
+
       </div>
-      <!-- <div class="col-md-3">
+      <!-- <div class="col-md-3" และรายการ ECN Status Follow Up ทั้งหมด>
       
       </div> -->
       <div class="col-md-4 text-right">
