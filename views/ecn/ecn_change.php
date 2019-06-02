@@ -30,11 +30,19 @@ if (isset($_GET['id'])) {
            $model_concern =$row['model_concern'];
            $reason = $row['reason'];
            $wh_m = $row['wh_m'];
+           $service_part_com = $row['service_part_com'];
+           $prod_plan = $row['prod_plan'];
            $sn_break_condit =$row['sn_break_condit'];
            $sn_break = $row['sn_break'];
            $eff = $row['eff'];
            $eff_date =  date('d/m/Y' , strtotime($row['eff_date']));
            $ecn_status = $row['ecn_status'];
+           $planing = $row['planing'];
+           $warehouse = $row['warehouse'];
+           $mange_stock = $row['mange_stock'];
+           $serial_no = $row['serial_no'];
+           $supply_date =  date('d/m/Y' , strtotime($row['supply_date']));
+           $ddate =  date('d/m/Y' , strtotime($row['ddate']));
            $dwg = $row['dwg'];
            $stock_sup = $row['stock_sup'];
            $cost_sup = $row['cost_sup'];
@@ -162,9 +170,22 @@ if (isset($_GET['id'])) {
                         <textarea name="reason"  class="form-control"  placeholder="Reason" rows="5"><?=$reason?></textarea>
                         </div>
                         <div class="form-group col-md-6">
+                        <label>Service part Compatibility <small>New part/Full compatible/Non</small></label>
+                        <textarea name="service_part_com" class="form-control"  placeholder="Service part Compatibility" rows="5"><?=$service_part_com?></textarea>
+                        
+
+                        </div>
+                    </div>
+
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
                         <label>WH Management</label>
                         <textarea name="wh_m"  class="form-control"  placeholder="WH Management" rows="5"><?=$wh_m?></textarea>
                         </div>
+                        <div class="form-group col-md-6">
+                        <label>Prod Plan</label>
+                        <textarea name="prod_plan" class="form-control"  placeholder="Prod Plan" rows="5"><?=$prod_plan?></textarea>
+                      </div>
                     </div>
 
                      <div class="form-row">
@@ -215,8 +236,85 @@ if (isset($_GET['id'])) {
                               </select>
                         </div>
                         <div class="form-group col-md-6">
+                     
+                        </div>
+                    </div>
+
+                    <br>
+                      <h4>Actual for risk</h4>
+                      <hr>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Planing</label>
+                        <input type="text" name="planing" value="<?=$planing?>" class="form-control"  placeholder="Planing">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Warehouse</label>
+                        <input type="text" name="warehouse" value="<?=$warehouse?>" class="form-control"  placeholder="Warehouse">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Management stock (Apros)</label>
+                        <input type="text" name="mange_stock" value="<?=$mange_stock?>" class="form-control"  placeholder="Management stock (Apros)">
+                        </div>
+                        <div class="form-group col-md-6">
+                        </div>
+                    </div>
+
+                     <br>
+                      <h4>Warehouse</h4>
+                      <hr>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>First Deliver</label>
+                        <input type="text"  name="first_deliver" value="<?=$first_deliver?>" class="form-control"  >
+                        <script>
+                          $('input[name="first_deliver"]').daterangepicker({
+                            singleDatePicker: true,
+                            locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                        </script>
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Supply date</label>
+                        <input type="text"  name="supply_date" value="<?=$supply_date?>" class="form-control"  >
+                        <script>
+                          $('input[name="supply_date"]').daterangepicker({
+                            singleDatePicker: true,
+                            locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                        </script>
+                        </div>
+                    </div>
+
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Serial No.</label>
+                        <input type="text" name="serial_no" value="<?=$serial_no?>"  class="form-control"  placeholder="Serial No.">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>D Date</label>
+                        <input type="text"  name="ddate" value="<?=$ddate?>" class="form-control"  >
+                        <script>
+                          $('input[name="ddate"]').daterangepicker({
+                            singleDatePicker: true,
+                            locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                        </script>
+                        </div>
+                    </div>
+
+                 <br>
+                    <h4>Follow up point</h4>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                         <label>DWG</label>
-                        <input type="text" name="dwg" value="<?=$dwg?>" class="form-control"  placeholder="DWG">
+                        <input type="text" name="dwg"  value="<?=$dwg?>" class="form-control"  placeholder="DWG">
+                        </div>
+                        <div class="form-group col-md-6">
+
                         </div>
                     </div>
 
@@ -259,14 +357,7 @@ if (isset($_GET['id'])) {
                         <input type="text" name="first_po" value="<?=$first_po?>" class="form-control"  placeholder="First PO">
                         </div>
                         <div class="form-group col-md-6">
-                        <label>First Deliver</label>
-                        <input type="text"  name="first_deliver"  value="<?=$first_deliver?>" class="form-control"  >
-                        <script>
-                          $('input[name="first_deliver"]').daterangepicker({
-                            singleDatePicker: true,
-                            locale: {  format: 'DD/MM/YYYY' }  
-                          });
-                        </script>
+                        
                         </div>
                     </div>
 
