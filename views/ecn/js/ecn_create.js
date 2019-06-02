@@ -5,6 +5,7 @@ $( "form.ecn" ).on( "submit", function( event ) {
     var msg_txt = document.getElementById("msg_txt");
     event.preventDefault();
     var form = $(this);
+    // console.log( $( this ).serialize() );
   $.ajax({
            type: "POST",
            url: "ajax/ecn_create.php",
@@ -20,6 +21,12 @@ $( "form.ecn" ).on( "submit", function( event ) {
                     msg_head.innerHTML= 'Success !!';
                     msg_txt.innerHTML= data.msg_txt;
                      document.getElementById("ecn_id").value = data.id;
+                     if(data.create_flg == 1){
+                        setTimeout(function(){
+                            var ecn_id = data.ecn_encode
+                            location.href = "ecn_change.php?id="+ ecn_id + "&flg=1";
+                        }, 1000);     
+                     }
                 }else{
                     alert_box.className = 'alert alert-danger alert-dismissible fade show';
                     msg_head.innerHTML= 'Error !!';

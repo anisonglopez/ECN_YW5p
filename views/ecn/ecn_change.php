@@ -76,7 +76,16 @@ if (isset($_GET['id'])) {
       <div class="col-md-6 text-right">
 
       <!-- <button   type="reset" class="btn btn-info" onclick="location.reload();" >Create New</button> -->
-      <button  type="reset" class="btn btn-facebook" onclick="window.history.go(-1); return false;">Back</button>
+      <?php if (isset($_GET['flg'])) {
+            $flg = $_GET['flg'];
+            if($flg == 1){
+        echo ' <a  href="ecn.php" class="btn btn-facebook">Back</a>';
+            }
+      }else{
+        echo ' <button  type="reset" class="btn btn-facebook" onclick="window.history.go(-1); return false;">Back</button>';
+      }
+
+      ?>   
         <button  id='save' type="submit" class="btn btn-success">Update</button>
       </div>
     </div>        

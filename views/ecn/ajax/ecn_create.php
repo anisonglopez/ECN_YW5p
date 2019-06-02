@@ -63,7 +63,12 @@ if (isset($_POST['created_date']) && empty($_POST['ecn_id'])) {
         $msg_status= 'error';
         $msg_txt=  "Error!: " . $e->getMessage();
     } // enc catch
-
+    $data = [ "msg_status"=> $msg_status,
+    "msg_txt" => $msg_txt,
+    "id" => $ecn_id ,
+    "ecn_encode" => base64_encode($ecn_id) ,
+    "create_flg" => '1' ];
+    echo json_encode($data);
 } //end if
 
 

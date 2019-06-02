@@ -216,39 +216,6 @@ require '../layout/header.php';
                         </div>
                     </div>
                    
-                   <br>
-                   
-                   <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <h3>แนบไฟล์</h3>
-                        
-                        </div>
-                        <div class="form-group col-md-6 text-right">
-                        <a href="#" class="btn btn-facebook" data-toggle="modal" data-target="#file_upload_modal">Add new file</a>
-                        </div>
-                    </div>
-
-
-                   <div class="table-responsive">
-                      <div class="form-group row">
-                            <table class="table small">
-                            <thead class="bg-info text-white">
-                            <tr class="text-center">
-                                    <th>File name</th>
-                                    <th>Description</th>
-                                    <th>File size</th>
-                                    <th>Upload date</th>
-                                    <th>User update</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                         
-                            </tbody>
-                            </table>
-                    </div>
-              </div>
-
     </div>
   </div>
 </div>

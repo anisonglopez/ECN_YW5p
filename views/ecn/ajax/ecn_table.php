@@ -116,7 +116,7 @@ if (isset($_POST['cre_date_start'])) {
                 var table = $('#dataTable').DataTable({
                     stateSave: true,
                     "pageLength": 25,
-                    "order": [ 2, "desc" ]
+                    "order": [ 2, "asc" ]
                     });
                 $('#dataTable tbody').on( 'click', 'tr', function () {
                         if ( $(this).hasClass('selected') ) {
