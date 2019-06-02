@@ -44,7 +44,6 @@ if(isset($_POST['mail_to'])){
         WHERE ecn_trash = 0 
         AND (eff_date  BETWEEN '$search_date_start' and '$search_date_end' 
         AND eff = 'Effective'  AND ecn_status = 'Follow_up')
-        OR (ecn_status = 'Follow_up' AND eff = 'Effective')
         ");
         $statement->execute();
         $result_noti = $statement->fetchAll();
@@ -136,8 +135,10 @@ font-family: "Prompt", sans-serif;
                                         foreach ($result_noti as $row) : 
                                             $ecn_no_eff= $row['ecn_no'];
                                             $ecn_eff_date= $row['eff_date'];
+                                            $part_no_old= $row['part_no_old'];
+                                            $part_no_new= $row['part_no_new'];
                                             $email_content.='     
-                                            <li class="list-group-item">'.$i.') '.$ecn_no_eff.'  Effective Date : '.date('d/m/Y' , strtotime($ecn_eff_date)).'</li>
+                                            <li class="list-group-item">'.$i.') '.$ecn_no_eff.',  Effective Date : '.date('d/m/Y' , strtotime($ecn_eff_date)).', Part No Old : '.$part_no_old.', Part No New :'.$part_no_new.'</li>
                                                 ';
                                             $i++;
                                             endforeach; 

@@ -108,8 +108,10 @@ label.col-form-label{
                                          foreach ($result_noti as $row) : 
                                             $ecn_no_eff= $row['ecn_no'];
                                             $ecn_eff_date= $row['eff_date'];
+                                            $part_no_old= $row['part_no_old'];
+                                            $part_no_new= $row['part_no_new'];
                                         ?>
-                                            <li class="list-group-item"><?=$i.') '.$ecn_no_eff?>  Effective Date : <?=date('d/m/Y' , strtotime($ecn_eff_date)) ?> </li>
+                                            <li class="list-group-item"><?=$i.') '.$ecn_no_eff?>,  Effective Date : <?=date('d/m/Y' , strtotime($ecn_eff_date)) ?>, Part No Old : <?=$part_no_old?>, Part No New :  <?=$part_no_new?></li>
                                          <?php 
                                          $i++;
                                         endforeach; 
