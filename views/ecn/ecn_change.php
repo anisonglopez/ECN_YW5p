@@ -64,7 +64,7 @@ if (isset($_GET['id'])) {
   <button type="button" class="close" data-hide="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 
-<form method="post">
+<form method="post" id="ecn" class="ecn">
   <!-- Default Card Example -->
 <div class="card mb-4">
   <div class="card-header">
@@ -268,11 +268,81 @@ if (isset($_GET['id'])) {
                       
                         </div>
                     </div>
+                    <br>
+                   
+                   <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <h3>แนบไฟล์</h3>
+                        
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                        <a href="#" class="btn btn-facebook" data-toggle="modal" data-target="#file_upload_modal">Add new file</a>
+                        </div>
+                    </div>
+                    <?php
+                                $tbl_ecn_attach = '30_ecn_attach';
+                                      try{
+                                        $statement = $pdo->prepare("SELECT *  FROM $tbl_ecn_attach WHERE  ecn_id ='$ecn_id' ");
+                                        $statement->execute();
+                                        $result_att = $statement->fetchAll();
+                                      } //try
+                                      catch (PDOException $e) {
+                                        print "Error!: " . $e->getMessage() . "<br/>";
+                                      }
+                                  ?>
+
+<!-- end card header -->
+<div class="table-responsive">
+  <div class="card-body">
+    <div class="col-md-12">
+      <table class="table table-hover table-sm small" id="dataTable">
+        <thead class="bg-info text-white">
+          <tr>
+          <th>File name</th>
+          <th>Description</th>
+          <th>File size</th>
+          <th>Upload date</th>
+          <th>User update</th>
+          <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($result_att as $row) : 
+              $att_id = $row["att_id"];
+              $file_name = $row["file_name"];
+          ?>
+                                        <tr id="<?=$att_id;?>">
+                                        <td><a href="file_upload/uploads/<?=$file_name;?>"><?=$file_name;?></a></td>
+                                        <td><?php echo ($row["att_desc"]); ?></td>
+                                          <td><?php echo ($row["file_size"]); ?> bytes</td>
+                                          <td><?php echo date("d/m/Y H:i:s", strtotime($row["updated_date"])); ?></td>
+                                          <td><?php echo ($row["updated_by"]); ?></td>
+                                          <td class="text-center">
+                                          <button  type="button" onclick="delete_file('<?=$att_id?>','<?=$file_name?>')"  class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button> 
+                                        </td>
+                                        </tr>
+                                <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
 
     </div>
   </div>
 </div>
 </form>
+
+
               <!-- end card -->
+<?php   require 'modal/file_upload_modal.php';?>
+
 <?php   require '../layout/footer.php';?>
 <script src="js/ecn_create.js"></script>
+<script>
+  $(document).ready(function() {
+    var table = $('#dataTable').DataTable();
+  });
+
+</script>
+
