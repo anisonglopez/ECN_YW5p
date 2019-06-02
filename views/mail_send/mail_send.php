@@ -122,7 +122,7 @@ font-family: "Prompt", sans-serif;
                                         foreach ($result_ecn_create_date as $row) : 
                                         $ecn_no_yesterday= $row['ecn_no'];
                                         $email_content.='     
-                                                    <li class="list-group-item">'.$i.')'.$ecn_no_yesterday.'</li>
+                                                    <li class="list-group-item">'.$i.')'. $ecn_no_yesterday.'</li>
                                                 ';
                                         $i++;
                                             endforeach; 
