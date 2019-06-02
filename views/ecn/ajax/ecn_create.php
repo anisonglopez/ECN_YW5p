@@ -10,6 +10,8 @@ $date_today = date('Y-m-d H:i:s');
 $created_date = DateTime::createFromFormat("d/m/Y" , $_POST['created_date']) ;
 $eff_date = DateTime::createFromFormat("d/m/Y" , $_POST['eff_date']) ;
 $first_deliver = DateTime::createFromFormat("d/m/Y" , $_POST['first_deliver']) ;
+$supply_date = DateTime::createFromFormat("d/m/Y" , $_POST['supply_date']) ;
+$ddate = DateTime::createFromFormat("d/m/Y" , $_POST['ddate']) ;
 $user_update = $_SESSION['user_name'];
 if (isset($_POST['created_date']) && empty($_POST['ecn_id'])) {
     try{
@@ -26,12 +28,20 @@ if (isset($_POST['created_date']) && empty($_POST['ecn_id'])) {
           "ac"        => htmlspecialchars($_POST['ac']),
           "model_concern"        => htmlspecialchars($_POST['model_concern']),
           "reason"        => htmlspecialchars($_POST['reason']),
+          "service_part_com"        => htmlspecialchars($_POST['service_part_com']),
           "wh_m"        => htmlspecialchars($_POST['wh_m']),
+          "prod_plan"        => htmlspecialchars($_POST['prod_plan']),
           "sn_break_condit"        => htmlspecialchars($_POST['sn_break_condit']),
           "sn_break"        => htmlspecialchars($_POST['sn_break']),
           "eff"        => htmlspecialchars($_POST['eff']),
           "eff_date"        => $eff_date->format('Y-m-d'),
           "ecn_status"        => htmlspecialchars($_POST['ecn_status']),
+          "planing"        => htmlspecialchars($_POST['planing']),
+          "warehouse"        => htmlspecialchars($_POST['warehouse']),
+          "mange_stock"        => htmlspecialchars($_POST['mange_stock']),
+          "supply_date"        => $supply_date->format('Y-m-d'),
+          "serial_no"        => htmlspecialchars($_POST['serial_no']),
+          "ddate"        => $ddate->format('Y-m-d'),
           "dwg"        => htmlspecialchars($_POST['dwg']),
           "stock_sup"        => htmlspecialchars($_POST['stock_sup']),
           "cost_sup"        => htmlspecialchars($_POST['cost_sup']),
@@ -87,7 +97,9 @@ if (!empty($_POST['ecn_id'])) {
               "ac"        => htmlspecialchars($_POST['ac']),
               "model_concern"        => htmlspecialchars($_POST['model_concern']),
               "reason"        => htmlspecialchars($_POST['reason']),
+              "service_part_com"        => htmlspecialchars($_POST['service_part_com']),
               "wh_m"        => htmlspecialchars($_POST['wh_m']),
+              "prod_plan"        => htmlspecialchars($_POST['prod_plan']),
               "sn_break_condit"        => htmlspecialchars($_POST['sn_break_condit']),
               "sn_break"        => htmlspecialchars($_POST['sn_break']),
               "eff"        => htmlspecialchars($_POST['eff']),
