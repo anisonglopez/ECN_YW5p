@@ -47,10 +47,10 @@ DWG Control
 </div>
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item  <?=$ap == ($ap == 'dwg_con') ? 'active':'';?>" >
+<li class="nav-item  <?=$ap == ($ap == 'dwgcontrol') ? 'active':'';?>" >
   <a class="nav-link" href="../dwg/dwgcontrol.php">
     <i class="fas fa-fw fa-cubes"></i>
-    <span>DWG Contol</span></a>
+    <span>Drawing Contol</span></a>
 </li>
 
 <!-- Divider -->

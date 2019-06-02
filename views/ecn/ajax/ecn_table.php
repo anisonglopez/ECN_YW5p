@@ -69,7 +69,7 @@ if (isset($_POST['cre_date_start'])) {
         <tbody>
         <?php foreach ($result as $row) : ?>
             <tr class="small">
-                <td><a href="ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
+                <td><a href="ecn_change.php?id=<?php echo base64_encode($row["ecn_id"]); ?>$flg=1" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
                     <button id="<?php echo ($row["ecn_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button></td>
                 <td><?=$row['ecn_updated_by']?></td>
                 <td width="40"><?=date('d/m/Y' , strtotime($row['created_date']))?></td>
