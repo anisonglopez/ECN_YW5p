@@ -1,5 +1,5 @@
 <?php   
-$title = "new page";
+$title = "User";
 require '../layout/header.php';
 try{
   $statement = $pdo->prepare("SELECT 01_user_profile.* , 00_department.dep_name FROM 01_user_profile 

@@ -2,7 +2,6 @@
 $title = "Create Menu";
 require '../layout/header.php';
 $TABLE_Module = '00_module';
-require '../00_config/connect.php';//db connect
 ?>
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Create Menu</h1>

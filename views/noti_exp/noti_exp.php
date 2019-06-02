@@ -1,6 +1,6 @@
 <?ob_start();?>
 <?php   
-$title = "ECN";
+$title = "Effective Date";
 require '../layout/header.php';
 if(in_array('NTI', $role_module_chk) == FALSE) : 
   header("Location: ../base/404.php"); /* Redirect browser */

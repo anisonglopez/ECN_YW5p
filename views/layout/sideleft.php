@@ -40,6 +40,22 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
 
+<?php if( in_array('DWG', $role_module_chk)) : ?>
+<!-- Heading -->
+<div class="sidebar-heading">
+DWG Control
+</div>
+
+<!-- Nav Item - Dashboard -->
+<li class="nav-item  <?=$ap == ($ap == 'dwg_con') ? 'active':'';?>" >
+  <a class="nav-link" href="../dwg/dwgcontrol.php">
+    <i class="fas fa-fw fa-cubes"></i>
+    <span>DWG Contol</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+<?php endif; //end Ecn role?> 
 
 <?php if( in_array('NTI', $role_module_chk)) : ?>
 <!-- Heading -->
