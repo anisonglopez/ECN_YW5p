@@ -151,7 +151,7 @@ for ($row = 2; $row <= $highestRow; ++$row) {
                                     $error_flag = 1;
                                 }
                                 if ($eff !== 'Effective'  && $sn_break_condit !== 'No-Effective' ) {
-                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column sn_break_condit มีค่าข้อมูล ('.$eff.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = Effective หรือ No-Effective
+                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column Effective มีค่าข้อมูล ('.$eff.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = Effective หรือ No-Effective
                                     </p>
                                     ';
                                     $error_flag = 1;
