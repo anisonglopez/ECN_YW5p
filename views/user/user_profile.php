@@ -21,7 +21,7 @@ catch (PDOException $e) {
   <div class="card-header">
     <div class="row">
       <div class="col-md-6 m-0 font-weight-bold text-primary">
-          จัดการข้อมูลผู้ใช้งาน
+          Manage User
       </div>
       <div class="col-md-6 text-right">
         <button class="btn btn-success"onclick="location.href='user_create.php';">Create new</button>
@@ -35,10 +35,10 @@ catch (PDOException $e) {
       <table class="table table-hover table-sm small" id="dataTable">
         <thead class="bg-info text-white">
           <tr>
-            <th>ชื่อผู้ใช้งาน</th>
-            <th>แผนก</th>
-            <th>กลุ่มผู้ใช้งาน</th>
-            <th>อีเมล</th>
+            <th>Username</th>
+            <th>Department</th>
+            <th>User Group</th>
+            <th>email</th>
             <th>Active</th>
             <th>Lock</th>
             <th class="text-center">Action</th>

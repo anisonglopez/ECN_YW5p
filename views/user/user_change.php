@@ -61,16 +61,16 @@ if (isset($_GET['id'])) {
                                       <!--id-->
                                       <input type="hidden" name="user_id" value="<?=$user_id?>"/>
                      <div class="form-group row">
-                      <label for="user_name" class="col-sm-2 col-form-label">ชื่อผู้ใช้งาน : <span class="text-danger">*</span></label>
+                      <label for="user_name" class="col-sm-2 col-form-label">Username : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                         <input type="text" name="user_name" id="user_name" value="<?=$user_name?>" class="form-control"    required placeholder="ระบุชื่อผู้ใช้งาน" disabled>
                     </div>
                     </div>
 
                       <div class="form-group row">
-                      <label for="user_password" class="col-sm-2 col-form-label">รหัสผ่าน : <span class="text-danger">*</span></label>
+                      <label for="user_password" class="col-sm-2 col-form-label">Password : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="password" name="user_password" id="user_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านอย่างน้อย 6 ตัวอักษร">
+                        <input type="password" name="user_password" id="user_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="Password least 6 characters">
                     </div>
                     </div>
 
