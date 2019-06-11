@@ -64,7 +64,7 @@ if (isset($_GET['id'])) {
 }
 ?>
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Change ECN</h1>
+          <h1 class="h3 mb-4 text-gray-800">ECN Modification</h1>
           <!-- Page Content -->
           <hr>
 <div id="alert_box" class="alert alert-success  fade " style="display: none;">
@@ -374,7 +374,7 @@ if (isset($_GET['id'])) {
                    
                    <div class="form-row">
                         <div class="form-group col-md-6">
-                        <h3>แนบไฟล์</h3>
+                        <h3>Attachment</h3>
                         
                         </div>
                         <div class="form-group col-md-6 text-right">

@@ -52,7 +52,7 @@ catch (PDOException $e) {
                     <td><?php echo ($row["menu_id"]); ?></td>
                     <td><?php echo ($row["menu_name"]); ?></td>
                     <td class="text-center"><a href="menu_change.php?id=<?php echo base64_encode($row["menu_id"]); ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit fa-fw"></span></a> 
-                    <button id="<?php echo ($row["menu_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button>
+                    <!-- <button id="<?php echo ($row["menu_id"]); ?>"    class="btn btn-outline-danger btn-sm btndelete" ><span class="fas fa-trash fa-fw"></span></button> -->
                   </td>
                   </tr>
                   <?php endforeach; ?>

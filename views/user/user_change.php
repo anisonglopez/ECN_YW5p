@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
   <div class="card-header">
     <div class="row">
       <div class="col-md-6 m-0 font-weight-bold text-primary">
-          แก้ไขข้อมูลผู้ใช้งาน
+          Edit User
       </div>
       <div class="col-md-6 text-right">
       <button  type="reset" class="btn btn-facebook" onclick="location.href='user_profile.php';">Back</button>
@@ -75,29 +75,29 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <div class="form-group row">
-                      <label for="user_repassword" class="col-sm-2 col-form-label">ระบุรหัสผ่านอีกครั้ง : <span class="text-danger">*</span></label>
+                      <label for="user_repassword" class="col-sm-2 col-form-label">Confirm Password : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="password" name="user_repassword" id="user_repassword" value="" class="form-control"    required  minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านอีกครั้ง">
+                        <input type="password" name="user_repassword" id="user_repassword" value="" class="form-control"    required  minlength="6" maxlength="10" placeholder="Confirm Pasword">
                     </div>
                     </div>
 
                      <div class="form-group row">
-                      <label for="emp_name" class="col-sm-2 col-form-label">ชื่อ - นามสกุล :</label>
+                      <label for="emp_name" class="col-sm-2 col-form-label">Fullname :</label>
                       <div class="col-sm-8">
-                        <input type="text" name="emp_name" id="emp_name" value="<?=$emp_name?>" class="form-control"    placeholder="ชื่อ - นามสกุล" >
+                        <input type="text" name="emp_name" id="emp_name" value="<?=$emp_name?>" class="form-control"    placeholder="Fullname" >
                     </div>
                     </div>
 
                   <div class="form-group row">
-                      <label for="emp_tel" class="col-sm-2 col-form-label">เบอร์ติดต่อ : </label>
+                      <label for="emp_tel" class="col-sm-2 col-form-label">Phone : </label>
                       <div class="col-sm-8">
-                        <input type="text" name="emp_tel" id="emp_tel" value="<?=$emp_tel?>" class="form-control"    placeholder="เบอร์โทรศัพท์" >
+                        <input type="text" name="emp_tel" id="emp_tel" value="<?=$emp_tel?>" class="form-control"    placeholder="Phone" >
                     </div>
                     </div>
 
 
                      <div class="form-group row">
-                      <label for="dep_id" class="col-sm-2 col-form-label">แผนก : <span class="text-danger">*</span></label>
+                      <label for="dep_id" class="col-sm-2 col-form-label">Department : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                       <select class="form-control" name="dep_id" id="dep_id" required >
                               <option value="">Select</option>
@@ -114,7 +114,7 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <div class="form-group row">
-                      <label for="role_id" class="col-sm-2 col-form-label">กลุ่มผู้ใช้งาน : <span class="text-danger">*</span></label>
+                      <label for="role_id" class="col-sm-2 col-form-label">User Group : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
                       <select class="form-control" name="role_id" id="role_id" required >
                               <option value="">Select</option>

@@ -22,7 +22,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนรหัสผ่าน</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -30,23 +30,23 @@
         <form method="post" id="changepassword" class="changepassword" >
              <div class="modal-body">           
                   <div class="form-group row">
-                      <label for="old_password" class="col-sm-4 col-form-label">รหัสผ่านเดิม : <span class="text-danger">*</span></label>
+                      <label for="old_password" class="col-sm-4 col-form-label">Current Password : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="password" name="old_password" id="old_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านเดิม">
+                        <input type="password" name="old_password" id="old_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="Current Password">
                     </div>
                     </div>
 
                 <div class="form-group row">
-                      <label for="user_password" class="col-sm-4 col-form-label">รหัสผ่าน : <span class="text-danger">*</span></label>
+                      <label for="user_password" class="col-sm-4 col-form-label">New Password : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="password" name="user_password" id="user_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านอย่างน้อย 6 ตัวอักษร">
+                        <input type="password" name="user_password" id="user_password" value="" class="form-control"    required minlength="6" maxlength="10" placeholder="New Password">
                     </div>
                     </div>
 
                     <div class="form-group row">
-                      <label for="user_repassword" class="col-sm-4 col-form-label">ระบุรหัสผ่านอีกครั้ง : <span class="text-danger">*</span></label>
+                      <label for="user_repassword" class="col-sm-4 col-form-label">Confirm Password : <span class="text-danger">*</span></label>
                       <div class="col-sm-8">
-                        <input type="password" name="user_repassword" id="user_repassword" value="" class="form-control"    required  minlength="6" maxlength="10" placeholder="ระบุรหัสผ่านอีกครั้ง">
+                        <input type="password" name="user_repassword" id="user_repassword" value="" class="form-control"    required  minlength="6" maxlength="10" placeholder="Confirm Password">
                     </div>
                     </div>
                    

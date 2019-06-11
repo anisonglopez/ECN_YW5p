@@ -50,7 +50,7 @@ DWG Control
 <li class="nav-item  <?=$ap == ($ap == 'dwgcontrol') ? 'active':'';?>" >
   <a class="nav-link" href="../dwg/dwgcontrol.php">
     <i class="fas fa-fw fa-cubes"></i>
-    <span>Drawing Contol</span></a>
+    <span>Drawing Control</span></a>
 </li>
 
 <!-- Divider -->
@@ -72,7 +72,7 @@ Notification
   <div id="collapseTwo" class="collapse <?=$ap == ($ap == 'noti_exp') ? 'show':'';?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">การแจ้งเตือน :</h6>
-      <a class="collapse-item <?=$ap == ($ap == 'noti_exp') ? 'active':'';?>"  href="../noti_exp/noti_exp.php">ECN  Effective Date</a>
+      <a class="collapse-item <?=$ap == ($ap == 'noti_exp') ? 'active':'';?>"  href="../noti_exp/noti_exp.php">Notification List</a>
     </div>
   </div>
 </li>
@@ -88,12 +88,12 @@ Notification
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item <?=$ap == ($ap == 'module') || ($ap == 'menu') || ($ap == 'eff') ? 'active':'';?>">
+<li class="nav-item <?=$ap == ($ap == 'module') || ($ap == 'menu') || ($ap == 'eff') || ($ap == 'mail_config') ? 'active':'';?>">
   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="true" aria-controls="collapseMaster">
     <i class="fas fa-fw fa-cog"></i>
     <span>Configuration</span>
   </a>
-  <div id="collapseMaster" class="collapse <?=($ap == 'module') || ($ap == 'menu') || ($ap == 'eff')  ? 'show':'';?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+  <div id="collapseMaster" class="collapse <?=($ap == 'module') || ($ap == 'menu') || ($ap == 'eff') || ($ap == 'mail_config')  ? 'show':'';?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Configuration:</h6>
       <?php if( in_array('MOD', $role_menu_chk)) : ?>
@@ -103,9 +103,9 @@ Notification
           <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu</a>
           <?php endif; //end System role?> 
           <?php if( in_array('EFFDATE', $role_menu_chk)) : ?>
-          <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Effective Date</a>
+          <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Day of notice</a>
           <?php endif; //end System role?> 
-          <a class="collapse-item <?=$ap == 'mail_config'? 'active':'';?>" href="../mail_config/mail_config.php">E-mail</a>
+          <a class="collapse-item <?=$ap == 'mail_config'? 'active':'';?>" href="../mail_config/mail_config.php">Manage email template</a>
       <!-- <a class="collapse-item <?=$ap == 'newpage'? 'active':'';?>" href="../base/newpage.php">Blank</a> -->
       <div class="collapse-divider"></div>
     </div>

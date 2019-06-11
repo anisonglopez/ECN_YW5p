@@ -8,7 +8,7 @@ if(in_array('NTI', $role_module_chk) == FALSE) :
 endif;
 ?>
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">ECN Management</h1>
+          <h1 class="h3 mb-4 text-gray-800">Notification List</h1>
           <!-- Default Card Example -->
           <div id="alert_box" class="alert alert-success  fade " style="display: none;">
   <strong id="msg_head"></strong><p id="msg_txt"></p>
@@ -18,7 +18,7 @@ endif;
   <div class="card-header">
     <div class="row">
       <div class="col-md-8">
-      <p>ECN ที่ใกล้ Effective Date อีก <?=$eff_exp_date_int ?> วันข้างหน้า  </p>
+      <p>List of ecn are up coming effective date is  <?=$eff_exp_date_int ?> day(s)</p>
 
       </div>
       <!-- <div class="col-md-3" และรายการ ECN Status Follow Up ทั้งหมด>
