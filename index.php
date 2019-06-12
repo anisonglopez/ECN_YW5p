@@ -1,8 +1,6 @@
 <?php
-    header("Location: views/home/"); /* Redirect browser */
+    header("Location: views/login/"); /* Redirect browser */
     exit();
-    $ht= gethostname();
-    $pp = gethostbyname($ht);
 ?>
 <!-- <input type="hidden" id="pp" value="<?=$pp?>"/> -->
 <!-- <script src="vendor/jquery/jquery.min.js"></script>
