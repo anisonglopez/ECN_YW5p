@@ -1,5 +1,5 @@
 <?php
-    header("Location: views/login/"); /* Redirect browser */
+    header("Location: views/home/"); /* Redirect browser */
     exit();
 ?>
 <!-- <input type="hidden" id="pp" value="<?=$pp?>"/> -->
