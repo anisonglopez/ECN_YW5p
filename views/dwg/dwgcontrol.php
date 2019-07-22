@@ -22,7 +22,7 @@ catch (PDOException $e) {
         <div class="row">
                 <div class="col-md-12 text-right">
                     <button class="btn btn-success" onclick="location.href='dwg_create.php';">Create New</button>
-                    <button class="btn btn-primary" onclick="location.href='../../file_import/dwg/dwg_import_template_updated_02062019.xlsx';">Load Excel File</button>
+                    <button class="btn btn-primary" onclick="location.href='../../file_import/dwg/dwg_import_template_updated_02062019.xlsx';">Load Template</button>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#import_excel_modal">Import Excel</button>
                     <button class="btn btn-primary" onclick="export_excel()">Export Data</button>
                 </div>
