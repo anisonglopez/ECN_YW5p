@@ -240,7 +240,7 @@ if (isset($_GET['id'])) {
                         </div>
                     </div>
 
-                    <br>
+                    <!-- <br>
                       <h4>Actual for risk</h4>
                       <hr>
                       <div class="form-row">
@@ -260,22 +260,13 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="form-group col-md-6">
                         </div>
-                    </div>
+                    </div> -->
 
                      <br>
                       <h4>Warehouse</h4>
                       <hr>
                       <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <label>First Deliver</label>
-                        <input type="text"  name="first_deliver" value="<?=$first_deliver?>" class="form-control"  >
-                        <script>
-                          $('input[name="first_deliver"]').daterangepicker({
-                            singleDatePicker: true,
-                            locale: {  format: 'DD/MM/YYYY' }  
-                          });
-                        </script>
-                        </div>
+                        
                         <div class="form-group col-md-6">
                         <label>Supply date</label>
                         <input type="text"  name="supply_date" value="<?=$supply_date?>" class="form-control"  >
@@ -298,6 +289,37 @@ if (isset($_GET['id'])) {
                         <input type="text"  name="ddate" value="<?=$ddate?>" class="form-control"  >
                         <script>
                           $('input[name="ddate"]').daterangepicker({
+                            singleDatePicker: true,
+                            locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                        </script>
+                        </div>
+                    </div>
+
+                 <br>
+                    <h4>Purchasing Management</h4>
+                    <hr>
+                  <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>Buyer</label>
+                        <input type="text" name="buyer" value="<?=$buyer?>" class="form-control"  placeholder="Buyer">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Supplier</label>
+                        <input type="text" name="sup" value="<?=$sup?>" class="form-control"  placeholder="Supplier">
+                        </div>
+                    </div>
+
+                       <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label>First PO</label>
+                        <input type="text" name="first_po" value="<?=$first_po?>" class="form-control"  placeholder="First PO">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>First Deliver</label>
+                        <input type="text"  name="first_deliver" value="<?=$first_deliver?>" class="form-control"  >
+                        <script>
+                          $('input[name="first_deliver"]').daterangepicker({
                             singleDatePicker: true,
                             locale: {  format: 'DD/MM/YYYY' }  
                           });
@@ -337,27 +359,6 @@ if (isset($_GET['id'])) {
                         <div class="form-group col-md-6">
                         <label>Speacial Request</label>
                         <input type="text" name="sp_req" value="<?=$sp_req?>" class="form-control"  placeholder="Speacial Request">
-                        </div>
-                    </div>
-
-                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <label>Buyer</label>
-                        <input type="text" name="buyer" value="<?=$buyer?>" class="form-control"  placeholder="Buyer">
-                        </div>
-                        <div class="form-group col-md-6">
-                        <label>Supplier</label>
-                        <input type="text" name="sup" value="<?=$sup?>" class="form-control"  placeholder="Speacial Request">
-                        </div>
-                    </div>
-
-                       <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <label>First PO</label>
-                        <input type="text" name="first_po" value="<?=$first_po?>" class="form-control"  placeholder="First PO">
-                        </div>
-                        <div class="form-group col-md-6">
-                        
                         </div>
                     </div>
 
