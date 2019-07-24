@@ -163,8 +163,8 @@ for ($row = 2; $row <= $highestRow; ++$row) {
                                     $eff_date = '';
                                     $error_flag = 1;
                                 } 
-                                if ($ecn_status !== 'Closed'  && $ecn_status !== 'Follow_up' ) {
-                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column ecn_status มีค่าข้อมูล ('.$ecn_status.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = Closed หรือ Follow_up
+                                if ($ecn_status !== 'Closed'  && $ecn_status !== 'Follow_up' && $ecn_status !== 'Set_Meeting' && $ecn_status !== 'Pending' ) {
+                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column ecn_status มีค่าข้อมูล ('.$ecn_status.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = Closed, Follow_up, Set_Meeting, Pending
                                     </p>
                                     ';
                                     $error_flag = 1;

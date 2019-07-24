@@ -15,16 +15,40 @@ header("Content-Disposition: attachment; filename=$filename $date_now.xls");
 header("Pragma: no-cache"); 
 header("Expires: 0");
 try{
-    $search_date_start = $_GET['cre_date_start'];
-    $search_date_end = $_GET['cre_date_end'];
-    //echo $search_date_end ;
-    $stmt = $pdo->query("SELECT ecn_no, created_date, buddle_code, 
-    minor, part_no_old, part_name_old, part_no_new, part_name_new, 
-    ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
-    ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
-    sup, first_po, first_deliver, remark FROM $DB_TBLName WHERE 
-    ecn_trash = 0 AND created_date  BETWEEN '$search_date_start' and '$search_date_end' 
-    ");
+    if (isset($_GET['cre_date_start'])){
+        $search_date_start = $_GET['cre_date_start'];
+        $search_date_end = $_GET['cre_date_end'];
+        //echo $search_date_end ;
+        $stmt = $pdo->query("SELECT ecn_no, created_date, buddle_code, 
+        minor, part_no_old, part_name_old, part_no_new, part_name_new, 
+        ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
+        ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
+        sup, first_po, first_deliver, remark FROM $DB_TBLName WHERE 
+        ecn_trash = 0 AND created_date  BETWEEN '$search_date_start' and '$search_date_end' 
+        ");
+    }else if (isset($_GET['partno'])){
+        $part_no = $_GET['partno'];
+        $stmt = $pdo->query("SELECT ecn_no, created_date, buddle_code, 
+        minor, part_no_old, part_name_old, part_no_new, part_name_new, 
+        ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
+        ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
+        sup, first_po, first_deliver, remark FROM $DB_TBLName WHERE 
+        ecn_trash = 0 AND part_no_new LIKE '%".$part_no."%'
+        ");
+        $part_no = ($part_no== NULL) ? 'ALL' : $part_no;
+    }
+    else if (isset($_GET['searchstatus'])){
+        $searchstatus = $_GET['searchstatus'];
+        $stmt = $pdo->query("SELECT ecn_no, created_date, buddle_code, 
+        minor, part_no_old, part_name_old, part_no_new, part_name_new, 
+        ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
+        ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
+        sup, first_po, first_deliver, remark FROM $DB_TBLName WHERE 
+        ecn_trash = 0 AND ecn_status LIKE '%".$searchstatus."%'
+        ");
+        $searchstatus = ($searchstatus== NULL) ? 'ALL' : $searchstatus;
+    }
+    
     // while ($row = $stmt->fetch()) {
     //     //print("name = $stmt");
     // }
@@ -42,7 +66,14 @@ catch (PDOException $e) {
 </head>
 <body>
 <?php
+    if (isset($_GET['cre_date_start'])){
     echo '<h1>ECN Database</h1><h2> ในช่วงวันที่'.date('d/m/Y',strtotime($search_date_start)).' - '.date('d/m/Y',strtotime($search_date_end)).'</h2>';
+    } else if (isset($_GET['partno'])){
+    echo '<h1>ECN Database</h1><h2> Export by Part no. '.$part_no.'</h2>';
+    }else if (isset($_GET['searchstatus'])){
+    echo '<h1>ECN Database</h1><h2> Export by ECN status:  '.$searchstatus.'</h2>';
+    }//ใส่คุมวันที่ง่ายต่อการทำ มี 2 ชุด call db, show Excel header
+
 ?>
 <table  x:str BORDER="1">
 
@@ -51,7 +82,25 @@ catch (PDOException $e) {
 for ($i = 0; $i < $stmt->columnCount(); $i++) {
     $col = $stmt->getColumnMeta($i);
     $columns[] = $col['name'];
-    echo "<th>".$columns[$i]. "</th>";
+
+    if ($i == 17){
+        echo "<th style='background-color:#84e9fb;'>".$columns[$i]. "</th>";
+    }
+    else if ($i == 18){
+        echo "<th style='background-color:#84e9fb;'>".$columns[$i]. "</th>";
+    } 
+    else if ($i == 19){
+        echo "<th style='background-color:#84e9fb;'>".$columns[$i]. "</th>";
+    } 
+    else if ($i == 20){
+        echo "<th style='background-color:#84e9fb;'>".$columns[$i]. "</th>";
+    } 
+    else if ($i == 21){
+        echo "<th style='background-color:#84e9fb;'>".$columns[$i]. "</th>";
+    } 
+    else{
+        echo "<th>".$columns[$i]. "</th>";
+    }
    //echo mb_convert_encoding("ภาษาไทย", 'UTF-8');
 }
     ?>
@@ -71,7 +120,8 @@ while ($row = $stmt->fetch()) {
             }else if($j ==15){
                 $schema_insert .= "<td>".date('d/m/Y' , strtotime($row[$j])).$sep."</td>";
             }else if($j ==25){
-                $schema_insert .= "<td>".date('d/m/Y' , strtotime($row[$j])).$sep."</td>";
+                $first_deliver = date('d/m/Y' , strtotime($row[$j])).$sep;
+                $schema_insert .= "<td>".$first_deliver."</td>";
             }
             else{
                 $schema_insert .= "<td>".$row[$j].$sep."</td>";

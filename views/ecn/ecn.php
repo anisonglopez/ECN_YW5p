@@ -51,7 +51,7 @@ endif;
       <div class="col-md-6 text-right">
 
         <button class="btn btn-success"onclick="location.href='ecn_create.php';">Create new</button>
-        <button class="btn btn-primary"onclick="location.href='../../file_import/ecn/ecn_import_template_updated_12052019.xlsx';">Load Excel file</button>
+        <button class="btn btn-primary"onclick="location.href='../../file_import/ecn/ecn_import_template_updated_24072019.xlsx';">Load Template</button>
         <button class="btn btn-primary" data-toggle="modal" data-target="#import_excel_modal">Import Excel</button>
       <button class="btn btn-primary"  onclick="export_excel()" >Export Excel</button>
       <!-- <a href="ajax/ecn_export.php"  class="btn btn-info" download>Download!</a> -->
@@ -66,7 +66,6 @@ endif;
     </div>
   </div> -->
 </div>
-
       <div id="detail"></div>
         
 <!-- end card -->
