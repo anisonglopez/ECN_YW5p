@@ -66,7 +66,6 @@ endif;
     </div>
   </div> -->
 </div>
-
       <div id="detail"></div>
         
 <!-- end card -->
