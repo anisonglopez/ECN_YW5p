@@ -104,14 +104,14 @@ for ($row = 2; $row <= $highestRow; ++$row) {
                                     //check condition
                                 // Validation Data
                                 if (($timestamp = strtotime($pc_recive_date)) === false) {
-                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column created_date มีค่าข้อมูล ('.$pc_recive_date.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = dd/mm/yyyy
+                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column pc_recive_date มีค่าข้อมูล ('.$pc_recive_date.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = dd/mm/yyyy
                                     </p>
                                     ';
                                     $pc_recive_date = '';
                                     $error_flag = 1;
                                 } 
                                 if (($timestamp = strtotime($distribute_date)) === false) {
-                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column eff_date มีค่าข้อมูล ('.$distribute_date.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = dd/mm/yyyy
+                                    echo '<p class="small text-danger">Row ที่ '.$i.' Column distribute_date มีค่าข้อมูล ('.$distribute_date.') ประเภทข้อมูลไม่ถูกต้อง ..!! format = dd/mm/yyyy
                                     </p>
                                     ';
                                     $distribute_date = '';
@@ -133,8 +133,8 @@ for ($row = 2; $row <= $highestRow; ++$row) {
                     <td><?php echo ($row["mat_dwg"]); ?></td>
                     <td><?php echo ($row["pages"]); ?></td>
                     <td><?php echo ($row["remark"]); ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($row["pc_recive_date"])); ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($row["distribute_date"])); ?></td>
+                    <td><?=date('d/m/Y',strtotime($pc_recive_date))?></td>
+                    <td><?=date('d/m/Y',strtotime($distribute_date))?></td>
             </tr>
                   <?php $i++; endforeach; ?>
         </tbody>
