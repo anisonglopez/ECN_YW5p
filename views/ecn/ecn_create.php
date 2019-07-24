@@ -170,19 +170,19 @@ require '../layout/header.php';
                       <hr>
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label>Planing</label>
-                        <input type="text" name="planing" class="form-control"  placeholder="Planing">
-                        </div>
+                        <label>Planing</label> -->
+                        <input type="hidden" name="planing" class="form-control"  placeholder="Planing">
+                        <!-- </div>
                         <div class="form-group col-md-6">
-                        <label>Warehouse</label>
-                        <input type="text" name="warehouse" class="form-control"  placeholder="Warehouse">
-                        </div>
+                        <label>Warehouse</label> -->
+                        <input type="hidden" name="warehouse" class="form-control"  placeholder="Warehouse">
+                        <!-- </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label>Management stock (Apros)</label>
-                        <input type="text" name="mange_stock" class="form-control"  placeholder="Management stock (Apros)">
-                        </div>
+                        <label>Management stock (Apros)</label> -->
+                        <input type="hidden" name="mange_stock" class="form-control"  placeholder="Management stock (Apros)">
+                        <!-- </div>
                         <div class="form-group col-md-6">
                         </div>
                     </div> -->
