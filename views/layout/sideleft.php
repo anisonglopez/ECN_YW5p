@@ -162,6 +162,21 @@ Notification
 <hr class="sidebar-divider d-none d-md-block">
 <?php endif; //end System role?> 
 
+
+<!-- Nav Item - Master -->
+<li class="nav-item">
+<!-- Nav Item - Dashboard -->
+<li class="nav-item " >
+  <a class="nav-link" href="../../file_import/um/[UserManual]ECN Management_v1_2.pdf" target="_blank">
+    <i class="fas fa-fw fa-file"></i>
+    <span>User Manual</span></a>
+</li>
+</li>
+
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
 <!-- Heading -->
 <!-- <div class="sidebar-heading">
   Logs
