@@ -35,7 +35,7 @@ if (isset($_POST['_id'])):
                     <td><?php echo ($row["updated_date"]); ?></td>
                     <td><?php echo ($row["updated_by"]); ?></td>
                     <td><button class="btn btn-outline-success btn-sm">
-                            <a href="file_upload/uploads/<?=$row['file_name']?>">
+                            <a target="_blank" href="file_upload/uploads/<?=$row['file_name']?>">
                             <span class="fas fa-download fa-fw"></span>
                             </a>
                     </button>

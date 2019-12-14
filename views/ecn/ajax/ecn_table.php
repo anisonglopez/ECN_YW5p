@@ -206,5 +206,4 @@ if (isset($_POST['ecn_status'])) {
         });
     });
  });
-            
-            </script>
+  </script>

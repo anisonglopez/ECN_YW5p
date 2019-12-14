@@ -17,7 +17,10 @@ endif;
           <!-- Default Card Example -->
           <div id="alert_box" class="alert alert-success  fade " style="display: none;">
   <strong id="msg_head"></strong><p id="msg_txt"></p>
-  <button type="button" class="close" data-hide="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  
 </div>
 <div class="card mb-4">
   <div class="card-header">
@@ -29,7 +32,7 @@ endif;
       </p> -->
       <p>
         <input type="radio" name="search_condit" id="search_part_no" onclick="search_con()" value="2" checked /> Part No
-      <input type="text" name="part_no_search" id="part_no_search"  class="form-control"  />
+      <input type="text" name="part_no_search" id="part_no_search"  class="form-control" placeholder="Input Part no"  />
       </p>
 
       <div class="col-md-10">
@@ -44,7 +47,7 @@ endif;
             </select>
       </p>
       <p>
-          <button class="btn btn-info" onclick="search_submit()"> Search</button>
+          <button class="btn btn-info" id="search" type="submit"> Search</button>
       </p>
       </div>
 
@@ -131,7 +134,8 @@ endif;
         // "pageLength": 25,
         // "order": [ 0, "asc" ]
         // });
-        var table = $('#dataTableServerside').DataTable( {
+        var table = $('#dataTableServerside').DataTable({
+          destroy: true,
           stateSave: true,
         "processing": true,
         "serverSide": true,
@@ -144,15 +148,10 @@ endif;
         },
         "pageLength": 25,
         drawCallback: function( settings ) {
-        // var api = this.api();
-        // $( api.column( 1 ).footer() ).html(
-        //   'Total Records: '+recordsTotal
-        //     );
-        }
+        }    
 });
 
-
-    $('#dataTableServerside tbody').on( 'click', '.btndelete', function () {
+$('#dataTableServerside tbody').on( 'click', '.btndelete', function () {
         var _id = this.id;
         var result = confirm("Want to delete?");
           if (result) {
@@ -169,32 +168,23 @@ endif;
               $('#alert_box').show();
                console.log(data);
                   if(data == 'error'){
-                      alert_box.className = 'alert alert-danger alert-dismissible fade show';
-                      msg_head.innerHTML= 'Error !!';
-                      msg_txt.innerHTML= 'พบปัญหา ไม่สามารถลบข้อมูลได้ กรูราติดต่อเจ้าหน้าที่ ที่เกี่ยวข้อง';
+                      // alert_box.className = 'alert alert-danger alert-dismissible fade show';
+                      // msg_head.innerHTML= 'Error !!';
+                      // msg_txt.innerHTML= 'พบปัญหา ไม่สามารถลบข้อมูลได้ กรูราติดต่อเจ้าหน้าที่ ที่เกี่ยวข้อง';
+                      alert('พบปัญหา ไม่สามารถลบข้อมูลได้ กรูราติดต่อเจ้าหน้าที่ ที่เกี่ยวข้อง');
                   }else{
-                      alert_box.className = 'alert alert-success alert-dismissible fade show';
-                      msg_head.innerHTML= 'Success !!';
-                      msg_txt.innerHTML= 'ลบข้อมูลสำเร็จ';
+                      // alert_box.className = 'alert alert-success alert-dismissible fade show';
+                      // msg_head.innerHTML= 'Success !!';
+                      // msg_txt.innerHTML= 'ลบข้อมูลสำเร็จ';
+                      alert('ลบข้อมูลสำเร็จ');
                   }
+                  
              }
            });
           }
     });
-    //View file
-    function format ( d ) {
-    // `d` is the original data object for the row
-    return '<table cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>File name:</td>'+
-            '<td>'+d.ecn_no+'</td>'+
-            '<td>Description:</td>'+
-            '<td>'+d.name+'</td>'+
-            '<td><button class="btn btn-outline-success btn-sm"><span class="fas fa-download fa-fw"></span></button></td>'+
-        '</tr>'+
-    '</table>';
-}
 
+    //View file
     $('#dataTableServerside tbody').on( 'click', '.viewfile', function () {
         var _id = this.id;
         var tr = $(this).closest('tr');
@@ -215,14 +205,114 @@ endif;
              {
               row.child(data).show();
               tr.addClass('shown');
-               console.log(data);
              }
            });
-
-        }
-        
-    });
-    
-
+   }
 });
+
+    $('#search').click(function(){
+      var search_by_part_no = document.getElementById("search_part_no");
+    var search_status = document.getElementById("search_status");
+    var part_no_search = document.getElementById("part_no_search").value;
+    var ecn_status = document.getElementById("ecn_status").value;
+    if(search_by_part_no.checked == true){
+        var table = $('#dataTableServerside').DataTable({
+            destroy: true,
+            stateSave: true,
+          "processing": true,
+          "serverSide": true,
+          "ajax": {
+            "type": 'GET',
+              url: "ecn_serverside.php",
+            "data": {part_no_search:part_no_search}
+          },
+          "pageLength": 25,
+          drawCallback: function( settings ) {
+
+          }
+});
+}
+    if(search_status.checked == true){
+      var table = $('#dataTableServerside').DataTable({
+            destroy: true,
+            stateSave: true,
+          "processing": true,
+          "serverSide": true,
+          "ajax": {
+            "type": 'GET',
+              url: "ecn_serverside.php",
+            "data": {ecn_status:ecn_status}
+          },
+          "pageLength": 25,
+          drawCallback: function( settings ) {
+
+          }
+});
+    }
+
+    //View file
+    $('#dataTableServerside tbody').on( 'click', '.viewfile', function () {
+        var _id = this.id;
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        console.log(row)
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            $.ajax({
+             type: "POST",
+             url: "ajax/ecn_viewfile.php",
+             data:{_id:_id},
+             success: function(data)
+             {
+              row.child(data).show();
+              tr.addClass('shown');
+             }
+           });
+   }
+});
+    });
+});
+
+
+function search_submit(){
+    var search_by_part_no = document.getElementById("search_part_no");
+    var search_status = document.getElementById("search_status");
+    var part_no_search = document.getElementById("part_no_search").value;
+    var ecn_status = document.getElementById("ecn_status").value;
+    if(search_by_part_no.checked == true){
+        var table = $('#dataTableServerside').DataTable({
+            // destroy: true,
+            stateSave: true,
+          "processing": true,
+          "serverSide": true,
+          "ajax": {
+            "type": 'GET',
+              url: "ecn_serverside.php",
+            "data": {part_no_search:part_no_search}
+          },
+          "pageLength": 25,
+          drawCallback: function( settings ) {
+
+          }
+});
+}
+    if(search_status.checked == true){
+        $.ajax({              
+            url: "ajax/ecn_table.php",
+            type: 'POST',
+            data: {ecn_status:ecn_status},
+            beforeSend: function() {
+                $('#detail').html('กำลังโหลด ..');        
+            },
+            success: function(data) {
+                $('#detail').html(data);          
+            }
+        });
+    }
+}
 </script>
