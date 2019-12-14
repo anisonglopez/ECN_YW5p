@@ -68,7 +68,9 @@ $columns = array(
     },
     'field' => 'id' ),
          array( 'db' => 'eff_date',  'dt' => 11 , 'formatter' => function( $d, $row ) {
-        return '<label">'.date("d/m/Y", strtotime($d)).' </label>';},
+             $eff_date = date("d/m/Y", strtotime($d));
+             $eff_date = $eff_date=="01/01/1970" ? "" : $eff_date;
+        return '<label">'.$eff_date.' </label>';},
     'field' => 'id' ),
     // array( 'db' => 'ecn_status',  'dt' => 12),
     array( 'db' => 'ecn_status',  'dt' => 12 , 'formatter' => function( $d, $row ) {
