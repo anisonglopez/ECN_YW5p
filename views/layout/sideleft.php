@@ -100,7 +100,7 @@ Notification
           <a class="collapse-item <?=$ap == 'module'? 'active':'';?>" href="../module/module.php">Module</a>
       <?php endif; //end System role?> 
       <?php if( in_array('MENU', $role_menu_chk)) : ?>
-          <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu</a>
+          <a class="collapse-item <?=$ap == 'menu'? 'active':'';?>" href="../menu/menu.php">Menu/Permission</a>
           <?php endif; //end System role?> 
           <?php if( in_array('EFFDATE', $role_menu_chk)) : ?>
           <a class="collapse-item <?=$ap == 'eff'? 'active':'';?>" href="../effective_date/eff.php">Day of notice</a>

@@ -94,7 +94,10 @@ if (isset($_GET['id'])) {
       }
 
       ?>   
+         <?php if( in_array('ecn.update', $role_menu_chk)) : ?>
         <button  id='save' type="submit" class="btn btn-success">Update</button>
+        <?php endif ?>
+
       </div>
     </div>        
   </div>
@@ -379,7 +382,9 @@ if (isset($_GET['id'])) {
                         
                         </div>
                         <div class="form-group col-md-6 text-right">
+                        <?php if( in_array('ecn.attach', $role_menu_chk)) : ?>
                         <a href="#" class="btn btn-facebook" data-toggle="modal" data-target="#file_upload_modal">Add new file</a>
+                        <?php endif ?>
                         </div>
                     </div>
                     <?php

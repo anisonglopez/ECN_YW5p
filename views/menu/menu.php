@@ -15,7 +15,7 @@ catch (PDOException $e) {
 }
 ?>
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Menu</h1>
+          <h1 class="h3 mb-4 text-gray-800">Menu/Permission</h1>
           <!-- Page Content -->
           <hr>
    <!-- Default Card Example -->
