@@ -143,23 +143,23 @@ ecn_status.disabled = true;
 
   });
   function export_excel(url) {
-    var search_by_create_date = document.getElementById("search_date");
+    // var search_by_create_date = document.getElementById("search_date");
     var search_by_part_no = document.getElementById("search_part_no");
     var search_status = document.getElementById("search_status");
     var part_no_search = document.getElementById("part_no_search").value;
     var ecn_status = document.getElementById("ecn_status").value;
-    var cre_date_start = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
-    var cre_date_end = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
-    if(search_by_create_date.checked == true){
-        // alert("Create Date True");
-        $.ajax({               
-            url: "ajax/ecn_export.php",
-            type: 'GET',
-            success: function(e) {
-                    window.location = 'ajax/ecn_export.php?cre_date_start=' + cre_date_start + '&cre_date_end=' + cre_date_end;
-            }
-        });
-    }
+    // var cre_date_start = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
+    // var cre_date_end = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
+    // if(search_by_create_date.checked == true){
+    //     // alert("Create Date True");
+    //     $.ajax({               
+    //         url: "ajax/ecn_export.php",
+    //         type: 'GET',
+    //         success: function(e) {
+    //                 window.location = 'ajax/ecn_export.php?cre_date_start=' + cre_date_start + '&cre_date_end=' + cre_date_end;
+    //         }
+    //     });
+    // }
     if(search_by_part_no.checked == true){
         // alert("Search by Part no");
         $.ajax({               

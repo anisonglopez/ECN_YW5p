@@ -23,7 +23,7 @@ endif;
   
 </div>
 <div class="card mb-4">
-  <div class="card-header">
+  <div class="card-header bg-white">
     <div class="row">
       <div class="col-md-3">
       <!-- <p>

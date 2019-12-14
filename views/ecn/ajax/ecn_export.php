@@ -19,7 +19,7 @@ try{
         $search_date_start = $_GET['cre_date_start'];
         $search_date_end = $_GET['cre_date_end'];
         //echo $search_date_end ;
-        $stmt = $pdo->query("SELECT ecn_no, created_date, buddle_code, 
+        $stmt = $pdo->query("SELECT ecn_no, ecn_created_date, buddle_code, 
         minor, part_no_old, part_name_old, part_no_new, part_name_new, 
         ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
         ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
@@ -28,7 +28,7 @@ try{
         ");
     }else if (isset($_GET['partno'])){
         $part_no = $_GET['partno'];
-        $stmt = $pdo->query("SELECT ecn_no, created_date, buddle_code, 
+        $stmt = $pdo->query("SELECT ecn_no, ecn_created_date, buddle_code, 
         minor, part_no_old, part_name_old, part_no_new, part_name_new, 
         ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
         ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
@@ -39,7 +39,7 @@ try{
     }
     else if (isset($_GET['searchstatus'])){
         $searchstatus = $_GET['searchstatus'];
-        $stmt = $pdo->query("SELECT ecn_no, created_date, buddle_code, 
+        $stmt = $pdo->query("SELECT ecn_no, ecn_created_date, buddle_code, 
         minor, part_no_old, part_name_old, part_no_new, part_name_new, 
         ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
         ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
@@ -109,6 +109,7 @@ for ($i = 0; $i < $stmt->columnCount(); $i++) {
 <?php
 $sep = "\t"; //tabbed character
 while ($row = $stmt->fetch()) {
+    // var_dump($row);
     $schema_insert = "";
     for ($j = 0; $j < $stmt->columnCount(); $j++) {
         if(!isset($row[$j]))
@@ -118,10 +119,19 @@ while ($row = $stmt->fetch()) {
             if($j == 1){
                 $schema_insert .= "<td>".date('d/m/Y' , strtotime($row[$j])).$sep."</td>";
             }else if($j ==15){
-                $schema_insert .= "<td>".date('d/m/Y' , strtotime($row[$j])).$sep."</td>";
-            }else if($j ==25){
-                $first_deliver = date('d/m/Y' , strtotime($row[$j])).$sep;
-                $schema_insert .= "<td>".$first_deliver."</td>";
+                if (date('d/m/Y' , strtotime($row[$j])) == "01/01/1970"){
+                    $schema_insert .= "<td>\t</td>";
+                }else{
+                    $eff_date = date('d/m/Y' , strtotime($row[$j])).$sep;
+                    $schema_insert .= "<td>".$eff_date."</td>";
+                }
+            }else if($j ==25){ 
+                if (date('d/m/Y' , strtotime($row[$j])) == "01/01/1970"){
+                    $schema_insert .= "<td>\t</td>";
+                }else{
+                    $first_deliver = date('d/m/Y' , strtotime($row[$j])).$sep;
+                    $schema_insert .= "<td>".$first_deliver."</td>";
+                }
             }
             else{
                 $schema_insert .= "<td>".$row[$j].$sep."</td>";

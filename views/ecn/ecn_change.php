@@ -106,7 +106,7 @@ if (isset($_GET['id'])) {
                         <div class="form-row">
                         <div class="form-group col-md-6">
                         <label>Create Date</label>
-                        <input type="text"  name="created_date" value="<?=$created_date?>"  class="form-control"  placeholder="Create Date">
+                        <input type="text"  name="created_date" value="<?=$created_date?>"  class="form-control"  placeholder="Create Date" readonly>
                         </div>
                         <script>
                           $('input[name="created_date"]').daterangepicker({

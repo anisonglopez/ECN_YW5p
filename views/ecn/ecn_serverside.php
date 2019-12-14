@@ -50,7 +50,7 @@ $columns = array(
         <button id="'.$d.'"  class="btn btn-outline-info btn-sm viewfile" ><span class="fas fa-angle-down fa-fw"></span></button></span>
         ' ;},
     'field' => 'id' ),
-    array( 'db' => 'created_date',  'dt' => 1 , 'formatter' => function( $d, $row ) {
+    array( 'db' => 'ecn_created_date',  'dt' => 1 , 'formatter' => function( $d, $row ) {
         return '<label">'.date("d/m/Y", strtotime($d)).' </label>';},
     'field' => 'id' ),
     array( 'db' => 'ecn_no',  'dt' => 2 ),
