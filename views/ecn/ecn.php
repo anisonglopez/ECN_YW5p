@@ -52,11 +52,16 @@ endif;
       </div>
 
       <div class="col-md-6 text-right">
-
+        <?php if( in_array('ecn.create', $role_menu_chk)) : ?>
         <button class="btn btn-success"onclick="location.href='ecn_create.php';">Create new</button>
+        <?php endif ?>
         <button class="btn btn-primary"onclick="location.href='../../file_import/ecn/ecn_import_template_updated_24072019.xlsx';">Load Template</button>
+        <?php if( in_array('ecn.import', $role_menu_chk)) : ?>
         <button class="btn btn-primary" data-toggle="modal" data-target="#import_excel_modal">Import Excel</button>
-      <button class="btn btn-primary"  onclick="export_excel()" >Export Excel</button>
+        <?php endif ?>
+        <?php if( in_array('ecn.export', $role_menu_chk)) : ?>
+        <button class="btn btn-primary"  onclick="export_excel()" >Export Excel</button>
+        <?php endif ?>
       <!-- <a href="ajax/ecn_export.php"  class="btn btn-info" download>Download!</a> -->
 
       </div>
@@ -152,6 +157,7 @@ endif;
 });
 
 $('#dataTableServerside tbody').on( 'click', '.btndelete', function () {
+  <?php if( in_array('ecn.delete', $role_menu_chk)) : ?>
         var _id = this.id;
         var result = confirm("Want to delete?");
           if (result) {
@@ -182,7 +188,11 @@ $('#dataTableServerside tbody').on( 'click', '.btndelete', function () {
              }
            });
           }
+         <?php else: ?>
+  alert('Permission Fail ขออภัย คุณไม่ได้รับสิทธิ์ในการลบข้อมูล');
+    <?php endif ?>
     });
+
 
     //View file
     $('#dataTableServerside tbody').on( 'click', '.viewfile', function () {
