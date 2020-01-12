@@ -145,7 +145,7 @@ require '../layout/header.php';
                         </div>
                         <div class="form-group col-md-6">
                         <label>Effective Date</label>
-                        <input type="text"  name="eff_date" value="" class="form-control"  placeholder="Effective Date">
+                        <input type="text"  name="eff_date" value="" class="form-control"  placeholder="Effective Date" autocomplete="off">
                         <script>
                           $('input[name="eff_date"]').daterangepicker({
                             autoUpdateInput: false,
@@ -221,7 +221,7 @@ require '../layout/header.php';
                         </div>
                         <div class="form-group col-md-6">
                         <label>D Date</label>
-                        <input type="text"  name="ddate" value="" class="form-control"  placeholder="D Date">
+                        <input type="text"  name="ddate" value="" class="form-control"  placeholder="D Date" autocomplete="off">
                         <script>
                           $('input[name="ddate"]').daterangepicker({
                             autoUpdateInput: false,

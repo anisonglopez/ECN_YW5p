@@ -35,14 +35,14 @@ if (isset($_GET['id'])) {
            $sn_break_condit =$row['sn_break_condit'];
            $sn_break = $row['sn_break'];
            $eff = $row['eff'];
-           $eff_date =  date('d/m/Y' , strtotime($row['eff_date']));
+           $eff_date = $row['eff_date'] == "1970-01-01" ? "" : date('d/m/Y' , strtotime($row['eff_date']));
            $ecn_status = $row['ecn_status'];
            $planing = $row['planing'];
            $warehouse = $row['warehouse'];
            $mange_stock = $row['mange_stock'];
            $serial_no = $row['serial_no'];
            $supply_date =  date('d/m/Y' , strtotime($row['supply_date']));
-           $ddate =  date('d/m/Y' , strtotime($row['ddate']));
+           $ddate =  $row['ddate'] == "1970-01-01" ? "" : date('d/m/Y' , strtotime($row['ddate']));
            $dwg = $row['dwg'];
            $stock_sup = $row['stock_sup'];
            $cost_sup = $row['cost_sup'];
@@ -54,6 +54,8 @@ if (isset($_GET['id'])) {
            $first_deliver =date('d/m/Y' , strtotime($row['first_deliver']));
            $remark =$row['remark'];
         endforeach;
+
+
       } 
       catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
@@ -185,22 +187,25 @@ if (isset($_GET['id'])) {
                         <label>WH Management</label>
                         <textarea name="wh_m"  class="form-control"  placeholder="WH Management" rows="5"><?=$wh_m?></textarea>
                         </div>
-                        <div class="form-group col-md-6">
+                        <input type="hidden" name="prod_plan" value="<?=$prod_plan?>">
+                        <!-- <div class="form-group col-md-6">
                         <label>Prod Plan</label>
                         <textarea name="prod_plan" class="form-control"  placeholder="Prod Plan" rows="5"><?=$prod_plan?></textarea>
-                      </div>
+                      </div> -->
                     </div>
 
                      <div class="form-row">
-                        <div class="form-group col-md-6">
+                     <input type="hidden" name="sn_break_condit" value="<?=$sn_break_condit?>">
+                        <!-- <div class="form-group col-md-6">
                         <label>S/N Break ?</label> <span class="text-danger">*</span>
                         <select  class="form-control" name="sn_break_condit"  required>
                               <option value="">Select</option>
                                         <option value="Y" <?= $sn_break_condit === "Y" ? 'selected' : null; ?>>Yes</option>
                                         <option value="N" <?= $sn_break_condit === "N" ? 'selected' : null; ?>>No</option>
                               </select>
-                        </div>
+                        </div> -->
                         <div class="form-group col-md-6">
+             
                         <label>S/N Break</label>
                         <input type="text" name="sn_break" value="<?=$sn_break?>" class="form-control"  placeholder="S/N Break">
                         </div>
@@ -217,11 +222,18 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="form-group col-md-6">
                         <label>Effective Date</label>
-                        <input type="text"  name="eff_date"  value="<?=$eff_date?>" class="form-control"  placeholder="Create Date">
+                        <input type="text"  name="eff_date"  value="<?=$eff_date?>" class="form-control"  placeholder="Effective Date" autocomplete="off">
                         <script>
                           $('input[name="eff_date"]').daterangepicker({
+                            autoUpdateInput: false,
                             singleDatePicker: true,
-                            locale: {  format: 'DD/MM/YYYY' }  
+                            // locale: {  format: 'DD/MM/YYYY' }  
+                            locale: {
+                               cancelLabel: 'Clear'
+                            },
+                          });
+                          $('input[name="eff_date"]').on('apply.daterangepicker', function(ev, picker) {
+                            $(this).val(picker.startDate.format('DD/MM/YYYY'));
                           });
                         </script>
                         </div>
@@ -289,11 +301,18 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="form-group col-md-6">
                         <label>D Date</label>
-                        <input type="text"  name="ddate" value="<?=$ddate?>" class="form-control"  >
+                        <input type="text"  name="ddate" value="<?=$ddate?>" class="form-control" placeholder="D Date" autocomplete="off">
                         <script>
                           $('input[name="ddate"]').daterangepicker({
+                            autoUpdateInput: false,
                             singleDatePicker: true,
-                            locale: {  format: 'DD/MM/YYYY' }  
+                            // locale: {  format: 'DD/MM/YYYY' }  
+                            locale: {
+                               cancelLabel: 'Clear'
+                            },
+                          });
+                          $('input[name="ddate"]').on('apply.daterangepicker', function(ev, picker) {
+                            $(this).val(picker.startDate.format('DD/MM/YYYY'));
                           });
                         </script>
                         </div>
