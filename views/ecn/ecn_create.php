@@ -111,21 +111,23 @@ require '../layout/header.php';
                         <label>WH Management</label>
                         <textarea name="wh_m" class="form-control"  placeholder="WH Management" rows="5"></textarea>
                         </div>
-                        <div class="form-group col-md-6">
+                        <input type="hidden" name="prod_plan">
+                        <!-- <div class="form-group col-md-6">
                         <label>Prod Plan</label>
                         <textarea name="prod_plan" class="form-control"  placeholder="Prod Plan" rows="5"></textarea>
-                        </div>
+                        </div> -->
                     </div>
 
                      <div class="form-row">
-                        <div class="form-group col-md-6">
+                     <input type="hidden" name="sn_break_condit" value="N">
+                        <!-- <div class="form-group col-md-6">
                         <label>S/N Break ?</label> <span class="text-danger">*</span>
                         <select class="form-control" name="sn_break_condit"  required>
                               <option value="">Select</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
                               </select>
-                        </div>
+                        </div> -->
                         <div class="form-group col-md-6">
                         <label>S/N Break</label>
                         <input type="text" name="sn_break" class="form-control"  placeholder="S/N Break">
@@ -143,11 +145,18 @@ require '../layout/header.php';
                         </div>
                         <div class="form-group col-md-6">
                         <label>Effective Date</label>
-                        <input type="text"  name="eff_date" value="<?=date("d/m/Y")?>" class="form-control"  placeholder="Create Date">
+                        <input type="text"  name="eff_date" value="" class="form-control"  placeholder="Effective Date">
                         <script>
                           $('input[name="eff_date"]').daterangepicker({
+                            autoUpdateInput: false,
                             singleDatePicker: true,
-                            locale: {  format: 'DD/MM/YYYY' }  
+                            locale: {
+                               cancelLabel: 'Clear'
+                            },
+                            // locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                          $('input[name="eff_date"]').on('apply.daterangepicker', function(ev, picker) {
+                            $(this).val(picker.startDate.format('DD/MM/YYYY'));
                           });
                         </script>
                         </div>
@@ -212,11 +221,18 @@ require '../layout/header.php';
                         </div>
                         <div class="form-group col-md-6">
                         <label>D Date</label>
-                        <input type="text"  name="ddate" value="<?=date("d/m/Y")?>" class="form-control"  >
+                        <input type="text"  name="ddate" value="" class="form-control"  placeholder="D Date">
                         <script>
                           $('input[name="ddate"]').daterangepicker({
+                            autoUpdateInput: false,
                             singleDatePicker: true,
-                            locale: {  format: 'DD/MM/YYYY' }  
+                            locale: {
+                               cancelLabel: 'Clear'
+                            },
+                            // locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                          $('input[name="ddate"]').on('apply.daterangepicker', function(ev, picker) {
+                            $(this).val(picker.startDate.format('DD/MM/YYYY'));
                           });
                         </script>
                         </div>

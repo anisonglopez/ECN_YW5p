@@ -5,7 +5,7 @@ $( "form.ecn" ).on( "submit", function( event ) {
     var msg_txt = document.getElementById("msg_txt");
     event.preventDefault();
     var form = $(this);
-    // console.log( $( this ).serialize() );
+    console.log( $( this ).serialize() );
   $.ajax({
            type: "POST",
            url: "ajax/ecn_create.php",
@@ -13,9 +13,10 @@ $( "form.ecn" ).on( "submit", function( event ) {
            data: form.serialize(), // serializes the form's elements.
            success: function(data)
            {
+            console.log(data);
             $('#alert_box').show();
             document.getElementById("save").innerHTML = 'Update';
-            console.log(data);
+            
                 if(data.msg_status == 'success'){
                     alert_box.className = 'alert alert-success alert-dismissible fade show';
                     msg_head.innerHTML= 'Success !!';

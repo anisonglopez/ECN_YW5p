@@ -8,10 +8,10 @@ date_default_timezone_set("Asia/Bangkok");
 $date_today = date('Y-m-d H:i:s');
 
 $created_date = DateTime::createFromFormat("d/m/Y" , $_POST['created_date']) ;
-$eff_date = DateTime::createFromFormat("d/m/Y" , $_POST['eff_date']) ;
+$eff_date = $_POST['eff_date'] ? DateTime::createFromFormat("d/m/Y" , $_POST['eff_date']) :  date_create("1970-01-01") ;
 $first_deliver = DateTime::createFromFormat("d/m/Y" , $_POST['first_deliver']) ;
 $supply_date = DateTime::createFromFormat("d/m/Y" , $_POST['supply_date']) ;
-$ddate = DateTime::createFromFormat("d/m/Y" , $_POST['ddate']) ;
+$ddate = $_POST['ddate'] ? DateTime::createFromFormat("d/m/Y" , $_POST['ddate'])  : date_create("1970-01-01") ;
 $user_update = $_SESSION['user_name'];
 if (isset($_POST['created_date']) && empty($_POST['ecn_id'])) {
     try{
