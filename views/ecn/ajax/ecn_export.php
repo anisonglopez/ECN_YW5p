@@ -21,7 +21,7 @@ try{
         //echo $search_date_end ;
         $stmt = $pdo->query("SELECT ecn_no, ecn_created_date, buddle_code, 
         minor, part_no_old, part_name_old, part_no_new, part_name_new, 
-        ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
+        ac, model_concern, reason, wh_m,  sn_break,  eff_date, 
         ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
         sup, first_po, first_deliver, remark FROM $DB_TBLName WHERE 
         ecn_trash = 0 AND created_date  BETWEEN '$search_date_start' and '$search_date_end' 
@@ -30,10 +30,10 @@ try{
         $part_no = $_GET['partno'];
         $stmt = $pdo->query("SELECT ecn_no, ecn_created_date, buddle_code, 
         minor, part_no_old, part_name_old, part_no_new, part_name_new, 
-        ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
+        ac, model_concern, reason, wh_m,  sn_break,  eff_date, 
         ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
         sup, first_po, first_deliver, remark FROM $DB_TBLName WHERE 
-        ecn_trash = 0 AND part_no_new LIKE '%".$part_no."%'
+        ecn_trash = 0 AND (part_no_new LIKE '%".$part_no."%' or part_no_old LIKE  '%".$part_no."%')
         ");
         $part_no = ($part_no== NULL) ? 'ALL' : $part_no;
     }
@@ -41,7 +41,7 @@ try{
         $searchstatus = $_GET['searchstatus'];
         $stmt = $pdo->query("SELECT ecn_no, ecn_created_date, buddle_code, 
         minor, part_no_old, part_name_old, part_no_new, part_name_new, 
-        ac, model_concern, reason, wh_m, sn_break_condit, sn_break, eff, eff_date, 
+        ac, model_concern, reason, wh_m,  sn_break,  eff_date, 
         ecn_status, dwg, stock_sup, cost_sup, qa_audit, sp_req, buyer, 
         sup, first_po, first_deliver, remark FROM $DB_TBLName WHERE 
         ecn_trash = 0 AND ecn_status LIKE '%".$searchstatus."%'
@@ -118,14 +118,14 @@ while ($row = $stmt->fetch()) {
             //$schema_insert .= "$row[$j]".$sep,'UTF-8';
             if($j == 1){
                 $schema_insert .= "<td>".date('d/m/Y' , strtotime($row[$j])).$sep."</td>";
-            }else if($j ==15){
+            }else if($j ==13){
                 if (date('d/m/Y' , strtotime($row[$j])) == "01/01/1970"){
                     $schema_insert .= "<td>\t</td>";
                 }else{
                     $eff_date = date('d/m/Y' , strtotime($row[$j])).$sep;
                     $schema_insert .= "<td>".$eff_date."</td>";
                 }
-            }else if($j ==25){ 
+            }else if($j ==23){ 
                 if (date('d/m/Y' , strtotime($row[$j])) == "01/01/1970"){
                     $schema_insert .= "<td>\t</td>";
                 }else{
