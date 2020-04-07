@@ -6,13 +6,18 @@ $msg_txt = '';
 $TABLE_NAME = '30_ecn';
 date_default_timezone_set("Asia/Bangkok");
 $date_today = date('Y-m-d H:i:s');
+try{
+    $created_date = DateTime::createFromFormat("d/m/Y" , $_POST['created_date']) ;
+    $eff_date = $_POST['eff_date'] ? DateTime::createFromFormat("d/m/Y" , $_POST['eff_date']) :  date_create("1970-01-01") ;
+    $first_deliver =$_POST['first_deliver'] ? DateTime::createFromFormat("d/m/Y" , $_POST['first_deliver']) :  date_create("1970-01-01") ;
+    $supply_date = $_POST['supply_date'] ? DateTime::createFromFormat("d/m/Y" , $_POST['supply_date']) :  date_create("1970-01-01") ;
+    $ddate = $_POST['ddate'] ? DateTime::createFromFormat("d/m/Y" , $_POST['ddate'])  : date_create("1970-01-01") ;
+    $user_update = $_SESSION['user_name'];
+}catch (PDOException $e) {
+    $msg_status= 'error';
+    $msg_txt=  "Error!: " . $e->getMessage();
+} // enc catch
 
-$created_date = DateTime::createFromFormat("d/m/Y" , $_POST['created_date']) ;
-$eff_date = $_POST['eff_date'] ? DateTime::createFromFormat("d/m/Y" , $_POST['eff_date']) :  date_create("1970-01-01") ;
-$first_deliver = DateTime::createFromFormat("d/m/Y" , $_POST['first_deliver']) ;
-$supply_date = DateTime::createFromFormat("d/m/Y" , $_POST['supply_date']) ;
-$ddate = $_POST['ddate'] ? DateTime::createFromFormat("d/m/Y" , $_POST['ddate'])  : date_create("1970-01-01") ;
-$user_update = $_SESSION['user_name'];
 if (isset($_POST['created_date']) && empty($_POST['ecn_id'])) {
     try{
         $datalist =[
