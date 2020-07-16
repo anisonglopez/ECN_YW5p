@@ -376,12 +376,12 @@ if (isset($_GET['id'])) {
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label>Stock Supplier</label> 
-                        <input type="text" name="stock_sup" value="<?=$stock_sup?>" class="form-control"  placeholder="Stock Supplier">
+                        <label>Stock/Cost Supplier</label> 
+                        <input type="text" name="stock_sup" value="<?=$stock_sup?>" class="form-control"  placeholder="Stock/Cost Supplier">
                         </div>
                         <div class="form-group col-md-6">
-                        <label>Cost Supplier</label>
-                        <input type="text" name="cost_sup" value="<?=$cost_sup?>" class="form-control"  placeholder="Cost Supplier">
+                        <label>Assy Change</label>
+                        <input type="text" name="cost_sup" value="<?=$cost_sup?>" class="form-control"  placeholder="Assy Change">
                         </div>
                     </div>
 
