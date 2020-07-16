@@ -36,13 +36,14 @@ if (isset($_GET['id'])) {
            $sn_break = $row['sn_break'];
            $eff = $row['eff'];
            $eff_date = $row['eff_date'] == "1970-01-01" ? "" : date('d/m/Y' , strtotime($row['eff_date']));
+           $eff_date  = date('Y', strtotime( $eff_date)) < 1970 ? "" : $eff_date;
            $ecn_status = $row['ecn_status'];
            $planing = $row['planing'];
            $warehouse = $row['warehouse'];
            $mange_stock = $row['mange_stock'];
            $serial_no = $row['serial_no'];
-           $supply_date =  date('d/m/Y' , strtotime($row['supply_date']));
-           $ddate =  $row['ddate'] == "1970-01-01" ? "" : date('d/m/Y' , strtotime($row['ddate']));
+           $supply_date  = date('Y', strtotime( $row['supply_date'])) <= 1970 ? "" :date('d/m/Y' , strtotime($row['supply_date']));
+           $ddate  = date('Y', strtotime( $row['ddate'])) <= 1970 ? "" :date('d/m/Y' , strtotime($row['ddate']));
            $dwg = $row['dwg'];
            $stock_sup = $row['stock_sup'];
            $cost_sup = $row['cost_sup'];
@@ -51,7 +52,8 @@ if (isset($_GET['id'])) {
            $buyer = $row['buyer'];
            $sup = $row['sup'];
            $first_po = $row['first_po'];
-           $first_deliver =date('d/m/Y' , strtotime($row['first_deliver']));
+          //  $first_deliver =date('d/m/Y' , strtotime($row['first_deliver']));
+           $first_deliver =  $row['first_deliver'] == "1970-01-01" ? "" : date('d/m/Y' , strtotime($row['first_deliver']));
            $remark =$row['remark'];
         endforeach;
 
@@ -227,10 +229,10 @@ if (isset($_GET['id'])) {
                           $('input[name="eff_date"]').daterangepicker({
                             autoUpdateInput: false,
                             singleDatePicker: true,
-                            // locale: {  format: 'DD/MM/YYYY' }  
-                            locale: {
-                               cancelLabel: 'Clear'
-                            },
+                            locale: {  format: 'DD/MM/YYYY' }  
+                            // locale: {
+                            //    cancelLabel: 'Clear'
+                            // },
                           });
                           $('input[name="eff_date"]').on('apply.daterangepicker', function(ev, picker) {
                             $(this).val(picker.startDate.format('DD/MM/YYYY'));
@@ -284,11 +286,15 @@ if (isset($_GET['id'])) {
                         
                         <div class="form-group col-md-6">
                         <label>Supply date</label>
-                        <input type="text"  name="supply_date" value="<?=$supply_date?>" class="form-control"  >
+                        <input type="text"  name="supply_date" value="<?=$supply_date?>" class="form-control"  autocomplete="off">
                         <script>
                           $('input[name="supply_date"]').daterangepicker({
+                            autoUpdateInput: false,
                             singleDatePicker: true,
                             locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                          $('input[name="supply_date"]').on('apply.daterangepicker', function(ev, picker) {
+                            $(this).val(picker.startDate.format('DD/MM/YYYY'));
                           });
                         </script>
                         </div>
@@ -301,15 +307,16 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="form-group col-md-6">
                         <label>D Date</label>
+                        <?=$ddate?>
                         <input type="text"  name="ddate" value="<?=$ddate?>" class="form-control" placeholder="D Date" autocomplete="off">
                         <script>
                           $('input[name="ddate"]').daterangepicker({
                             autoUpdateInput: false,
                             singleDatePicker: true,
-                            // locale: {  format: 'DD/MM/YYYY' }  
-                            locale: {
-                               cancelLabel: 'Clear'
-                            },
+                            locale: {  format: 'DD/MM/YYYY' }  
+                            // locale: {
+                            //    cancelLabel: 'Clear'
+                            // },
                           });
                           $('input[name="ddate"]').on('apply.daterangepicker', function(ev, picker) {
                             $(this).val(picker.startDate.format('DD/MM/YYYY'));
@@ -339,11 +346,16 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="form-group col-md-6">
                         <label>First Deliver</label>
-                        <input type="text"  name="first_deliver" value="<?=$first_deliver?>" class="form-control"  >
+                        <?=$first_deliver?>
+                        <input type="text"  name="first_deliver" value="<?=$first_deliver?>" class="form-control"  autocomplete="off">
                         <script>
                           $('input[name="first_deliver"]').daterangepicker({
+                            autoUpdateInput: false,
                             singleDatePicker: true,
                             locale: {  format: 'DD/MM/YYYY' }  
+                          });
+                          $('input[name="first_deliver"]').on('apply.daterangepicker', function(ev, picker) {
+                            $(this).val(picker.startDate.format('DD/MM/YYYY'));
                           });
                         </script>
                         </div>

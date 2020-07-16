@@ -168,6 +168,25 @@ endif;
 <!-- end card -->
 <?php   require 'modal/send_mail_modal.php';?>
 <?php   require '../layout/footer.php';?>
+<script src="../../vendor/datatable_export/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+<script src="../../vendor/datatable_export/buttons/1.6.0/js/buttons.flash.min.js"></script>
+<script src="../../vendor/datatable_export/ajax/jszip/3.1.3/jszip.min.js"></script>
+<!-- <script src="../../vendor/datatable_export/ajax/pdfmake/0.1.53/pdfmake.min.js"></script> -->
+<!-- <script src="../../vendor/datatable_export/ajax/pdfmake/0.1.53/vfs_fonts.js"></script> -->
+<script src="../../vendor/datatable_export/buttons/1.6.0/js/buttons.html5.min.js"></script>
+<!-- <script src="../../vendor/datatable_export/buttons/1.6.0/js/buttons.print.min.js"></script> -->
+<!-- <script src="../../vendor/datatable_export/buttons/1.6.0/js/buttons.colVis.min.js"></script> -->
 <script>
- var table = $('#dataTable').DataTable();
+ var table = $('#dataTable').DataTable({
+  dom: 'Bfrtip',
+        buttons: [{
+          extend: 'excelHtml5',
+            exportOptions: {
+                  columns: [ 1, 2, 3, 4, 5 , 7,8,9,10,11,12]
+                },
+                "text": 'Export Excel',
+                "className": 'btn btn-outline-primary' ,
+        }     
+    ]
+ });
 </script>
